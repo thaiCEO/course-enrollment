@@ -1,0 +1,507 @@
+<?php 
+
+
+return [
+    'totalTeachers' => 'Total Teachers',
+    'totalStudents' => 'Total Students',
+    'totalCourses' => 'Total Courses',
+    'totalRevenue' => 'Total Revenue',
+    'statistics' => 'Statistics',
+    'feedback' => 'Feedback',
+    'positive' => 'Positive',
+    'negative' => 'Negative',
+
+
+    'sidebar' => [
+         'navigation' => 'Navigation',
+        'dashboard' => 'Dashboard',
+        'system_school' => 'System School',
+        'table' => 'Table',
+        'student_table' => 'Student Table',
+        'student_list' => 'Student List',
+        'student_create' => 'Create New Student',
+        'course_table' => 'Course Table',
+        'course_list' => 'Course List',
+        'course_create' => 'Create New Course',
+        'enrollment_table' => 'Enrollment Table',
+        'enrollment_list' => 'Enrollment List',
+        'enrollment_create' => 'Create New Enrollment',
+        'class' => 'Class',
+        'create_course' => 'Create Course',
+        'view_course' => 'View Course',
+        'other' => 'Other',
+        'menu_levels' => 'Menu Levels',
+        'teacher_table' => 'Teacher Table',
+        'teacher_list' => 'Teacher List',
+        'teacher_create' => 'Add New Teacher',
+        'studentaddress_table' => 'Address',
+        'studentaddress_list' => 'Address List',
+        'studentaddress_create' => 'Add New Address',
+        'payment_table'  => 'Payment Table',
+        'payment_list'   => 'Payment List',
+        'payment_create' => 'Create Payment',
+        'address' => 'Address',
+        'payment' => 'Payment'
+    ],
+
+    'studentList' => [
+        'addStudent' => 'Student'
+    ],
+
+
+
+     'payment_created_success' => 'Payment created successfully.',
+     'enrollment_created_success' => 'Enrollment created successfully.',
+
+
+
+     'teacherList' => [
+        'title' => 'Teachers',
+        'add_teacher' => 'Add Teacher',
+        'id' => 'ID',
+        'image' => 'Image',
+        'name' => 'Name',
+        'email' => 'Email',
+        'phone' => 'Phone',
+        'specialization' => 'Specialization',
+        'actions' => 'Actions',
+        'view' => 'View',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'confirm_delete' => 'Are you sure you want to delete this teacher?',
+        'no_data' => 'No teacher data available.',
+        'delete_selected' => 'Delete Selected',
+    ],
+
+    'showTeacher' => [
+        'title' => 'Teacher Information',
+        'name' => 'Teacher Name',
+        'email' => 'Email',
+        'phone' => 'Phone Number',
+        'specialization' => 'Specialization',
+        'image' => 'Profile Image',
+        'no_image' => 'No profile image available.',
+        'address_line' => 'Address Line',
+        'city' => 'City',
+        'is_main' => 'Address Type',
+        'main_address' => 'Main Address',
+        'secondary_address' => 'Secondary Address',
+        'no_address' => 'No address information available.',
+        'back' => 'Back',
+    ],
+
+
+'teacherEdit' => [
+        'back' => 'back',
+        'title' => 'Edit Teacher Information',
+        'name' => 'Name',
+        'email' => 'Email',
+        'phone' => 'Phone Number',
+        'specialization' => 'Specialization',
+        'profile_image' => 'Profile Image',
+        'submit' => 'Submit',
+    ],
+
+
+'teacherCreate' => [
+     'back' => 'back',
+    'mainTitleDashboard' => 'dashboard',
+    'mainTitle' => 'Form Teacher',
+    'name' => 'Full Name',
+    'name_placeholder' => 'Enter name',
+    'email' => 'Email',
+    'email_placeholder' => 'Enter email address',
+    'phone' => 'Phone Number',
+    'phone_placeholder' => 'Enter phone number',
+    'specialization' => 'Specialization',
+    'specialization_placeholder' => 'Enter specialization',
+    'profile_image' => 'Profile Image',
+    'submit' => 'Save',
+],
+
+'studentList' => [
+    'tab_home' => 'Home',
+    'tab_security' => 'Security',
+    'tab_entertainment' => 'Entertainment',
+    'tab_bigdata' => 'Big Data',
+
+    'id' => 'ID',
+    'image' => 'Image',
+    'username' => 'Username',
+    'gender' => 'Gender',
+    'dob' => 'Date of Birth',
+    'phone' => 'Phone Number',
+    'address' => 'Address',
+    'actions' => 'Actions',
+
+    'view' => 'View',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'confirm_delete' => 'Are you sure you want to delete this student?',
+    'delete_selected' => 'Delete Selected',
+
+    'addStudent' => 'add student',
+
+],
+
+
+ 'paymentmethod' => [
+        'bank'    => 'Bank',
+        'table'   => 'Bank Table',
+        'list'    => 'Bank List',
+        'create'  => 'Create Bank',
+    ],
+
+// address start
+'showaddresses' => [
+        'title'          => 'Student Addresses',
+        'add'            => 'Add Address',
+        'id'             => 'ID',
+        'owner'          => 'Owner',
+        'address_line'   => 'Address',
+        'city'           => 'City',
+        'phone'          => 'Phone',
+        'type'           => 'Address Type',
+        'main'           => 'Main',
+        'secondary'      => 'Secondary',
+        'action'         => 'Action',
+        'student'        => 'Student',
+        'teacher'        => 'Teacher',
+        'view'           => 'View',
+        'edit'           => 'Edit',
+        'delete'         => 'Delete',
+        'ok'             => 'OK',
+        'confirm_delete' => 'Are you sure you want to delete this address?',
+        'no_data'        => 'No addresses found',
+    ],
+
+  'createaddresses' => [
+        'title'           => 'Add Student/Teacher Address',
+        'user_type'       => 'User Type',
+        'select_type'     => '-- Select Type --',
+        'student'         => 'Student',
+        'teacher'         => 'Teacher',
+        'select_student'  => '-- Select Student --',
+        'select_teacher'  => '-- Select Teacher --',
+        'address_line'    => 'Address',
+        'city'            => 'City',
+        'phone'           => 'Phone',
+        'main_address'    => 'Main Address',
+        'save'            => 'Save',
+        'back'            => 'Back',
+    ],
+ 'viewaddresses' => [
+        'title'         => 'Student/Teacher Address Details',
+        'student'       => 'Student/Teacher',
+        'address_line'  => 'Address',
+        'city'          => 'City',
+        'phone'         => 'Phone',
+        'address_type'  => 'Address Type',
+        'main'          => 'Main Address',
+        'secondary'     => 'Secondary Address',
+        'back'          => 'Back',
+        'na'            => 'N/A',
+    ],
+'editaddresses' => [
+        'title'           => 'Edit Address',
+        'user_type'       => 'User Type',
+        'select_type'     => '-- Select Type --',
+        'student'         => 'Student',
+        'teacher'         => 'Teacher',
+        'select_student'  => '-- Select Student --',
+        'select_teacher'  => '-- Select Teacher --',
+        'address'         => 'Address',
+        'city'            => 'City',
+        'phone'           => 'Phone',
+        'main_address'    => 'Main Address',
+        'update'          => 'Update',
+        'back'            => 'Back',
+    ],
+// address end
+
+  // Payment Method List
+'paymentmethodList' => [
+        'title' => 'Payment Methods',
+        'add' => '+ Add Payment Method',
+        'table' => [
+            'no' => '#',
+            'name' => 'Bank Name',
+            'actions' => 'Actions',
+            'view' => 'View',
+            'edit' => 'Edit',
+            'delete' => 'Delete',
+            'empty' => 'No payment methods found',
+            'delete_confirm' => 'Are you sure you want to delete this payment method?',
+        ],
+        'success_create' => 'Payment method created successfully.',
+        'success_update' => 'Payment method updated successfully.',
+        'success_delete' => 'Payment method deleted successfully.',
+    ],
+'createPaymentMethod' => [
+        'title' => 'Add Payment Method',
+        'name_label' => 'Payment Method Name',
+        'name_placeholder' => 'Example: Cash, Bank Transfer, Bakong',
+        'save' => 'Save',
+        'back' => 'Back',
+    ],
+'viewPaymentMethod' => [
+        'title' => 'Payment Method Details',
+        'id' => 'ID',
+        'name' => 'Payment Method Name',
+        'back' => 'Back',
+    ],
+'editPaymentMethod' => [
+        'title' => 'Edit Payment Method',
+        'name' => 'Payment Method Name',
+        'update' => 'Update',
+        'back' => 'Back',
+    ],
+
+// payment-method end
+
+// payment start
+
+ 'paymentList' => [
+        'success' => 'Success',
+        'title' => 'Payments',
+        'addPayment' => 'Add Payment',
+        'id' => 'ID',
+        'student' => 'Student',
+        'amount' => 'Amount',
+        'status' => 'Status',
+        'method' => 'Payment Method',
+        'date' => 'Payment Date',
+        'actions' => 'Actions',
+        'view' => 'View',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'deleteConfirm' => 'Are you sure you want to delete this payment?',
+        'noData' => 'No payment data available',
+    ],
+
+
+ 'createPayment' => [
+        'title' => 'Add Payment',
+        'enrollment' => 'Student/Course',
+        'selectEnrollment' => '-- Select Student/Course --',
+        'courseLabel' => 'course(:course) - student (:student)',
+        'status' => 'Status',
+        'pending' => 'Pending',
+        'paid' => 'Paid',
+        'paymentMethod' => 'Payment Method',
+        'selectPaymentMethod' => '-- Select Payment Method --',
+        'paidAt' => 'Payment Date (Optional)',
+        'save' => 'Save',
+        'back' => 'Back',
+    ],
+
+ 'viewPayment' => [
+        'title' => 'Payment Detail',
+        'id' => 'ID',
+        'course' => 'Course',
+        'amount' => 'Amount',
+        'status' => 'Status',
+        'paymentMethod' => 'Payment Method',
+        'paidAt' => 'Paid At',
+        'back' => 'Back',
+    ],
+
+'editPayment' => [
+        'title' => 'Edit Payment',
+        'enrollmentId' => 'Enrollment ID',
+        'amount' => 'Amount',
+        'status' => 'Status',
+        'statusOptions' => [
+            'pending' => 'Pending',
+            'paid' => 'Paid',
+        ],
+        'paymentMethod' => 'Payment Method',
+        'updateButton' => 'Update',
+        'back' => 'Back',
+    ],
+
+//payment end 
+
+//enrollment start
+
+  'enrollmentList' => [
+        'title' => 'Student Enrollments',
+        'tab1' => 'Student Enrollment',
+        'tab2' => 'Security',
+        'tab3' => 'Entertainment',
+        'tab4' => 'Big Data',
+
+        'addButton' => '+ Enroll Student',
+        'table' => [
+            'id' => '#',
+            'studentName' => 'Student Name',
+            'courseTitle' => 'Course Title',
+            'enrolledDate' => 'Enrolled Date',
+            'actions' => 'Actions',
+        ],
+        'action' => [
+            'view' => 'View',
+            'edit' => 'Edit',
+            'delete' => 'Delete',
+            'confirmDelete' => 'Delete this enrollment?',
+        ],
+        'empty' => 'No enrollments found.',
+        'deleteSelected' => 'Delete Selected',
+    ],
+
+ 'createEnrollment' => [
+        'title' => 'Create Enrollment',
+        'dashboard' => 'Dashboard',
+        'breadcrumb' => 'Enrollment',
+        'selectStudent' => 'Select Student',
+        'selectStudentPlaceholder' => '-- Select a Student --',
+        'selectCourse' => 'Select Course',
+        'selectCoursePlaceholder' => '-- Select a Course --',
+        'enrolledDate' => 'Enrollment Date',
+        'submitButton' => 'Enroll Student',
+    ],
+
+ 'editEnrollment' => [
+        'title' => 'Edit Enrollment',
+        'selectStudent' => 'Select Student',
+        'selectStudentPlaceholder' => '-- Select Student --',
+        'selectCourse' => 'Select Course',
+        'selectCoursePlaceholder' => '-- Select Course --',
+        'enrolledDate' => 'Enrollment Date',
+        'updateButton' => 'Update Enrollment',
+    ],
+
+'viewEnrollment' => [
+    'title' => 'Enrollment Details (ID: :id)',
+    'student' => 'Student',
+    'course' => 'Course',
+    'enrolledDate' => 'Enrollment Date',
+    'back' => 'Back to List',
+    'edit' => 'Edit Enrollment',
+],
+
+//enrollment end 
+
+//course start
+
+'courseList' => [
+    'tabs' => [
+        'courses' => 'Courses',
+        'security' => 'Security',
+        'entertainment' => 'Entertainment',
+        'bigData' => 'Big Data',
+    ],
+    'addCourse' => '+ Add Course',
+    'table' => [
+        'id' => 'ID',
+        'image' => 'Image',
+        'title' => 'Title',
+        'description' => 'Description',
+        'teacher' => 'Teacher',
+        'price' => 'Price',
+        'active' => 'Active',
+        'actions' => 'Actions',
+        'view' => 'View',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'noImage' => 'No Image',
+        'yes' => 'Yes',
+        'no' => 'No',
+        'confirmDelete' => 'Are you sure?',
+    ],
+],
+
+ 'createCourse' => [
+        'title' => 'Course Title',
+        'description' => 'Course Description',
+        'teacher' => 'Teacher',
+        'selectTeacher' => '-- Select Teacher --',
+        'price' => 'Price',
+        'courseImage' => 'Course Image',
+        'isActive' => 'Active',
+        'submit' => 'Submit',
+        'back' => 'Back',
+    ],
+
+'editCourse' => [
+        'title' => 'Course Title',
+        'description' => 'Course Description',
+        'teacher' => 'Teacher',
+        'selectTeacher' => '-- Select Teacher --',
+        'price' => 'Price',
+        'courseImage' => 'Course Image',
+        'isActive' => 'Active',
+        'submit' => 'Update',
+        'back' => 'Back',
+    ],
+
+'viewCourse' => [
+        'header' => 'Course Details',
+        'title' => 'Course Title',
+        'teacher' => 'Teacher',
+        'price' => 'Price',
+        'status' => 'Status',
+        'active' => 'Active',
+        'inactive' => 'Inactive',
+        'description' => 'Description',
+        'courseImage' => 'Course Image',
+        'studentListHeader' => 'Enrolled Students List',
+        'noStudents' => 'No students enrolled for this course.',
+        'back' => 'Back',
+        'serial' => 'No.',
+        'studentId' => 'Student ID',
+        'studentName' => 'Student Name',
+        'gender' => 'Gender',
+        'dob' => 'Date of Birth',
+        'enrolledDate' => 'Enrolled Date',
+        'noImage' => 'No Image',
+        'noDescription' => 'No description',
+        'noTeacher' => 'No Teacher',
+    ],
+
+//course end
+
+//student start 
+
+'viewStudent' => [
+        'page_title' => 'Student Details',
+        'student_number' => 'Student Number',
+        'name' => 'Name',
+        'gender' => 'Gender',
+        'date_of_birth' => 'Date of Birth',
+        'phone' => 'Phone',
+        'address' => 'Address',
+        'profile_image' => 'Profile Image',
+        'payment_info' => 'Payment Information',
+        'course' => 'Course',
+        'amount' => 'Amount',
+        'payment_method' => 'Payment Method',
+        'status' => 'Status',
+        'date' => 'Date',
+        'paid' => 'Paid',
+        'unpaid' => 'Unpaid',
+        'no_data' => 'No Data',
+        'no_main_address' => 'No main address',
+        'no_image' => 'No image',
+        'no_payment' => 'No payment',
+        'no_enrollment' => 'No course enrollment',
+        'not_specified' => 'Not specified',
+        'back' => 'Back',
+    ],
+
+'editStudent' => [
+        'page_title' => 'Edit Student Information',
+        'name' => 'Full Name',
+        'date_of_birth' => 'Date of Birth',
+        'gender' => 'Gender',
+        'male' => 'Male',
+        'female' => 'Female',
+        'address' => 'Address',
+        'phone' => 'Phone Number',
+        'profile_image' => 'Profile Image',
+        'submit' => 'Submit',
+    ],
+
+];
+
+?>

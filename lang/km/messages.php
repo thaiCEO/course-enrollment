@@ -1,0 +1,504 @@
+<?php 
+
+return [
+    'totalTeachers' => 'គ្រូបង្រៀនសរុប',
+    'totalStudents' => 'សិស្សសរុប',
+    'totalCourses' => 'វគ្គសិក្សាសរុប',
+    'totalRevenue' => 'ប្រាក់ចំណូលសរុប',
+    'feedback' => 'មតិប្រតិបត្តិការ',
+    'positive' => 'វិជ្ជមាន',
+    'negative' => 'អវិជ្ជមាន',
+
+
+    'sidebar' => [
+        'navigation' => 'ម៉ឺនុយ',
+        'dashboard' => 'ផ្ទាំងគ្រប់គ្រង',
+        'system_school' => 'ប្រព័ន្ធសាលា',
+        'table' => 'តារាង',
+        'student_table' => 'តារាងសិស្ស',
+        'student_list' => 'បញ្ជីសិស្ស',
+        'student_create' => 'បង្កើតសិស្សថ្មី',
+        'course_table' => 'តារាងវគ្គសិក្សា',
+        'course_list' => 'បញ្ជីវគ្គសិក្សា',
+        'course_create' => 'បង្កើតវគ្គសិក្សាថ្មី',
+        'enrollment_table' => 'តារាងចុះឈ្មោះ',
+        'enrollment_list' => 'បញ្ជីចុះឈ្មោះ',
+        'enrollment_create' => 'បង្កើតការចុះឈ្មោះថ្មី',
+        'class' => 'ថ្នាក់',
+        'create_course' => 'បង្កើតវគ្គសិក្សា',
+        'view_course' => 'មើលវគ្គសិក្សា',
+        'other' => 'ផ្សេងៗ',
+        'menu_levels' => 'កម្រិតម៉ឺនុយ',
+        'teacher_table' => 'តារាងគ្រូបង្រៀន',
+        'teacher_list' => 'បញ្ជីគ្រូបង្រៀន',
+        'teacher_create' => 'បន្ថែមគ្រូបង្រៀន',
+        'studentaddress_table' => 'អាសយដ្ឋាន',
+        'studentaddress_list' => 'បញ្ជីអាសយដ្ឋាន',
+        'studentaddress_create' => 'បន្ថែមអាសយដ្ឋានថ្មី',
+        'payment_table'  => 'តារាងទូទាត់',
+        'payment_list'   => 'បញ្ជីទូទាត់',
+        'payment_create' => 'បង្កើតការទូទាត់',
+        'address' => 'អាសយដ្ឋាន',
+        'payment' => 'ទូទាត់'
+    ],
+
+     'studentList' => [
+        'addStudent' => 'បញ្ចូលសិស្ស'
+     ],
+
+
+      'payment_created_success' => 'ការទូទាត់បានបង្កើតដោយជោគជ័យ',
+      'enrollment_created_success' => 'ការចុះឈ្មោះត្រូវបានបង្កើតដោយជោគជ័យ។',
+
+
+    'teacherList' => [
+        'title' => 'គ្រូបង្រៀន',
+        'add_teacher' => 'បន្ថែមគ្រូ',
+        'id' => 'លេខសម្គាល់',
+        'image' => 'រូបភាព',
+        'name' => 'ឈ្មោះ',
+        'email' => 'អ៊ីមែល',
+        'phone' => 'លេខទូរស័ព្ទ',
+        'specialization' => 'ជំនាញ',
+        'actions' => 'សកម្មភាព',
+        'view' => 'មើល',
+        'edit' => 'កែប្រែ',
+        'delete' => 'លុប',
+        'confirm_delete' => 'តើអ្នកពិតជាចង់លុបគ្រូបង្រៀនរូបនេះមែនទេ?',
+        'no_data' => 'គ្មានទិន្នន័យគ្រូបង្រៀន។',
+        'delete_selected' => 'លុបដែលបានជ្រើសរើស',
+    ],
+
+'showTeacher' => [
+    'title' => 'ព័ត៌មានគ្រូបង្រៀន',
+    'name' => 'ឈ្មោះគ្រូ',
+    'email' => 'អ៊ីមែល',
+    'phone' => 'លេខទូរស័ព្ទ',
+    'specialization' => 'បង្រៀនមុខវិជ្ជា',
+    'image' => 'រូបថត',
+    'no_image' => 'មិនទាន់មានរូបថត',
+    'address_line' => 'អាសយដ្ឋាន',
+    'city' => 'ទីក្រុង / ខេត្ត',
+    'is_main' => 'ប្រភេទអាសយដ្ឋាន',
+    'main_address' => 'អាសយដ្ឋានដើម',
+    'secondary_address' => 'អាសយដ្ឋានបន្ថែម',
+    'no_address' => 'គ្មានព័ត៌មានអាសយដ្ឋាន',
+    'back' => 'ត្រឡប់ក្រោយ',
+],
+
+'teacherEdit' => [
+    'back' => 'ត្រឡប់ក្រោយ',
+    'title' => 'កែប្រែព័ត៌មានគ្រូ',
+    'name' => 'ឈ្មោះ',
+    'email' => 'អ៊ីមែល',
+    'phone' => 'លេខទូរស័ព្ទ',
+    'specialization' => 'ជំនាញ',
+    'profile_image' => 'រូបថត',
+    'submit' => 'បញ្ជូន',
+],
+
+'teacherCreate' => [
+    'back' => 'ត្រឡប់ក្រោយ',
+    'mainTitleDashboard' => 'ផ្ទាំងគ្រប់គ្រង',
+    'mainTitle' => 'បំពេញព៌ត័មានគ្រូបង្រៀន',
+    'name' => 'គោត្តនាម / នាម',
+    'name_placeholder' => 'បញ្ចូលឈ្មោះគ្រូ',
+    'email' => 'អ៊ីមែល',
+    'email_placeholder' => 'បញ្ចូលអាសយដ្ឋានអ៊ីមែល',
+    'phone' => 'លេខទូរស័ព្ទ',
+    'phone_placeholder' => 'បញ្ចូលលេខទូរស័ព្ទ',
+    'specialization' => 'ជំនាញ',
+    'specialization_placeholder' => 'បញ្ចូលជំនាញគ្រូ',
+    'profile_image' => 'រូបថត',
+    'submit' => 'រក្សាទុក',
+],
+
+'studentList' => [
+    'tab_home' => 'ទំព័រដើម',
+    'tab_security' => 'សុវត្ថិភាព',
+    'tab_entertainment' => 'ការកម្សាន្ដ',
+    'tab_bigdata' => 'ទិន្នន័យធំ',
+
+    'id' => 'លេខសម្គាល់',
+    'image' => 'រូបភាព',
+    'username' => 'ឈ្មោះអ្នកប្រើ',
+    'gender' => 'ភេទ',
+    'dob' => 'ថ្ងៃខែឆ្នាំកំណើត',
+    'phone' => 'លេខទូរស័ព្ទ',
+    'address' => 'អាសយដ្ឋាន',
+    'actions' => 'សកម្មភាព',
+
+    'view' => 'មើល',
+    'edit' => 'កែប្រែ',
+    'delete' => 'លុប',
+    'confirm_delete' => 'តើអ្នកប្រាកដជាចង់លុបសិស្សនេះមែនទេ?',
+    'delete_selected' => 'លុបជាជម្រើស',
+
+    'addStudent' => 'បន្ថែមសិស្សថ្មី',
+
+],
+
+
+ 'paymentmethod' => [
+        'bank'    => 'ធនាគារ',
+        'table'   => 'តារាងធនាគារ',
+        'list'    => 'បញ្ជីធនាគារ',
+        'create'  => 'បង្កើតធនាគារថ្មី',
+    ],
+
+// address start
+'showaddresses' => [
+        'title'          => 'អាសយដ្ឋានសិស្ស',
+        'add'            => 'បន្ថែមអាសយដ្ឋាន',
+        'id'             => 'ID',
+        'owner'          => 'អ្នកកាន់',
+        'address_line'   => 'អាសយដ្ឋាន',
+        'city'           => 'ទីក្រុង',
+        'phone'          => 'លេខទូរស័ព្ទ',
+        'type'           => 'ប្រភេទអាសយដ្ឋាន',
+        'main'           => 'ចម្បង',
+        'secondary'      => 'ទីបន្ទាប់',
+        'action'         => 'សកម្មភាព',
+        'student'        => 'សិស្ស',
+        'teacher'        => 'គ្រូបង្រៀន',
+        'view'           => 'មើល',
+        'edit'           => 'កែប្រែ',
+        'delete'         => 'លុប',
+        'ok'             => 'យល់ព្រម',
+        'confirm_delete' => 'តើអ្នកពិតជាចង់លុបអាសយដ្ឋាននេះ?',
+        'no_data'        => 'គ្មានទិន្នន័យអាសយដ្ឋាន',
+    ],
+
+'createaddresses' => [
+        'title'           => 'បន្ថែមអាសយដ្ឋានសិស្ស/គ្រូ',
+        'user_type'       => 'ប្រភេទអ្នកប្រើ',
+        'select_type'     => '-- ជ្រើសរើសប្រភេទ --',
+        'student'         => 'សិស្ស',
+        'teacher'         => 'គ្រូ',
+        'select_student'  => '-- ជ្រើសរើសសិស្ស --',
+        'select_teacher'  => '-- ជ្រើសរើសគ្រូ --',
+        'address_line'    => 'អាសយដ្ឋាន',
+        'city'            => 'ទីក្រុង',
+        'phone'           => 'លេខទូរស័ព្ទ',
+        'main_address'    => 'អាសយដ្ឋានចម្បង',
+        'save'            => 'រក្សាទុក',
+        'back'            => 'ត្រឡប់ក្រោយ',
+    ],
+
+ 'viewaddresses' => [
+        'title'         => 'ព័ត៌មានអាសយដ្ឋានសិស្ស/គ្រូ',
+        'student'       => 'សិស្ស/គ្រូ',
+        'address_line'  => 'អាសយដ្ឋាន',
+        'city'          => 'ទីក្រុង',
+        'phone'         => 'លេខទូរស័ព្ទ',
+        'address_type'  => 'ប្រភេទអាសយដ្ឋាន',
+        'main'          => 'អាសយដ្ឋានចម្បង',
+        'secondary'     => 'អាសយដ្ឋានរង',
+        'back'          => 'ត្រឡប់ក្រោយ',
+        'na'            => 'គ្មានទិន្នន័យ',
+    ],
+ 'editaddresses' => [
+        'title'           => 'កែប្រែអាសយដ្ឋាន',
+        'user_type'       => 'ប្រភេទអ្នកប្រើ',
+        'select_type'     => '-- ជ្រើសរើសប្រភេទ --',
+        'student'         => 'សិស្ស',
+        'teacher'         => 'គ្រូ',
+        'select_student'  => '-- ជ្រើសរើសសិស្ស --',
+        'select_teacher'  => '-- ជ្រើសរើសគ្រូ --',
+        'address'         => 'អាសយដ្ឋាន',
+        'city'            => 'ទីក្រុង',
+        'phone'           => 'លេខទូរស័ព្ទ',
+        'main_address'    => 'អាសយដ្ឋានចម្បង',
+        'update'          => 'កែប្រែ',
+        'back'            => 'ត្រឡប់ក្រោយ',
+    ],
+// address end
+
+ // Payment Method List
+    'paymentmethodList' => [
+        'title' => 'វិធីសាស្ត្រទូទាត់',
+        'add' => '+ បន្ថែមវិធីសាស្ត្រទូទាត់',
+        'table' => [
+            'no' => '#',
+            'name' => 'ឈ្មោះ​ធនាគារ',
+            'actions' => 'សកម្មភាព',
+            'view' => 'មើល',
+            'edit' => 'កែប្រែ',
+            'delete' => 'លុប',
+            'empty' => 'គ្មានទិន្នន័យវិធីសាស្ត្រទូទាត់',
+            'delete_confirm' => 'តើអ្នកពិតជាចង់លុបវិធីសាស្ត្រទូទាត់នេះ?',
+        ],
+        'success_create' => 'បង្កើតវិធីសាស្ត្រទូទាត់បានជោគជ័យ។',
+        'success_update' => 'កែប្រែវិធីសាស្ត្រទូទាត់បានជោគជ័យ។',
+        'success_delete' => 'លុបវិធីសាស្ត្រទូទាត់បានជោគជ័យ។',
+    ],
+'createPaymentMethod' => [
+        'title' => 'បន្ថែមវិធីសាស្ត្រទូទាត់',
+        'name_label' => 'ឈ្មោះវិធីសាស្ត្រទូទាត់',
+        'name_placeholder' => 'ឧទាហរណ៍: Cash, Bank Transfer, Bakong',
+        'save' => 'រក្សាទុក',
+        'back' => 'ត្រឡប់ក្រោយ',
+    ],
+'viewPaymentMethod' => [
+        'title' => 'ព័ត៌មានវិធីសាស្ត្រទូទាត់',
+        'id' => 'លេខសម្គាល់',
+        'name' => 'ឈ្មោះវិធីសាស្ត្រ',
+        'back' => 'ត្រឡប់ក្រោយ',
+    ],
+'editPaymentMethod' => [
+        'title' => 'កែប្រែវិធីសាស្ត្រទូទាត់',
+        'name' => 'ឈ្មោះវិធីសាស្ត្រទូទាត់',
+        'update' => 'កែប្រែ',
+        'back' => 'ត្រឡប់ក្រោយ',
+    ],
+//payment method end 
+
+// payment start
+
+'paymentList' => [
+        'success' => 'ជោគជ័យ',
+        'title' => 'ការទូទាត់',
+        'addPayment' => 'បន្ថែមការទូទាត់',
+        'id' => 'លេខសម្គាល់',
+        'student' => 'សិស្ស',
+        'amount' => 'ចំនួន',
+        'status' => 'ស្ថានភាព',
+        'method' => 'វិធីទូទាត់',
+        'date' => 'ថ្ងៃទូទាត់',
+        'actions' => 'សកម្មភាព',
+        'view' => 'មើល',
+        'edit' => 'កែប្រែ',
+        'delete' => 'លុប',
+        'deleteConfirm' => 'តើអ្នកពិតជាចង់លុបការទូទាត់នេះ?',
+        'noData' => 'គ្មានទិន្នន័យទូទាត់',
+    ],
+
+ 'createPayment' => [
+        'title' => 'បន្ថែមការទូទាត់',
+        'enrollment' => 'សិស្ស/វគ្គសិក្សា',
+        'selectEnrollment' => '-- ជ្រើសរើសសិស្ស/វគ្គសិក្សា --',
+        'courseLabel' => 'វគ្គសិក្សា(:course) - សិស្ស (:student)',
+        'status' => 'ស្ថានភាព',
+        'pending' => 'រងចាំ',
+        'paid' => 'បានបង់',
+        'paymentMethod' => 'វិធីសាស្ត្រទូទាត់',
+        'selectPaymentMethod' => '-- ជ្រើសរើសវិធីសាស្ត្រទូទាត់ --',
+        'paidAt' => 'ថ្ងៃបង់ប្រាក់ (ជាជម្រើស)',
+        'save' => 'រក្សាទុក',
+        'back' => 'ត្រឡប់ក្រោយ',
+    ],
+
+'viewPayment' => [
+        'title' => 'ព័ត៌មានលម្អិតការទូទាត់',
+        'id' => 'លេខសម្គាល់',
+        'course' => 'វគ្គសិក្សា',
+        'amount' => 'ចំនួនទឹកប្រាក់',
+        'status' => 'ស្ថានភាព',
+        'paymentMethod' => 'វិធីសាស្ត្រទូទាត់',
+        'paidAt' => 'ថ្ងៃបង់ប្រាក់',
+        'back' => 'ត្រឡប់ក្រោយ',
+    ],
+
+'editPayment' => [
+        'title' => 'កែប្រែការទូទាត់',
+        'enrollmentId' => 'លេខសម្គាល់ការចុះឈ្មោះ',
+        'amount' => 'ចំនួនទឹកប្រាក់',
+        'status' => 'ស្ថានភាព',
+        'statusOptions' => [
+            'pending' => 'រងចាំ',
+            'paid' => 'បានបង់',
+        ],
+        'paymentMethod' => 'វិធីសាស្ត្រទូទាត់',
+        'updateButton' => 'កែប្រែ',
+        'back' => 'ត្រឡប់ក្រោយ',
+    ],
+//payment end 
+
+//enrollment start
+
+'enrollmentList' => [
+        'title' => 'បញ្ជីចុះឈ្មោះសិស្ស',
+        'tab1' => 'ចុះឈ្មោះសិស្ស',
+        'tab2' => 'សុវត្ថិភាព',
+        'tab3' => 'កម្សាន្ត',
+        'tab4' => 'ទិន្នន័យធំ',
+
+        'addButton' => '+ ចុះឈ្មោះសិស្ស',
+        'table' => [
+            'id' => '#',
+            'studentName' => 'ឈ្មោះសិស្ស',
+            'courseTitle' => 'ចំណងជើងវគ្គសិក្សា',
+            'enrolledDate' => 'កាលបរិច្ឆេទចុះឈ្មោះ',
+            'actions' => 'សកម្មភាព',
+        ],
+        'action' => [
+            'view' => 'មើល',
+            'edit' => 'កែប្រែ',
+            'delete' => 'លុប',
+            'confirmDelete' => 'តើអ្នកពិតជាចង់លុបការចុះឈ្មោះនេះមែនទេ?',
+        ],
+        'empty' => 'មិនមានការចុះឈ្មោះសិស្សទេ។',
+        'deleteSelected' => 'លុបដែលបានជ្រើសរើស',
+    ],
+
+'createEnrollment' => [
+        'title' => 'ចុះឈ្មោះសិស្ស',
+        'dashboard' => 'ផ្ទាំងគ្រប់គ្រង',
+        'breadcrumb' => 'ការចុះឈ្មោះ',
+        'selectStudent' => 'ជ្រើសរើសសិស្ស',
+        'selectStudentPlaceholder' => '-- ជ្រើសរើសសិស្ស --',
+        'selectCourse' => 'ជ្រើសរើសវគ្គសិក្សា',
+        'selectCoursePlaceholder' => '-- ជ្រើសរើសវគ្គសិក្សា --',
+        'enrolledDate' => 'កាលបរិច្ឆេទចុះឈ្មោះ',
+        'submitButton' => 'ចុះឈ្មោះ',
+    ],
+
+ 'editEnrollment' => [
+        'title' => 'កែប្រែព័ត៌មាន',
+        'selectStudent' => 'ជ្រើសរើសសិស្ស',
+        'selectStudentPlaceholder' => '-- ជ្រើសរើសសិស្ស --',
+        'selectCourse' => 'ជ្រើសរើសវគ្គសិក្សា',
+        'selectCoursePlaceholder' => '-- ជ្រើសរើសវគ្គសិក្សា --',
+        'enrolledDate' => 'កាលបរិច្ឆេទចុះឈ្មោះ',
+        'updateButton' => 'កែប្រែការចុះឈ្មោះ',
+    ],
+
+'viewEnrollment' => [
+    'title' => 'ព័ត៌មានការចុះឈ្មោះ (លេខសម្គាល់: :id)',
+    'student' => 'សិស្ស',
+    'course' => 'វគ្គសិក្សា',
+    'enrolledDate' => 'កាលបរិច្ឆេទចុះឈ្មោះ',
+    'back' => 'ត្រឡប់ទៅបញ្ជី',
+    'edit' => 'កែប្រែការចុះឈ្មោះ',
+],
+//enrollment end
+
+//course start 
+
+'courseList' => [
+    'tabs' => [
+        'courses' => 'វគ្គសិក្សា',
+        'security' => 'សុវត្ថិភាព',
+        'entertainment' => 'កម្សាន្ត',
+        'bigData' => 'ទិន្នន័យធំ',
+    ],
+    'addCourse' => '+ បន្ថែមវគ្គសិក្សា',
+    'table' => [
+        'id' => 'លេខសម្គាល់',
+        'image' => 'រូបភាព',
+        'title' => 'ចំណងជើង',
+        'description' => 'សេចក្ដីពិពណ៌នា',
+        'teacher' => 'គ្រូបង្រៀន',
+        'price' => 'តម្លៃ',
+        'active' => 'សកម្ម',
+        'actions' => 'សកម្មភាព',
+        'view' => 'មើល',
+        'edit' => 'កែប្រែ',
+        'delete' => 'លុប',
+        'noImage' => 'គ្មានរូបភាព',
+        'yes' => 'យល់ព្រម',
+        'no' => 'មិនសកម្ម',
+        'confirmDelete' => 'តើអ្នកប្រាកដទេ?',
+    ],
+
+],
+
+'createCourse' => [
+        'title' => 'ចំណងជើងមុខវិជ្ជា',
+        'description' => 'ពិពណ៌នាមុខវិជ្ជា',
+        'teacher' => 'គ្រូបង្រៀន',
+        'selectTeacher' => '-- ជ្រើសរើសគ្រូ --',
+        'price' => 'តម្លៃ',
+        'courseImage' => 'រូបថតមុខវិជ្ជា',
+        'isActive' => 'បើកដំណើរការ',
+        'submit' => 'បញ្ចូល',
+        'back' => 'ត្រឡប់ក្រោយ',
+    ],
+
+ 'editCourse' => [
+        'title' => 'ចំណងជើងមុខវិជ្ជា',
+        'description' => 'ពិពណ៌នាមុខវិជ្ជា',
+        'teacher' => 'គ្រូបង្រៀន',
+        'selectTeacher' => '-- ជ្រើសរើសគ្រូ --',
+        'price' => 'តម្លៃ',
+        'courseImage' => 'រូបថតមុខវិជ្ជា',
+        'isActive' => 'បើកដំណើរការ',
+        'submit' => 'កែប្រែ',
+        'back' => 'ត្រឡប់ក្រោយ',
+    ],
+
+'viewCourse' => [
+        'header' => 'ព័ត៌មានលម្អិតមុខវិជ្ជា',
+        'title' => 'ចំណងជើងមុខវិជ្ជា',
+        'teacher' => 'អ្នកបង្រៀន',
+        'price' => 'តម្លៃ',
+        'status' => 'ស្ថានភាព',
+        'active' => 'សកម្ម',
+        'inactive' => 'មិនសកម្ម',
+        'description' => 'ពិពណ៌នា',
+        'courseImage' => 'រូបភាពមុខវិជ្ជា',
+        'studentListHeader' => 'បញ្ជីសិស្សដែលបានចូលរៀន',
+        'noStudents' => 'មិនមានសិស្សបានចូលរៀនមុខវិជ្ជានេះទេ។',
+        'back' => 'ត្រឡប់ក្រោយ',
+        'serial' => 'ល.រ',
+        'studentId' => 'លេខសម្គាល់សិស្ស',
+        'studentName' => 'ឈ្មោះសិស្ស',
+        'gender' => 'ភេទ',
+        'dob' => 'ថ្ងៃខែឆ្នាំកំណើត',
+        'enrolledDate' => 'ថ្ងៃចូលរៀន',
+        'noImage' => 'មិនមានរូបភាព',
+        'noDescription' => 'មិនមានពិពណ៌នា',
+        'noTeacher' => 'មិនមាន',
+    ],
+// course end
+
+
+//student start
+
+'viewStudent' => [
+        'page_title' => 'ព័ត៌មានលម្អិតសិស្ស',
+        'student_number' => 'លេខសម្គាល់សិស្ស',
+        'name' => 'ឈ្មោះ',
+        'gender' => 'ភេទ',
+        'date_of_birth' => 'ថ្ងៃកំណើត',
+        'phone' => 'លេខទូរស័ព្ទ',
+        'address' => 'អាសយដ្ឋាន',
+        'profile_image' => 'រូបភាព',
+        'payment_info' => 'ព័ត៌មានការទូទាត់',
+        'course' => 'វគ្គសិក្សា',
+        'amount' => 'ចំនួនទឹកប្រាក់',
+        'payment_method' => 'វិធីបង់ប្រាក់',
+        'status' => 'ស្ថានភាព',
+        'date' => 'កាលបរិច្ឆេទ',
+        'paid' => 'បានបង់',
+        'unpaid' => 'មិនទាន់បង់',
+        'no_data' => 'មិនមាន',
+        'no_main_address' => 'មិនមានអាសយដ្ឋានចម្បង',
+        'no_image' => 'មិនមានរូបភាព',
+        'no_payment' => 'មិនមានការទូទាត់',
+        'no_enrollment' => 'មិនមានការចុះឈ្មោះវគ្គសិក្សា',
+        'not_specified' => 'មិនទាន់បញ្ជាក់',
+        'back' => 'ត្រឡប់ក្រោយ',
+    ],
+
+ 'editStudent' => [
+        'page_title' => 'កែប្រែព័ត៌មានសិស្ស',
+        'name' => 'គោត្តនាម / នាម',
+        'date_of_birth' => 'ថ្ងៃ/ខែ/ឆ្នាំ កំណើត',
+        'gender' => 'ភេទ',
+        'male' => 'ប្រុស',
+        'female' => 'ស្រី',
+        'address' => 'អាស័យដ្ឋាន',
+        'phone' => 'លេខទូរស័ព្ទ',
+        'profile_image' => 'រូបថត',
+        'submit' => 'បញ្ជូន',
+    ],
+
+
+];
+
+
+
+
+
+?>
