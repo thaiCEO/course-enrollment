@@ -20,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
             'Is_Admin' => \App\Http\Middleware\IsAdmin::class,
+            'role' => \App\Http\Middleware\RoleMiddleware::class,
         ]);
          $middleware->appendToGroup('web', [
             SetLocal::class,

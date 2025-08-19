@@ -52,9 +52,12 @@
                 <div class="tab-pane active" id="home3" role="tabpanel">
 
                     <div class="table-responsive">
-                        <a href="{{ route('enrollments.create') }}" class="btn btn-primary mb-3">
-                            {{ __('messages.enrollmentList.addButton') }}
-                        </a>
+
+                        @can('create enrollment')
+                            <a href="{{ route('enrollments.create') }}" class="btn btn-primary mb-3">
+                                {{ __('messages.enrollmentList.addButton') }}
+                            </a>
+                        @endcan
 
                         <table class="table table-bordered">
                             <thead>
@@ -74,21 +77,37 @@
                                         <td>{{ $enrollment->course->title }}</td>
                                         <td>{{ $enrollment->enrolled_date }}</td>
                                         <td>
-                                            <a href="{{ route('enrollments.show', $enrollment->id) }}" class="btn btn-sm btn-warning">
-                                                {{ __('messages.enrollmentList.action.view') }}
-                                            </a>
-                                            <a href="{{ route('enrollments.edit', $enrollment->id) }}" class="btn btn-sm btn-primary">
-                                                {{ __('messages.enrollmentList.action.edit') }}
-                                            </a>
+                                            {{-- View Enrollment --}}
+                                            @can('read enrollment')
+                                                <a href="{{ route('enrollments.show', $enrollment->id) }}" 
+                                                class="btn btn-sm btn-warning">
+                                                    {{ __('messages.enrollmentList.action.view') }}
+                                                </a>
+                                            @endcan
 
-                                            <form action="{{ route('enrollments.destroy', $enrollment->id) }}" method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-sm btn-danger" onclick="return confirm('{{ __('messages.enrollmentList.action.confirmDelete') }}')">
-                                                    {{ __('messages.enrollmentList.action.delete') }}
-                                                </button>
-                                            </form>
+                                            {{-- Edit Enrollment --}}
+                                            @can('update enrollment')
+                                                <a href="{{ route('enrollments.edit', $enrollment->id) }}" 
+                                                class="btn btn-sm btn-primary">
+                                                    {{ __('messages.enrollmentList.action.edit') }}
+                                                </a>
+                                            @endcan
+
+                                            {{-- Delete Enrollment --}}
+                                            @can('delete enrollment')
+                                                <form action="{{ route('enrollments.destroy', $enrollment->id) }}" 
+                                                    method="POST" 
+                                                    style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-sm btn-danger" 
+                                                            onclick="return confirm('{{ __('messages.enrollmentList.action.confirmDelete') }}')">
+                                                        {{ __('messages.enrollmentList.action.delete') }}
+                                                    </button>
+                                                </form>
+                                            @endcan
                                         </td>
+
                                     </tr>
                                 @empty
                                     <tr>

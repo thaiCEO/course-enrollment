@@ -242,6 +242,66 @@
                 </ul>
             </li>
               <!-- address end -->
+
+
+
+           
+
+          @role('Admin')
+            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">{{ __('messages.sidebar.role_permission_table') }}</div>
+
+             {{-- Admin role --}}
+             <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                    <span class="pcoded-mtext" style="font-weight: bold;">{{ __('messages.sidebar.admin_role_table') }}</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li>
+                        <a href="{{ route('admin-role.index') }}">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext" style="font-weight: bold;">{{ __('messages.sidebar.admin_role_list') }}</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin-role.create') }}">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext" style="font-weight: bold;">{{ __('messages.sidebar.admin_role_create') }}</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            {{-- Role Permission --}}
+            <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                    <span class="pcoded-mtext" style="font-weight: bold;">{{ __('messages.sidebar.role_permission') }}</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li>
+                        <a href="{{ route('roles.index') }}">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext" style="font-weight: bold;">{{ __('messages.sidebar.role_permission_list') }}</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('roles.create') }}">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext" style="font-weight: bold;">{{ __('messages.sidebar.role_permission_create') }}</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        @endrole
+           
+
         <ul>
           
          

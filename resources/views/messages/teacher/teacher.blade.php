@@ -32,7 +32,9 @@
             <!-- Tab content -->
             <div class="tab-content card-block">
                 <div class="tab-pane active" id="teachers-tab" role="tabpanel">
+                    @can('create teacher')
                     <a href="{{ route('teacher.create') }}" class="btn btn-primary mb-3">+ {{ __('messages.teacherList.add_teacher') }}</a>
+                    @endcan
 
                     <div class="table-responsive">
                         <table class="table">
@@ -63,20 +65,39 @@
                                     <td>{{ $teacher->email }}</td>
                                     <td><span class="label label-danger">{{ $teacher->phone }}</span></td>
                                     <td>{{ $teacher->specialization ?? '-' }}</td>
-                                    <td>
-                                        <a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-sm btn-warning">{{ __('messages.teacherList.view') }}</a>
-                                        <a href="{{ route('teacher.edit', $teacher->id) }}" class="btn btn-sm btn-primary">{{ __('messages.teacherList.edit') }}</a>
+                                  <td>
+                                        {{-- View Teacher --}}
+                                        @can('read teacher')
+                                            <a href="{{ route('teacher.show', $teacher->id) }}" 
+                                            class="btn btn-sm btn-warning">
+                                                {{ __('messages.teacherList.view') }}
+                                            </a>
+                                        @endcan
 
+                                        {{-- Edit Teacher --}}
+                                        @can('update teacher')
+                                            <a href="{{ route('teacher.edit', $teacher->id) }}" 
+                                            class="btn btn-sm btn-primary">
+                                                {{ __('messages.teacherList.edit') }}
+                                            </a>
+                                        @endcan
 
-                                           <form action="{{ route('teacher.delete', $teacher->id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('Are you sure you want to delete this teacher?')">
-                                                 {{ __('messages.teacherList.delete') }}
-                                            </button>
-                                        </form>
+                                        {{-- Delete Teacher --}}
+                                        @can('delete teacher')
+                                            <form action="{{ route('teacher.delete', $teacher->id) }}" 
+                                                method="POST" 
+                                                class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" 
+                                                        class="btn btn-sm btn-danger"
+                                                        onclick="return confirm('Are you sure you want to delete this teacher?')">
+                                                    {{ __('messages.teacherList.delete') }}
+                                                </button>
+                                            </form>
+                                        @endcan
                                     </td>
+
                                 </tr>
                                 @empty
                                 <tr>

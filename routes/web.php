@@ -8,11 +8,14 @@ use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\EnrollmentsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\RegisterRoleAdminController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserAddressController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 
 Route::get('/', function () {
@@ -113,6 +116,34 @@ Route::prefix('admin')->middleware(['auth:admin' , 'Is_Admin'])->group(function(
         Route::delete('/payment-method/{id}', [PaymentMethodController::class, 'destroy'])->name('payment-method.destroy');
         });
 
+        
+       // Route group for Role Permission (only admin can access)
+      Route::middleware(['auth:admin', 'role:Admin'])->prefix('roles')->group(function () {
+        Route::get('/list', [RoleController::class, 'index'])->name('roles.index');
+        Route::get('/role-create', [RoleController::class, 'create'])->name('roles.create');
+        Route::post('/role-store', [RoleController::class, 'store'])->name('roles.store');
+        Route::get('/role/{id}', [RoleController::class, 'show'])->name('roles.show');
+        Route::get('/role/{id}/edit', [RoleController::class, 'edit'])->name('roles.edit');
+        Route::put('/role/{id}', [RoleController::class, 'update'])->name('roles.update');
+        Route::delete('/role/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
+        Route::post('/roles/delete-selected', [RoleController::class, 'deleteSelected'])->name('roles.deleteSelectedRole');
+
+        });
+
+
+      // Route group for Admin Role (only admin can access)
+      Route::middleware(['auth:admin', 'role:Admin'])->prefix('admin-role')->group(function () {
+        Route::get('/list', [RegisterRoleAdminController::class, 'index'])->name('admin-role.index');
+        Route::get('/admin-role-create', [RegisterRoleAdminController::class, 'create'])->name('admin-role.create');
+        Route::post('/admin-role-store', [RegisterRoleAdminController::class, 'store'])->name('admin-role.store');
+        Route::get('/admin-role/{id}', [RegisterRoleAdminController::class, 'show'])->name('admin-role.show');
+        Route::get('/admin-role/{id}/edit', [RegisterRoleAdminController::class, 'edit'])->name('admin-role.edit');
+        Route::put('/admin-role/{id}', [RegisterRoleAdminController::class, 'update'])->name('admin-role.update');
+        Route::delete('/admin-role/{id}', [RegisterRoleAdminController::class, 'destroy'])->name('admin-role.destroy');
+        Route::post('/admin-role/delete-selected', [RegisterRoleAdminController::class, 'deleteSelected'])->name('admin-role.deleteSelectedRole');
+      });
+
+       
        
 
         Route::post('/logout', function () {

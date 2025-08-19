@@ -41,7 +41,15 @@ return [
         'payment_list'   => 'Payment List',
         'payment_create' => 'Create Payment',
         'address' => 'Address',
-        'payment' => 'Payment'
+        'payment' => 'Payment',
+        'role_permission_table' => 'Role Permission',
+        'role_permission' => 'Permission',
+        'role_permission_list'  => 'Role Permission List',
+        'role_permission_create'=> 'Create Role Permission',
+
+        'admin_role_table'      => 'Admin Role',
+        'admin_role_list'       => 'Admin Role List',
+        'admin_role_create'     => 'Create Admin Role',
     ],
 
     'studentList' => [
@@ -501,6 +509,126 @@ return [
         'profile_image' => 'Profile Image',
         'submit' => 'Submit',
     ],
+
+//role permission start
+
+
+'roleCreate' => [
+    'mainTitle' => 'Create Role',
+    'mainTitleDashboard' => 'Role Management',
+    'create' => 'Create',
+    'name' => 'Role Name',
+    'name_placeholder' => 'Enter role name',
+    'permissions' => 'Assign Permissions',
+    'submit' => 'Save',
+    'back' => 'Back',
+],
+
+
+    'roleList' => [
+        'title' => 'Role List',
+        'add_role' => 'Add Role',
+        'id' => 'ID',
+        'name' => 'Role Name',
+        'guard' => 'Guard Name',
+        'actions' => 'Actions',
+        'view' => 'View',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'delete_selected' => 'Delete Selected',
+        'no_data' => 'No roles found.',
+    ],
+
+    'roleEdit' => [
+        'mainTitle' => 'Edit Role',
+        'mainTitleDashboard' => 'Role Management',
+        'edit' => 'Edit',
+        'title' => 'Update Role',
+        'name' => 'Role Name',
+        'name_placeholder' => 'Enter role name',
+        'submit' => 'Update',
+        'back' => 'Back',
+    ],
+
+    'showRole' => [
+        'back' => 'Back to Roles',
+        'title' => 'Role Details',
+        'id' => 'Role ID',
+        'name' => 'Role Name',
+        'guard' => 'Guard Name',
+        'permissions' => 'Permissions',
+        'no_permissions' => 'No permissions assigned.',
+        'icon_text' => 'Role Overview',
+    ],
+
+//role permission end
+
+//admin role start 
+
+ 'adminRoleList' => [
+        'title' => 'Admin Roles List',
+        'add_admin' => 'Add Admin',
+        'id' => 'ID',
+        'name' => 'Name',
+        'email' => 'Email',
+        'is_admin' => 'Role',
+        'admin' => 'Admin',
+        'user' => 'User',
+        'actions' => 'Actions',
+        'view' => 'View',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'no_data' => 'No admins found.',
+        'delete_selected' => 'Delete Selected',
+    ],
+
+  'adminRoleCreate' => [
+        'mainTitle' => 'Admin Role Create',
+        'mainTitleDashboard' => 'Dashboard',
+        'create' => 'Create Admin',
+        'name' => 'Name',
+        'name_placeholder' => 'Enter admin name',
+        'email' => 'Email',
+        'email_placeholder' => 'Enter admin email',
+        'password' => 'Password',
+        'password_placeholder' => 'Enter password',
+        'password_confirmation' => 'Confirm Password',
+        'password_confirmation_placeholder' => 'Re-enter password',
+        'is_admin' => 'Is Admin?',
+        'submit' => 'Submit',
+        'back' => 'Back',
+        'roles' => 'Roles',
+        'roles_placeholder' => '-- Select role --',
+    ],
+
+ 'adminRoleEdit' => [
+        'title' => 'Edit Admin Role',
+        'name' => 'Name',
+        'email' => 'Email',
+        'password' => 'Password',
+        'password_placeholder' => 'Enter new password if you want to change',
+        'password_note' => 'Leave blank to keep current password',
+        'is_admin' => 'Is Admin',
+        'submit' => 'Update',
+        'back' => 'Back',
+        'roles' => 'Role',
+        'roles_placeholder' => '-- Select role --',
+    ],
+
+'showAdmin' => [
+    'back' => 'Back',
+    'title' => 'Admin Details',
+    'name' => 'Name',
+    'email' => 'Email',
+    'is_admin' => 'Is Admin',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'roles' => 'Roles',
+    'no_roles' => 'No roles assigned',
+    'permissions' => 'Permissions',
+    'no_permissions' => 'No permissions assigned',
+    'no_image' => 'No profile image',
+],
 
 ];
 

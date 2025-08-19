@@ -30,8 +30,10 @@
 
             <div class="tab-content card-block">
                 <div class="tab-pane active" id="payments-tab" role="tabpanel">
-
-                    <a href="{{ route('payment.create') }}" class="btn btn-primary mb-3">+ {{ __('messages.paymentList.addPayment') }}</a>
+                    
+                    @can('create payment')
+                     <a href="{{ route('payment.create') }}" class="btn btn-primary mb-3">+ {{ __('messages.paymentList.addPayment') }}</a>
+                    @endcan
 
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -60,17 +62,38 @@
                                     <td>{{ $payment->paymentMethod->name }}</td>
                                     <td>{{ $payment->paid_at ?? '-' }}</td>
                                     <td>
-                                        <a href="{{ route('payment.show', $payment->id) }}" class="btn btn-sm btn-warning">{{ __('messages.paymentList.view') }}</a>
-                                        <a href="{{ route('payment.edit', $payment->id) }}" class="btn btn-sm btn-primary">{{ __('messages.paymentList.edit') }}</a>
-                                        <form action="{{ route('payment.destroy', $payment->id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('{{ __('messages.paymentList.deleteConfirm') }}')">
-                                                {{ __('messages.paymentList.delete') }}
-                                            </button>
-                                        </form>
+                                        {{-- View Payment --}}
+                                        @can('read payment')
+                                            <a href="{{ route('payment.show', $payment->id) }}" 
+                                            class="btn btn-sm btn-warning">
+                                                {{ __('messages.paymentList.view') }}
+                                            </a>
+                                        @endcan
+
+                                        {{-- Edit Payment --}}
+                                        @can('update payment')
+                                            <a href="{{ route('payment.edit', $payment->id) }}" 
+                                            class="btn btn-sm btn-primary">
+                                                {{ __('messages.paymentList.edit') }}
+                                            </a>
+                                        @endcan
+
+                                        {{-- Delete Payment --}}
+                                        @can('delete payment')
+                                            <form action="{{ route('payment.destroy', $payment->id) }}" 
+                                                method="POST" 
+                                                class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" 
+                                                        class="btn btn-sm btn-danger"
+                                                        onclick="return confirm('{{ __('messages.paymentList.deleteConfirm') }}')">
+                                                    {{ __('messages.paymentList.delete') }}
+                                                </button>
+                                            </form>
+                                        @endcan
                                     </td>
+
                                 </tr>
                                 @empty
                                 <tr>

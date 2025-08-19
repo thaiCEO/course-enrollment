@@ -50,9 +50,11 @@
             <div class="tab-content card-block">
                 <div class="tab-pane active" id="home3" role="tabpanel">
 
+                    @can('create course')
                     <a href="{{ route('course.create') }}" class="btn btn-primary mb-3">
                         {{ __('messages.courseList.addCourse') }}
                     </a>
+                    @endcan
 
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -84,22 +86,38 @@
                                     <td>{{ $course->teacher->name ?? '-' }}</td>
                                     <td>${{ number_format($course->price, 2) }}</td>
                                     <td>{{ $course->is_active ? __('messages.courseList.table.yes') : __('messages.courseList.table.no') }}</td>
-                                    <td>
-                                        <a href="{{ route('course.show', $course->id) }}" class="btn btn-sm btn-warning">
+                                <td>
+                                    {{-- View Course --}}
+                                    @can('read course')
+                                        <a href="{{ route('course.show', $course->id) }}" 
+                                        class="btn btn-sm btn-warning">
                                             {{ __('messages.courseList.table.view') }}
                                         </a>
-                                        <a href="{{ route('course.edit', $course->id) }}" class="btn btn-sm btn-primary">
+                                    @endcan
+
+                                    {{-- Edit Course --}}
+                                    @can('update course')
+                                        <a href="{{ route('course.edit', $course->id) }}" 
+                                        class="btn btn-sm btn-primary">
                                             {{ __('messages.courseList.table.edit') }}
                                         </a>
+                                    @endcan
 
-                                        <form action="{{ route('course.destroy', $course->id) }}" method="POST" style="display:inline;">
+                                    {{-- Delete Course --}}
+                                    @can('delete course')
+                                        <form action="{{ route('course.destroy', $course->id) }}" 
+                                            method="POST" 
+                                            style="display:inline;">
                                             @csrf
                                             @method('DELETE')
-                                            <button onclick="return confirm('{{ __('messages.courseList.table.confirmDelete') }}')" class="btn btn-sm btn-danger">
+                                            <button onclick="return confirm('{{ __('messages.courseList.table.confirmDelete') }}')" 
+                                                    class="btn btn-sm btn-danger">
                                                 {{ __('messages.courseList.table.delete') }}
                                             </button>
                                         </form>
-                                    </td>
+                                    @endcan
+                                </td>
+
                                 </tr>
                                 @endforeach
                             </tbody>

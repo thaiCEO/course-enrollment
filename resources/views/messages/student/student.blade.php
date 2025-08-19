@@ -51,7 +51,9 @@
                 <div class="tab-content card-block">
                     <div class="tab-pane active" id="home3" role="tabpanel">
 
+                    @can('create student')
                       <a href="{{ route('student.create') }}" class="btn btn-primary mb-3">+ {{ __('messages.studentList.addStudent') }}</a>
+                    @endcan
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>
@@ -82,17 +84,26 @@
                                     <td>{{$student->address}}</td>
                                     
                                     <td>
+
+                                        @can('read student')
                                         <a href="{{route('student.show' , $student->id)}}" class="btn btn-sm btn-warning">{{ __('messages.studentList.view') }}</a>
+                                        @endcan
                                           <!-- Edit Button -->
+
+                                        @can('update student')
                                         <!-- <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#updateStudentModal" onclick="editTeacher">Edit</button> -->
                                         <a class="btn btn-sm btn-primary" href="{{route('student.edit' , $student->id )}}">{{ __('messages.studentList.edit') }}</a>
+                                        @endcan
 
-
+                                        @can('delete student')
+  
                                         <form action="{{ route('student.delete', $student->id) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE') <!-- Laravel directive to send a DELETE request -->
                                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this student?')">{{ __('messages.studentList.delete') }}</button>
                                         </form>
+
+                                        @endcan
                                     </td>
                                 </tr>
 

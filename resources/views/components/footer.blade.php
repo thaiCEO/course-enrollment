@@ -32,7 +32,6 @@
 <!-- link icon Boostrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.2.1/html5-qrcode.min.js"></script>
 
 
@@ -51,6 +50,7 @@
             const selectedLang = $(this).val();
             window.location.href = '{{ route("lang.change") }}?lang=' + selectedLang;
         });
+
 
 </script>
 

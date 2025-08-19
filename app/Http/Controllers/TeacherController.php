@@ -9,12 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class TeacherController extends Controller
 {
-    public function test()
-    {
-          return view('messages/teacher/test', [
-            'teachers' => 'test page',
-        ]);
-    }
+
     public function index(Request $request)
     {
         if ($request->get('search')) {

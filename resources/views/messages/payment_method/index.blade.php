@@ -30,9 +30,11 @@
             <div class="tab-content card-block">
                 <div class="tab-pane active" id="methods-tab" role="tabpanel">
 
-                    <a href="{{ route('payment-method.create') }}" class="btn btn-primary mb-3">
-                        {{ __('messages.paymentmethodList.add') }}
-                    </a>
+                    @can('create paymentmethod')
+                        <a href="{{ route('payment-method.create') }}" class="btn btn-primary mb-3">
+                            {{ __('messages.paymentmethodList.add') }}
+                        </a>
+                    @endcan
 
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -49,21 +51,38 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $method->name }}</td>
                                     <td>
-                                        <a href="{{ route('payment-method.show', $method->id) }}" class="btn btn-sm btn-warning">
-                                            {{ __('messages.paymentmethodList.table.view') }}
-                                        </a>
-                                        <a href="{{ route('payment-method.edit', $method->id) }}" class="btn btn-sm btn-primary">
-                                            {{ __('messages.paymentmethodList.table.edit') }}
-                                        </a>
-                                        <form action="{{ route('payment-method.destroy', $method->id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('{{ __('messages.paymentmethodList.table.delete_confirm') }}')">
-                                                {{ __('messages.paymentmethodList.table.delete') }}
-                                            </button>
-                                        </form>
+                                        {{-- View Payment Method --}}
+                                        @can('read paymentmethod')
+                                            <a href="{{ route('payment-method.show', $method->id) }}" 
+                                            class="btn btn-sm btn-warning">
+                                                {{ __('messages.paymentmethodList.table.view') }}
+                                            </a>
+                                        @endcan
+
+                                        {{-- Edit Payment Method --}}
+                                        @can('update paymentmethod')
+                                            <a href="{{ route('payment-method.edit', $method->id) }}" 
+                                            class="btn btn-sm btn-primary">
+                                                {{ __('messages.paymentmethodList.table.edit') }}
+                                            </a>
+                                        @endcan
+
+                                        {{-- Delete Payment Method --}}
+                                        @can('delete paymentmethod')
+                                            <form action="{{ route('payment-method.destroy', $method->id) }}" 
+                                                method="POST" 
+                                                class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" 
+                                                        class="btn btn-sm btn-danger"
+                                                        onclick="return confirm('{{ __('messages.paymentmethodList.table.delete_confirm') }}')">
+                                                    {{ __('messages.paymentmethodList.table.delete') }}
+                                                </button>
+                                            </form>
+                                        @endcan
                                     </td>
+
                                 </tr>
                                 @empty
                                 <tr>

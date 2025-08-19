@@ -29,10 +29,12 @@
 
             <div class="tab-content card-block">
                 <div class="tab-pane active" id="addresses-tab" role="tabpanel">
-
-                    <a href="{{ route('addresses.create') }}" class="btn btn-primary mb-3">
-                        + {{ __('messages.showaddresses.add') }}
-                    </a>
+                    
+                    @can('create address')
+                        <a href="{{ route('addresses.create') }}" class="btn btn-primary mb-3">
+                            + {{ __('messages.showaddresses.add') }}
+                        </a>
+                    @endcan
 
                     <div class="table-responsive">
                        <table class="table table-bordered">
@@ -65,22 +67,39 @@
                                         <td>{{ $address->city }}</td>
                                         <td>{{ $address->phone }}</td>
                                         {{-- <td>{{ $address->is_main ? __('messages.showaddresses.main') : __('messages.showaddresses.secondary') }}</td> --}}
-                                        <td>
-                                            <a href="{{ route('addresses.show', $address->id) }}" class="btn btn-sm btn-warning">
+                                      <td>
+                                        {{-- View Address --}}
+                                        @can('read address')
+                                            <a href="{{ route('addresses.show', $address->id) }}" 
+                                            class="btn btn-sm btn-warning">
                                                 {{ __('messages.showaddresses.view') }}
                                             </a>
-                                            <a href="{{ route('addresses.edit', $address->id) }}" class="btn btn-sm btn-primary">
+                                        @endcan
+
+                                        {{-- Edit Address --}}
+                                        @can('update address')
+                                            <a href="{{ route('addresses.edit', $address->id) }}" 
+                                            class="btn btn-sm btn-primary">
                                                 {{ __('messages.showaddresses.edit') }}
                                             </a>
-                                            <form action="{{ route('addresses.destroy', $address->id) }}" method="POST" class="d-inline">
+                                        @endcan
+
+                                        {{-- Delete Address --}}
+                                        @can('delete address')
+                                            <form action="{{ route('addresses.destroy', $address->id) }}" 
+                                                method="POST" 
+                                                class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger"
-                                                    onclick="return confirm('{{ __('messages.showaddresses.confirm_delete') }}')">
+                                                <button type="submit" 
+                                                        class="btn btn-sm btn-danger"
+                                                        onclick="return confirm('{{ __('messages.showaddresses.confirm_delete') }}')">
                                                     {{ __('messages.showaddresses.delete') }}
                                                 </button>
                                             </form>
-                                        </td>
+                                        @endcan
+                                    </td>
+
                                     </tr>
                                 @empty
                                     <tr>

@@ -39,7 +39,15 @@ return [
         'payment_list'   => 'បញ្ជីទូទាត់',
         'payment_create' => 'បង្កើតការទូទាត់',
         'address' => 'អាសយដ្ឋាន',
-        'payment' => 'ទូទាត់'
+        'payment' => 'ទូទាត់',
+        'role_permission_table' => 'តួនាទី និងសិទ្ធិ',
+        'role_permission' => 'កំណត់ សិទ្ធិ',
+        'role_permission_list'  => 'បញ្ជីតួនាទី និង សិទ្ធិ',
+        'role_permission_create'=> 'បង្កើត​សិទ្ធិ',
+
+        'admin_role_table'      => 'កំណត់​ តួនាទី',
+        'admin_role_list'       => 'បញ្ជីតួនាទីអ្នកគ្រប់គ្រង',
+        'admin_role_create'     => 'បង្កើតតួនាទីអ្នកគ្រប់គ្រង',
     ],
 
      'studentList' => [
@@ -494,6 +502,123 @@ return [
         'submit' => 'បញ្ជូន',
     ],
 
+//role permission start
+    
+'roleCreate' => [
+    'mainTitle' => 'បង្កើតតួនាទី',
+    'mainTitleDashboard' => 'ការគ្រប់គ្រងតួនាទី',
+    'create' => 'បង្កើត',
+    'name' => 'ឈ្មោះតួនាទី',
+    'name_placeholder' => 'បញ្ចូលឈ្មោះតួនាទី',
+    'permissions' => 'ផ្ដល់សិទ្ធិ',
+    'submit' => 'រក្សាទុក',
+    'back' => 'ត្រឡប់ក្រោយ',
+],
+
+  'roleList' => [
+        'title' => 'បញ្ជីតួនាទី',
+        'add_role' => 'បន្ថែមតួនាទី',
+        'id' => 'អត្តសញ្ញាណ',
+        'name' => 'ឈ្មោះតួនាទី',
+        'guard' => 'ឈ្មោះ Guard',
+        'actions' => 'សកម្មភាព',
+        'view' => 'មើល',
+        'edit' => 'កែប្រែ',
+        'delete' => 'លុប',
+        'delete_selected' => 'លុបទាំងអស់',
+        'no_data' => 'មិនមានតួនាទីទេ។',
+    ],
+
+    'roleEdit' => [
+        'mainTitle' => 'កែប្រែតួនាទី',
+        'mainTitleDashboard' => 'ការគ្រប់គ្រងតួនាទី',
+        'edit' => 'កែប្រែ',
+        'title' => 'កែប្រែតួនាទី',
+        'name' => 'ឈ្មោះតួនាទី',
+        'name_placeholder' => 'បញ្ចូលឈ្មោះតួនាទី',
+        'submit' => 'កែប្រែ',
+        'back' => 'ត្រឡប់ក្រោយ',
+    ],
+
+    'showRole' => [
+        'back' => 'ត្រឡប់ទៅតួនាទី',
+        'title' => 'ព័ត៌មានលម្អិតអំពីតួនាទី',
+        'id' => 'អត្តសញ្ញាណតួនាទី',
+        'name' => 'ឈ្មោះតួនាទី',
+        'guard' => 'ឈ្មោះ Guard',
+        'permissions' => 'សិទ្ធិ',
+        'no_permissions' => 'មិនទាន់មានសិទ្ធិ។',
+        'icon_text' => 'ទិដ្ឋភាពរួមនៃតួនាទី',
+    ],
+
+//role permission end
+
+//admin role start 
+
+'adminRoleList' => [
+        'title' => 'បញ្ជីតួនាទីអ្នកគ្រប់គ្រង',
+        'add_admin' => 'បន្ថែមអ្នកគ្រប់គ្រង',
+        'id' => 'ល.រ',
+        'name' => 'ឈ្មោះ',
+        'email' => 'អ៊ីម៉ែល',
+        'is_admin' => 'តួនាទី',
+        'admin' => 'អ្នកគ្រប់គ្រង',
+        'user' => 'អ្នកប្រើប្រាស់',
+        'actions' => 'សកម្មភាព',
+        'view' => 'មើល',
+        'edit' => 'កែប្រែ',
+        'delete' => 'លុប',
+        'no_data' => 'មិនមានអ្នកគ្រប់គ្រងទេ។',
+        'delete_selected' => 'លុបអ្នកគ្រប់គ្រងដែលបានជ្រើស',
+    ],
+
+  'adminRoleCreate' => [
+        'mainTitle' => 'បង្កើតតួនាទីអ្នកគ្រប់គ្រង',
+        'mainTitleDashboard' => 'ផ្ទាំងគ្រប់គ្រង',
+        'create' => 'បង្កើតអ្នកគ្រប់គ្រង',
+        'name' => 'ឈ្មោះ',
+        'name_placeholder' => 'បញ្ចូលឈ្មោះអ្នកគ្រប់គ្រង',
+        'email' => 'អ៊ីមែល',
+        'email_placeholder' => 'បញ្ចូលអ៊ីមែលអ្នកគ្រប់គ្រង',
+        'password' => 'លេខសម្ងាត់',
+        'password_placeholder' => 'បញ្ចូលលេខសម្ងាត់',
+        'password_confirmation' => 'បញ្ជាក់លេខសម្ងាត់',
+        'password_confirmation_placeholder' => 'បញ្ចូលលេខសម្ងាត់ម្ដងទៀត',
+        'is_admin' => 'ជាអ្នកគ្រប់គ្រង?',
+        'submit' => 'ដាក់ស្នើ',
+        'back' => 'ត្រឡប់ក្រោយ',
+        'roles' => 'តួនាទី',
+        'roles_placeholder' => '-- ជ្រើសរើសតួនាទី --',
+    ],
+
+  'adminRoleEdit' => [
+        'title' => 'កែប្រែតួនាទីអ្នកគ្រប់គ្រង',
+        'name' => 'ឈ្មោះ',
+        'email' => 'អ៊ីមែល',
+        'password' => 'ពាក្យសម្ងាត់',
+        'password_placeholder' => 'បញ្ចូលពាក្យសម្ងាត់ថ្មី ប្រសិនបើចង់ផ្លាស់ប្តូរ',
+        'password_note' => 'ទុកទទេ ដើម្បីរក្សាពាក្យសម្ងាត់ចាស់',
+        'is_admin' => 'ជាអ្នកគ្រប់គ្រង?',
+        'submit' => 'កែប្រែ',
+        'back' => 'ត្រលប់ក្រោយ',
+        'roles' => 'តួនាទី',
+        'roles_placeholder' => '-- ជ្រើសរើសតួនាទី --',
+    ],
+
+'showAdmin' => [
+    'back' => 'ត្រឡប់ក្រោយ',
+    'title' => 'ព័ត៌មានរបស់ Admin',
+    'name' => 'ឈ្មោះ',
+    'email' => 'អ៊ីមែល',
+    'is_admin' => 'ជា Admin ឬទេ',
+    'yes' => 'បាទ/ចាស',
+    'no' => 'ទេ',
+    'roles' => 'តួនាទី',
+    'no_roles' => 'មិនមានតួនាទី',
+    'permissions' => 'សិទ្ធិ',
+    'no_permissions' => 'មិនមានសិទ្ធិ',
+    'no_image' => 'មិនមានរូបភាព',
+],
 
 ];
 
