@@ -12,6 +12,7 @@ use App\Http\Controllers\RegisterRoleAdminController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudyTimeController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserAddressController;
 use Illuminate\Support\Facades\Auth;
@@ -156,6 +157,20 @@ Route::prefix('admin')->middleware(['auth:admin' , 'Is_Admin'])->group(function(
         Route::delete('/room/{id}', [RoomController::class, 'destroy'])->name('room.destroy');
         Route::post('/room/delete-selected', [RoomController::class, 'deleteSelected'])->name('room.deleteSelected');
        });
+
+       
+        // route for study time
+       Route::prefix('study-time')->group(function () {
+           Route::get('/list', [StudyTimeController::class, 'index'])->name('study-time.index');
+           Route::get('/study-time-create', [StudyTimeController::class, 'create'])->name('study-time.create');
+           Route::post('/study-time-store', [StudyTimeController::class, 'store'])->name('study-time.store');
+           Route::get('/study-time/{id}', [StudyTimeController::class, 'show'])->name('study-time.show');
+           Route::get('/study-time/{id}/edit', [StudyTimeController::class, 'edit'])->name('study-time.edit');
+           Route::post('/study-time/{id}/update', [StudyTimeController::class, 'update'])->name('study-time.update');
+           Route::delete('/study-time/{id}', [StudyTimeController::class, 'destroy'])->name('study-time.destroy');
+           Route::post('/study-time/delete-selected', [StudyTimeController::class, 'deleteSelected'])->name('study-time.deleteSelected');
+       });
+
 
        
        

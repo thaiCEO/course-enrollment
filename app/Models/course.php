@@ -32,6 +32,12 @@ class course extends Model
     }
 
 
+     public function studyTimes()
+    {
+        return $this->hasMany(StudyTime::class);
+    }
+
+
     public function getCourseImageUrlAttribute()
     {
         return $this->course_image

@@ -146,6 +146,7 @@
             </li>
             <!-- enrollment end -->
 
+
             <!-- room start -->
             <li class="pcoded-hasmenu">
                 <a href="javascript:void(0)">
@@ -172,6 +173,35 @@
                 </ul>
             </li>
             <!-- room end -->
+
+
+            <!-- study time start -->
+            <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="ti-timer"></i></span> <!-- Changed main icon -->
+                    <span class="pcoded-mtext">{{ __('messages.sidebar.study_time_table') }}</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li>
+                        <a href="{{ route('study-time.index') }}">
+                            <span class="pcoded-micon"><i class="ti-menu"></i></span> <!-- List icon -->
+                            <span class="pcoded-mtext">{{ __('messages.sidebar.study_time_list') }}</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('study-time.create') }}">
+                            <span class="pcoded-micon"><i class="ti-plus-alt"></i></span> <!-- Add icon -->
+                            <span class="pcoded-mtext">{{ __('messages.sidebar.study_time_create') }}</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- study time end -->
+
 
         </ul>
         {{-- Student Table end --}}

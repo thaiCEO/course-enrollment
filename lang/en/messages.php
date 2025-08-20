@@ -54,6 +54,10 @@ return [
         'room_table' => 'Room Management',
         'room_list' => 'Room List',
         'room_create' => 'Add Room',
+
+        'study_time_table' => 'Study Time',
+        'study_time_list' => 'Study Time List',
+        'study_time_create' => 'Create Study Time',
     ],
 
     'studentList' => [
@@ -714,6 +718,112 @@ return [
         'dob' => 'Date of Birth',
         'enrolledDate' => 'Enrolled Date',
     ],
+
+//room end 
+
+//study time start
+
+  'studytimeList' => [
+        'title' => 'Study Time List',
+        'add_studytime' => 'Add Study Time',
+        'id' => 'ID',
+        'course' => 'Course',
+        'day_type' => 'Day Type',
+        'start_time' => 'Start Time',
+        'end_time' => 'End Time',
+        'actions' => 'Actions',
+        'view' => 'View',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'delete_confirm' => 'Are you sure you want to delete this study time?',
+        'delete_selected' => 'Delete Selected',
+        'delete_selected_confirm' => 'Are you sure you want to delete selected study times?',
+        'no_data' => 'No study time records found.',
+        'room' => 'Room',  // <-- add this
+    ],
+
+'studytimeCreate' => [
+    'mainTitle' => 'Create Study Time',
+    'mainTitleDashboard' => 'Dashboard',
+    'create' => 'Create',
+    'course' => 'Course',
+    'course_placeholder' => 'Select a course',
+    'day_type' => 'Day Type',
+    'day_type_placeholder' => 'Select day type',
+    'weekday' => 'Weekday (Mon - Fri)',
+    'weekend' => 'Weekend (Sat - Sun)',
+    'start_time' => 'Start Time',
+    'end_time' => 'End Time',
+    'submit' => 'Save',
+    'back' => 'Back',
+    'room' => 'Room',
+    'room_placeholder' => 'Select Room',
+],
+
+'studytimeEdit' => [
+    'mainTitle' => 'Edit Study Time',
+    'mainTitleDashboard' => 'Dashboard',
+    'edit' => 'Edit',
+    'course' => 'Course',
+    'course_placeholder' => 'Select a course',
+    'day_type' => 'Day Type',
+    'day_type_placeholder' => 'Select day type',
+    'weekday' => 'Weekday (Mon - Fri)',
+    'weekend' => 'Weekend (Sat - Sun)',
+    'start_time' => 'Start Time',
+    'end_time' => 'End Time',
+    'update' => 'Update',
+    'back' => 'Back',
+    'room' => 'Room',
+    'room_placeholder' => 'Select Room',
+],
+
+ 'viewStudyTime' => [
+        'title' => 'Study Time Details',
+        'course' => 'Course',
+        'day' => 'Day Type',
+        'startTime' => 'Start Time',
+        'endTime' => 'End Time',
+        'status' => 'Status',
+        'active' => 'Active',
+        'inactive' => 'Inactive',
+        'description' => 'Description',
+        'noDescription' => 'No Description',
+        'Students' => 'Total Students',
+        'teachingBy' => 'Teaching By',
+        'weekday' => 'Monday-Friday',
+        'weekend' => 'Saturday-Sunday',
+        'morning' => 'Morning shift',
+        'afternoon' => 'Afternoon shift',
+        'night' => 'Night shift',
+    ],
+    'studytimeList' => [
+        'room' => 'Room',
+        'back' => 'Back',
+    ],
+
+
+ 'studytimeData' => [
+        'title' => 'Study Time List',
+        'add_studytime' => 'Add Study Time',
+        'id' => 'ID',
+        'course' => 'Course',
+        'room' => 'Room',
+        'day_type' => 'Day Type',
+        'start_time' => 'Start Time',
+        'end_time' => 'End Time',
+        'actions' => 'Actions',
+        'view' => 'View',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'delete_confirm' => 'Are you sure you want to delete this Study Time?',
+        'delete_selected' => 'Delete Selected',
+        'delete_selected_confirm' => 'Are you sure you want to delete selected Study Times?',
+        'no_data' => 'No Study Time data available',
+        'back' => 'Back',
+    ],
+
+
 ];
 
 ?>

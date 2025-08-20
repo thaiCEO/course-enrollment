@@ -24,5 +24,10 @@ class Room extends Model
     {
         return $this->capacity - $this->enrollments()->count();
     }
+    // Room.php
+    public function studyTimes()
+    {
+        return $this->hasMany(StudyTime::class);
+    }
 
 }

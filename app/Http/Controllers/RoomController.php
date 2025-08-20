@@ -94,12 +94,9 @@ class RoomController extends Controller
     // Show room details
     public function show($id)
     {
-        
-        $room = Room::with(['enrollments.student', 'enrollments.course', 'enrollments.teacher'])
+        $room = Room::with(['enrollments.student', 'enrollments.course', 'enrollments.teacher' , 'enrollments.course.studyTimes'])
                     ->withCount('enrollments') // total enrolled students
                     ->findOrFail($id);
-
-
         return view('messages.room.show_room', compact('room'));
     }
 
