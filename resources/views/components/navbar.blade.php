@@ -17,8 +17,8 @@
                 </div>
             </div>
             <a href="index.html">
-                <div style="width: 200px; height: 14px;">
-                    SYSTEM SCHOOL
+                <div style="width: 200px; height: 16px;">
+                    <h4 class="text-center">SALA IT BMC</h4>
                 </div>
 
                {{-- <img class="img-fluid" src="{{asset('assets/images/logo.png')}}" alt="Theme-Logo" />  --}}

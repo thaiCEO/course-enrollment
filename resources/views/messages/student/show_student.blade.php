@@ -30,12 +30,12 @@
             @if ($student->addresses)
                 <div class="row mb-3">
                     <label class="col-sm-4 fw-semibold">{{ __('messages.viewStudent.phone') }}:</label>
-                    <div class="col-sm-8">{{ $student->addresses->first()->phone }}</div>
+                    <div class="col-sm-8">{{ $student->addresses->first()->phone ?? 'មិនមានទិន្នន័យ' }}</div>
                 </div>
 
                 <div class="row mb-3">
                     <label class="col-sm-4 fw-semibold">{{ __('messages.viewStudent.address') }}:</label>
-                    <div class="col-sm-8">{{ $student->addresses->first()->address_line }}, {{ $student->addresses->first()->city }}</div>
+                    <div class="col-sm-8">{{ $student->addresses->first()->address_line ?? 'មិនមានទិន្នន័យ'}}, {{ $student->addresses->first()->city ?? ''}}</div>
                 </div>
             @else
                 <div class="row mb-3">

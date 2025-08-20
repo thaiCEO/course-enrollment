@@ -50,6 +50,10 @@ return [
         'admin_role_table'      => 'Admin Role',
         'admin_role_list'       => 'Admin Role List',
         'admin_role_create'     => 'Create Admin Role',
+
+        'room_table' => 'Room Management',
+        'room_list' => 'Room List',
+        'room_create' => 'Add Room',
     ],
 
     'studentList' => [
@@ -630,6 +634,86 @@ return [
     'no_image' => 'No profile image',
 ],
 
+//admin role end 
+
+//room start
+
+   'roomList' => [
+        'title' => 'Room List',
+        'add_room' => 'Add Room',
+        'id' => 'ID',
+        'name' => 'Name',
+        'capacity' => 'Capacity',
+        'actions' => 'Actions',
+        'view' => 'View',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'delete_confirm' => 'Are you sure you want to delete this room?',
+        'no_data' => 'No rooms available.',
+        'delete_selected' => 'Delete Selected',
+        'delete_selected_confirm' => 'Are you sure you want to delete the selected rooms?',
+    ],
+
+ 'roomCreate' => [
+        'mainTitle' => 'Create Room',
+        'mainTitleDashboard' => 'Dashboard',
+        'create' => 'Create',
+        'name' => 'Room Name',
+        'name_placeholder' => 'Enter room name',
+        'capacity' => 'Capacity',
+        'capacity_placeholder' => 'Enter maximum number of students',
+        'submit' => 'Save',
+        'back' => 'Back',
+    ],
+
+   'roomEdit' => [
+        'mainTitle' => 'Edit Room',
+        'mainTitleDashboard' => 'Dashboard',
+        'edit' => 'Edit',
+        'name' => 'Room Name',
+        'name_placeholder' => 'Enter room name',
+        'capacity' => 'Capacity',
+        'capacity_placeholder' => 'Enter maximum number of students',
+        'submit' => 'Update',
+        'back' => 'Back',
+    ],
+
+ 'showRoom' => [
+        'title' => 'Room Details',
+        'name' => 'Room Name',
+        'capacity' => 'Total Capacity',
+        'remaining' => 'Remaining Seats',
+        'location' => 'Location',
+        'enrolledStudents' => 'Enrolled Students',
+        'noStudents' => 'No students enrolled yet.',
+        'back' => 'Back to Room List',
+    ],
+    'viewRoomCourse' => [
+        'serial' => 'No.',
+        'studentId' => 'Student ID',
+        'studentName' => 'Student Name',
+        'gender' => 'Gender',
+        'dob' => 'Date of Birth',
+        'enrolledDate' => 'Enrolled Date',
+        'courseTitle' => 'Course',
+        'title' => 'Course Title',
+        'teacher' => 'Teacher',
+        'noTeacher' => 'No Teacher Assigned',
+        'price' => 'Price',
+        'status' => 'Status',
+        'active' => 'Active',
+        'inactive' => 'Inactive',
+        'description' => 'Description',
+        'noDescription' => 'No Description Available',
+        'courseImage' => 'Course Image',
+        'noImage' => 'No Image Available',
+        'serial' => 'No.',
+        'studentId' => 'Student ID',
+        'studentName' => 'Student Name',
+        'gender' => 'Gender',
+        'dob' => 'Date of Birth',
+        'enrolledDate' => 'Enrolled Date',
+    ],
 ];
 
 ?>

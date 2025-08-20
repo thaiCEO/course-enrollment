@@ -50,8 +50,6 @@
             const selectedLang = $(this).val();
             window.location.href = '{{ route("lang.change") }}?lang=' + selectedLang;
         });
-
-
 </script>
 
 

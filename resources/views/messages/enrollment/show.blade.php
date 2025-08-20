@@ -17,6 +17,12 @@
                 <div class="col-md-9">{{ $enrollment->course->title ?? 'N/A' }}</div>
             </div>
 
+               {{-- ✅ Room --}}
+            <div class="row mb-2">
+                <div class="col-md-3 font-weight-bold">Room:</div>
+                <div class="col-md-9">{{ $enrollment->room->name ?? 'Not Assigned' }}</div>
+            </div>
+
             <div class="row mb-2">
                 <div class="col-md-3 font-weight-bold">{{ __('messages.viewEnrollment.enrolledDate') }}:</div>
                 <div class="col-md-9">{{ $enrollment->enrolled_date }}</div>

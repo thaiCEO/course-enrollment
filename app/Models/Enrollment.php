@@ -9,6 +9,7 @@ class Enrollment extends Model
         'student_id',
         'teacher_id',
         'course_id',
+        'room_id',
         'enrolled_date',
         'payment_status',
         'payment_method',
@@ -19,15 +20,23 @@ class Enrollment extends Model
         return $this->belongsTo(Student::class);
     }
 
-   public function teacher() {
+    public function teacher()
+    {
     return $this->belongsTo(Teacher::class, 'teacher_id', 'id'); // specify FK & PK explicitly
-}
+    }
 
 
     public function course()
     {
         return $this->belongsTo(Course::class);
     }
+
+
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
+
 
     public function payments()
     {

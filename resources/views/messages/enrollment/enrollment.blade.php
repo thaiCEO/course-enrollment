@@ -65,6 +65,7 @@
                                     <th>{{ __('messages.enrollmentList.table.id') }}</th>
                                     <th>{{ __('messages.enrollmentList.table.studentName') }}</th>
                                     <th>{{ __('messages.enrollmentList.table.courseTitle') }}</th>
+                                    <th>Room</th>
                                     <th>{{ __('messages.enrollmentList.table.enrolledDate') }}</th>
                                     <th>{{ __('messages.enrollmentList.table.actions') }}</th>
                                 </tr>
@@ -75,6 +76,15 @@
                                         <td>{{ $enrollment->id }}</td>
                                         <td>{{ $enrollment->student->username ?? $enrollment->student->name }}</td>
                                         <td>{{ $enrollment->course->title }}</td>
+                                          {{-- ✅ Display Room Name --}}
+                                        <td>
+                                            @if($enrollment->room)
+                                                {{ $enrollment->room->name }}
+                                            @else
+                                                <span class="text-muted">N/A</span>
+                                            @endif
+                                        </td>
+
                                         <td>{{ $enrollment->enrolled_date }}</td>
                                         <td>
                                             {{-- View Enrollment --}}

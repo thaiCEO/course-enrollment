@@ -48,6 +48,10 @@ return [
         'admin_role_table'      => 'កំណត់​ តួនាទី',
         'admin_role_list'       => 'បញ្ជីតួនាទីអ្នកគ្រប់គ្រង',
         'admin_role_create'     => 'បង្កើតតួនាទីអ្នកគ្រប់គ្រង',
+
+        'room_table' => 'តារាងបន្ទប់',
+        'room_list' => 'បញ្ជីបន្ទប់',
+        'room_create' => 'បន្ថែមបន្ទប់',
     ],
 
      'studentList' => [
@@ -186,7 +190,7 @@ return [
         'select_student'  => '-- ជ្រើសរើសសិស្ស --',
         'select_teacher'  => '-- ជ្រើសរើសគ្រូ --',
         'address_line'    => 'អាសយដ្ឋាន',
-        'city'            => 'ទីក្រុង',
+        'city'            => 'ខេត្ត/ក្រុង',
         'phone'           => 'លេខទូរស័ព្ទ',
         'main_address'    => 'អាសយដ្ឋានចម្បង',
         'save'            => 'រក្សាទុក',
@@ -197,7 +201,7 @@ return [
         'title'         => 'ព័ត៌មានអាសយដ្ឋានសិស្ស/គ្រូ',
         'student'       => 'សិស្ស/គ្រូ',
         'address_line'  => 'អាសយដ្ឋាន',
-        'city'          => 'ទីក្រុង',
+        'city'          => 'ខេត្ត/ទីក្រុង',
         'phone'         => 'លេខទូរស័ព្ទ',
         'address_type'  => 'ប្រភេទអាសយដ្ឋាន',
         'main'          => 'អាសយដ្ឋានចម្បង',
@@ -214,7 +218,7 @@ return [
         'select_student'  => '-- ជ្រើសរើសសិស្ស --',
         'select_teacher'  => '-- ជ្រើសរើសគ្រូ --',
         'address'         => 'អាសយដ្ឋាន',
-        'city'            => 'ទីក្រុង',
+        'city'            => 'ខេត្ត/ទីក្រុង',
         'phone'           => 'លេខទូរស័ព្ទ',
         'main_address'    => 'អាសយដ្ឋានចម្បង',
         'update'          => 'កែប្រែ',
@@ -619,6 +623,88 @@ return [
     'no_permissions' => 'មិនមានសិទ្ធិ',
     'no_image' => 'មិនមានរូបភាព',
 ],
+
+//admin role end 
+
+//room start 
+
+ 'roomList' => [
+        'title' => 'បញ្ជីបន្ទប់',
+        'add_room' => 'បន្ថែមបន្ទប់',
+        'id' => 'លេខរៀង',
+        'name' => 'ឈ្មោះ',
+        'capacity' => 'សមត្ថភាព',
+        'actions' => 'សកម្មភាព',
+        'view' => 'មើល',
+        'edit' => 'កែប្រែ',
+        'delete' => 'លុប',
+        'delete_confirm' => 'តើអ្នកប្រាកដជាចង់លុបបន្ទប់នេះមែនទេ?',
+        'no_data' => 'គ្មានបន្ទប់ទេ',
+        'delete_selected' => 'លុបដែលបានជ្រើស',
+        'delete_selected_confirm' => 'តើអ្នកប្រាកដជាចង់លុបបន្ទប់ដែលបានជ្រើសទាំងអស់មែនទេ?',
+    ],
+
+  'roomCreate' => [
+        'mainTitle' => 'បង្កើតបន្ទប់',
+        'mainTitleDashboard' => 'ផ្ទាំងគ្រប់គ្រង',
+        'create' => 'បង្កើត',
+        'name' => 'ឈ្មោះបន្ទប់',
+        'name_placeholder' => 'បញ្ចូលឈ្មោះបន្ទប់',
+        'capacity' => 'សមត្ថភាព',
+        'capacity_placeholder' => 'បញ្ចូលចំនួនសិស្សអតិបរមា',
+        'submit' => 'រក្សាទុក',
+        'back' => 'ត្រលប់ក្រោយ',
+    ],
+
+  'roomEdit' => [
+        'mainTitle' => 'កែសម្រួលបន្ទប់',
+        'mainTitleDashboard' => 'ផ្ទាំងគ្រប់គ្រង',
+        'edit' => 'កែសម្រួល',
+        'name' => 'ឈ្មោះបន្ទប់',
+        'name_placeholder' => 'បញ្ចូលឈ្មោះបន្ទប់',
+        'capacity' => 'សមត្ថភាព',
+        'capacity_placeholder' => 'បញ្ចូលចំនួនសិស្សអតិបរមា',
+        'submit' => 'កែប្រែ',
+        'back' => 'ត្រលប់ក្រោយ',
+    ],
+
+  'showRoom' => [
+        'title' => 'ព័ត៌មានបន្ទប់',
+        'name' => 'ឈ្មោះបន្ទប់',
+        'capacity' => 'សមត្ថភាពសរុប',
+        'remaining' => 'ចំនួនកៅអីនៅសល់',
+        'location' => 'ទីតាំង',
+        'enrolledStudents' => 'សិស្សដែលចុះឈ្មោះ',
+        'noStudents' => 'មិនមានសិស្សចុះឈ្មោះនៅឡើយទេ',
+        'back' => 'ត្រឡប់ទៅបញ្ជីបន្ទប់',
+    ],
+    'viewRoomCourse' => [
+        'serial' => 'ល.រ',
+        'studentId' => 'លេខសម្គាល់សិស្ស',
+        'studentName' => 'ឈ្មោះសិស្ស',
+        'gender' => 'ភេទ',
+        'dob' => 'ថ្ងៃខែឆ្នាំកំណើត',
+        'enrolledDate' => 'ថ្ងៃចុះឈ្មោះ',
+        'courseTitle' => 'វគ្គសិក្សា',
+        'title' => 'ចំណងជើងវគ្គ',
+        'teacher' => 'គ្រូបង្រៀន',
+        'noTeacher' => 'មិនមានគ្រូបង្រៀន',
+        'price' => 'តម្លៃ',
+        'status' => 'ស្ថានភាព',
+        'active' => 'សកម្ម',
+        'inactive' => 'មិនសកម្ម',
+        'description' => 'ពណ៌នា',
+        'noDescription' => 'មិនមានពណ៌នា',
+        'courseImage' => 'រូបភាពវគ្គ',
+        'noImage' => 'មិនមានរូបភាព',
+        'serial' => 'ល.រ',
+        'studentId' => 'លេខសំគាល់សិស្ស',
+        'studentName' => 'ឈ្មោះសិស្ស',
+        'gender' => 'ភេទ',
+        'dob' => 'ថ្ងៃខែឆ្នាំកំណើត',
+        'enrolledDate' => 'ថ្ងៃចុះឈ្មោះ',
+    ],
+
 
 ];
 

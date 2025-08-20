@@ -40,6 +40,24 @@
                     @enderror
                 </div>
 
+
+                   {{-- ✅ New Room Dropdown --}}
+                <div class="mb-3">
+                    <label for="room_id" class="form-label">Select Room</label>
+                    <select name="room_id" id="room_id" class="form-control" required>
+                        <option value="">-- Select Room --</option>
+                        @foreach ($rooms as $room)
+                            <option value="{{ $room->id }}" {{ $room->id == $enrollment->room_id ? 'selected' : '' }}>
+                                {{ $room->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('room_id')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                
+
                 <div class="mb-3">
                     <label for="enrolled_date" class="form-label">{{ __('messages.editEnrollment.enrolledDate') }}</label>
                     <input type="date" name="enrolled_date" id="enrolled_date" class="form-control"

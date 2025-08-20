@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\course;
-use App\Models\enrollments;
-use App\Models\student;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Enrollment;
+use App\Models\Student;
+use App\Models\Course;
+use App\Models\Room;
 
 class EnrollmentSeeder extends Seeder
 {
@@ -15,15 +15,24 @@ class EnrollmentSeeder extends Seeder
      */
     public function run(): void
     {
-        $student = student::where('student_number', 'STU001')->first();
-        $course = course::where('title', 'Algebra 101')->first();
+        // Check if there is at least one student, course, and room
+        $student = Student::first();
+        $course = Course::first();
+        $room = Room::first();
 
-        enrollments::create([
+        if (!$student || !$course || !$room) {
+            $this->command->warn('⚠️ Cannot create enrollment. Make sure Student, Course, and Room exist!');
+            return;
+        }
+
+        Enrollment::create([
             'student_id' => $student->id,
             'course_id' => $course->id,
-            'enrolled_date' => now()->toDateString(),
-            'payment_status' => 'paid',
-            'payment_method' => 'bakong',
+            'room_id' => $room->id,
+            'enrolled_date' => now(),
         ]);
+        
+
+        $this->command->info('✅ Enrollment created successfully!');
     }
 }

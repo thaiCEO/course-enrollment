@@ -64,12 +64,12 @@
                             <table class="table table-bordered table-hover align-middle">
                                 <thead class="table-light text-center">
                                     <tr>
-                                        <th>{{ __('messages.viewCourse.serial') }}</th>
-                                        <th>{{ __('messages.viewCourse.studentId') }}</th>
-                                        <th>{{ __('messages.viewCourse.studentName') }}</th>
-                                        <th>{{ __('messages.viewCourse.gender') }}</th>
-                                        <th>{{ __('messages.viewCourse.dob') }}</th>
-                                        <th>{{ __('messages.viewCourse.enrolledDate') }}</th>
+                                        <th class="text-center">{{ __('messages.viewCourse.serial') }}</th>
+                                        <th class="text-center">{{ __('messages.viewCourse.studentId') }}</th>
+                                        <th class="text-center">{{ __('messages.viewCourse.studentName') }}</th>
+                                        <th class="text-center">{{ __('messages.viewCourse.gender') }}</th>
+                                        <th class="text-center">{{ __('messages.viewCourse.dob') }}</th>
+                                        <th class="text-center">{{ __('messages.viewCourse.enrolledDate') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>

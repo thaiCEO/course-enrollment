@@ -10,6 +10,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\RegisterRoleAdminController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserAddressController;
@@ -142,6 +143,19 @@ Route::prefix('admin')->middleware(['auth:admin' , 'Is_Admin'])->group(function(
         Route::delete('/admin-role/{id}', [RegisterRoleAdminController::class, 'destroy'])->name('admin-role.destroy');
         Route::post('/admin-role/delete-selected', [RegisterRoleAdminController::class, 'deleteSelected'])->name('admin-role.deleteSelectedRole');
       });
+
+
+       // route for room
+       Route::prefix('room')->group(function () {
+        Route::get('/list', [RoomController::class, 'index'])->name('room.index');
+        Route::get('/room-create', [RoomController::class, 'create'])->name('room.create');
+        Route::post('/room-store', [RoomController::class, 'store'])->name('room.store');
+        Route::get('/room/{id}', [RoomController::class, 'show'])->name('room.show');
+        Route::get('/room/{id}/edit', [RoomController::class, 'edit'])->name('room.edit');
+        Route::post('/room/{id}/update', [RoomController::class, 'update'])->name('room.update');
+        Route::delete('/room/{id}', [RoomController::class, 'destroy'])->name('room.destroy');
+        Route::post('/room/delete-selected', [RoomController::class, 'deleteSelected'])->name('room.deleteSelected');
+       });
 
        
        

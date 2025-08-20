@@ -32,8 +32,11 @@ class DatabaseSeeder extends Seeder
 
       
         $this->call([
-              TeacherSeeder::class,
-         ]);
+            StudentSeeder::class,
+            CourseSeeder::class,
+            RoomSeeder::class,
+            EnrollmentSeeder::class,
+        ]);
 
 
         //  $this->call(PaymentMethodSeeder::class);
