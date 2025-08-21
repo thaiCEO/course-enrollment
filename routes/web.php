@@ -60,6 +60,7 @@ Route::prefix('admin')->middleware(['auth:admin' , 'Is_Admin'])->group(function(
         Route::delete('/course/{course}', [CourseController::class, 'destroy'])->name('course.destroy'); // Delete course
         Route::get('/course/{course}/edit', [CourseController::class, 'edit'])->name('course.edit');
         Route::put('/course/{course}', [CourseController::class, 'update'])->name('course.update');
+        Route::post('/courses/deleteSelected', [CourseController::class, 'deleteWithSelect'])->name('course.deleteSelectedCourse');
 
 
         //enrollments
@@ -70,6 +71,7 @@ Route::prefix('admin')->middleware(['auth:admin' , 'Is_Admin'])->group(function(
         Route::get('/enrollment/{id}/edit', [EnrollmentsController::class, 'edit'])->name('enrollments.edit');
         Route::put('/enrollment/{id}', [EnrollmentsController::class, 'update'])->name('enrollments.update');
         Route::delete('/enrollment/{id}', [EnrollmentsController::class, 'destroy'])->name('enrollments.destroy');
+        Route::post('/enrollments/deleteSelected', [EnrollmentsController::class, 'deleteWithSelect'])->name('enrollments.deleteSelectedEnrollment');
 
          //teacher
         Route::get('/teachers/test', [TeacherController::class, 'test'])->name('teacher.test');
@@ -166,7 +168,7 @@ Route::prefix('admin')->middleware(['auth:admin' , 'Is_Admin'])->group(function(
            Route::post('/study-time-store', [StudyTimeController::class, 'store'])->name('study-time.store');
            Route::get('/study-time/{id}', [StudyTimeController::class, 'show'])->name('study-time.show');
            Route::get('/study-time/{id}/edit', [StudyTimeController::class, 'edit'])->name('study-time.edit');
-           Route::post('/study-time/{id}/update', [StudyTimeController::class, 'update'])->name('study-time.update');
+           Route::put('/study-time/{id}/update', [StudyTimeController::class, 'update'])->name('study-time.update');
            Route::delete('/study-time/{id}', [StudyTimeController::class, 'destroy'])->name('study-time.destroy');
            Route::post('/study-time/delete-selected', [StudyTimeController::class, 'deleteSelected'])->name('study-time.deleteSelected');
        });

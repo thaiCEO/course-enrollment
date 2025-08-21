@@ -10,11 +10,9 @@
                 <a href="{{ route('study-time.index') }}"> <i class="fa fa-home"></i> </a>
             </li>
             <li class="breadcrumb-item">
-                <a href="#!">{{ __('messages.studytimeEdit.mainTitleDashboard') }}</a>
+                <a href="{{ route('dashboard.index') }}">{{ __('messages.studytimeEdit.mainTitleDashboard') }}</a>
             </li>
-            <li class="breadcrumb-item">
-                <a href="#!">{{ __('messages.studytimeEdit.edit') }}</a>
-            </li>
+          
         </ul>
     </div>
 </div>
@@ -78,11 +76,11 @@
                     @enderror
                 </div>
 
-                {{-- Start Time --}}
+             {{-- Start Time --}}
                 <div class="mb-3">
                     <label for="start_time" class="form-label">{{ __('messages.studytimeEdit.start_time') }}</label>
                     <input type="time" name="start_time" id="start_time" class="form-control"
-                           value="{{ old('start_time', $studyTime->start_time) }}">
+                        value="{{ old('start_time', \Carbon\Carbon::parse($studyTime->start_time)->format('H:i')) }}">
                     @error('start_time')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -92,11 +90,12 @@
                 <div class="mb-3">
                     <label for="end_time" class="form-label">{{ __('messages.studytimeEdit.end_time') }}</label>
                     <input type="time" name="end_time" id="end_time" class="form-control"
-                           value="{{ old('end_time', $studyTime->end_time) }}">
+                        value="{{ old('end_time', \Carbon\Carbon::parse($studyTime->end_time)->format('H:i')) }}">
                     @error('end_time')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
+
 
                 {{-- Actions --}}
                 <button type="submit" class="btn btn-primary">{{ __('messages.studytimeEdit.update') }}</button>

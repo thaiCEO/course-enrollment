@@ -66,7 +66,8 @@ class TeacherController extends Controller
 
         $teacher->save();
 
-        return redirect()->route('teacher.list')->with(['status' => 200, 'message' => 'បង្កើតគ្រូបានដោយជោគជ័យ']);
+       return redirect()->route('teacher.list')
+                 ->with(['status' => 200, 'message' => __('messages.teacherList.create_success')]);
     }
 
     public function edit($id)
@@ -110,7 +111,8 @@ class TeacherController extends Controller
 
         $teacher->save();
 
-        return redirect()->route('teacher.list')->with('success', 'បានកែប្រែព័ត៌មានគ្រូដោយជោគជ័យ');
+       return redirect()->route('teacher.list')
+                 ->with('success', __('messages.teacherList.update_success'));
     }
 
     public function destroy($id)
@@ -123,28 +125,31 @@ class TeacherController extends Controller
 
         $teacher->delete();
 
-        return redirect()->route('teacher.list')->with('success', 'បានលុបគ្រូដោយជោគជ័យ');
+        return redirect()->route('teacher.list')
+                 ->with('success', __('messages.teacherList.delete_success'));
+
     }
 
-    public function deleteWithSelect(Request $request)
-    {
-        $selected_id = explode(',', $request->selected_id);
+   public function deleteWithSelect(Request $request)
+{
+    $selected_id = explode(',', $request->selected_id);
 
-        foreach ($selected_id as $id) {
-            $teacher = Teacher::find($id);
+    foreach ($selected_id as $id) {
+        $teacher = Teacher::find($id);
 
+        if ($teacher) {
             if ($teacher->profile_image && File::exists(public_path('profile_teacher/' . $teacher->profile_image))) {
                 File::delete(public_path('profile_teacher/' . $teacher->profile_image));
             }
-
             $teacher->delete();
         }
-
-        return response([
-            'status' => 200,
-            'message' => 'បានលុបគ្រូដែលបានជ្រើសរើសដោយជោគជ័យ'
-        ]);
     }
+
+    return response([
+        'status' => 200,
+        'message' => __('messages.teacherList.delete_selected_success')
+    ]);
+}
 
     // Optional API methods
     public function getTeacher()

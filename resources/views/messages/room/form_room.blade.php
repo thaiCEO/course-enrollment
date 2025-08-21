@@ -10,11 +10,9 @@
                 <a href="{{ route('room.index') }}"> <i class="fa fa-home"></i> </a>
             </li>
             <li class="breadcrumb-item">
-                <a href="#!">{{ __('messages.roomCreate.mainTitleDashboard') }}</a>
+                <a href="{{route('dashboard.index')}}">{{ __('messages.roomCreate.mainTitleDashboard') }}</a>
             </li>
-            <li class="breadcrumb-item">
-                <a href="#!">{{ __('messages.roomCreate.create') }}</a>
-            </li>
+           
         </ul>
     </div>
 </div>

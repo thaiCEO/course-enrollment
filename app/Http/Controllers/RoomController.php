@@ -42,7 +42,7 @@ class RoomController extends Controller
             'capacity' => $request->capacity,
         ]);
 
-        return redirect()->route('room.index')->with('success', 'Room created successfully');
+        return redirect()->route('room.index')->with('success', __('messages.roomAlertMessage.create'));
     }
 
     // Show edit form
@@ -70,7 +70,7 @@ class RoomController extends Controller
         $room->capacity = $request->capacity;
         $room->save();
 
-        return redirect()->route('room.index')->with('success', 'Room updated successfully');
+        return redirect()->route('room.index')->with('success', __('messages.roomAlertMessage.update'));
     }
 
     // Delete room
@@ -79,7 +79,7 @@ class RoomController extends Controller
         $room = Room::findOrFail($id);
         $room->delete();
 
-        return redirect()->route('room.index')->with('success', 'Room deleted successfully');
+        return redirect()->route('room.index')->with('success', __('messages.roomAlertMessage.delete'));
     }
 
     // Delete multiple rooms
@@ -88,7 +88,10 @@ class RoomController extends Controller
         $ids = explode(',', $request->selected_id);
         Room::whereIn('id', $ids)->delete();
 
-        return response()->json(['status' => 200, 'message' => 'Rooms deleted successfully']);
+        return response()->json([
+            'status' => 200,
+            'message' => __('messages.roomAlertMessage.bulk_delete')
+        ]);
     }
 
     // Show room details

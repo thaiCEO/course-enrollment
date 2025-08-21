@@ -10,7 +10,7 @@
                 <li class="breadcrumb-item">
                     <a href="index.html"> <i class="fa fa-home"></i> </a>
                 </li>
-               <li class="breadcrumb-item"><a href="#!">{{ __('messages.teacherCreate.mainTitleDashboard') }}</a>
+               <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">{{ __('messages.teacherCreate.mainTitleDashboard') }}</a>
                         </li>
                         <li class="breadcrumb-item"><a href="#!"></a>
                         </li>

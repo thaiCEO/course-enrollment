@@ -11,6 +11,13 @@ return [
     'positive' => 'Positive',
     'negative' => 'Negative',
 
+    //show chart bar and pic chart
+    'enrollment_statistics' => 'Enrollment Statistics',
+    'daily' => 'Daily',
+    'monthly' => 'Monthly',
+    'yearly' => 'Yearly',
+    'enrollments_per_course' => 'Enrollments per Course',
+
 
     'sidebar' => [
          'navigation' => 'Navigation',
@@ -61,8 +68,34 @@ return [
     ],
 
     'studentList' => [
-        'addStudent' => 'Student'
+        'addStudent' => 'Student',
     ],
+
+
+    'StudentAlert' => [
+        'create_success' => 'Student created successfully.',
+        'update_success' => 'Student information updated successfully.',
+        'delete_success' => 'Student deleted successfully.',
+        'delete_selected_success' => 'Selected students have been deleted successfully.',
+    ],
+
+ 'createFormStudent' => [
+        'dashboard' => 'dashboard',
+        'mainTitle' => 'Student Form',
+        'username' => 'Full Name',
+        'student_number' => 'Student Number',
+        'date_of_birth' => 'Date of Birth',
+        'gender' => 'Gender',
+        'select_gender' => 'Select',
+        'male' => 'Male',
+        'female' => 'Female',
+        'address' => 'Current Address',
+        'phone_number' => 'Phone Number',
+        'profile_student' => 'Profile Photo',
+        'save' => 'Save User',
+        'back' => 'Back',
+    ],
+
 
 
 
@@ -87,6 +120,10 @@ return [
         'confirm_delete' => 'Are you sure you want to delete this teacher?',
         'no_data' => 'No teacher data available.',
         'delete_selected' => 'Delete Selected',
+        'create_success' => 'Teacher created successfully.',
+        'update_success' => 'Teacher information updated successfully.',
+        'delete_success' => 'Teacher deleted successfully.',
+        'delete_selected_success' => 'Selected teachers have been deleted successfully.',
     ],
 
     'showTeacher' => [
@@ -135,8 +172,28 @@ return [
     'submit' => 'Save',
 ],
 
+    'deleteTeacherSelect' => [
+        'no_selected' => 'No teacher selected!',
+        'delete_selected_confirm' => 'Are you sure you want to delete the selected teacher(s)?',
+        'yes_delete' => 'Yes, delete!',
+        'cancel' => 'Cancel',
+        'deleted_success' => 'Selected teacher(s) have been deleted successfully!',
+        'error_delete' => 'Failed to delete teacher(s)!',
+        'delete_count_text' => 'You are about to delete :count teacher(s)!'
+    ],
+
+  'deleteTeacher' => [
+        'confirm_title' => 'Are you sure?',
+        'confirm_text' => "You won't be able to revert this!",
+        'confirm_button' => 'Yes, delete it!',
+        'cancel_button' => 'Cancel',
+        'deleted_success' => 'Teacher has been deleted successfully!',
+    ],
+
+
+
 'studentList' => [
-    'tab_home' => 'Home',
+    'tab_home' => 'Students',
     'tab_security' => 'Security',
     'tab_entertainment' => 'Entertainment',
     'tab_bigdata' => 'Big Data',
@@ -158,6 +215,26 @@ return [
 
     'addStudent' => 'add student',
 
+],
+
+
+'deleteStudent' => [
+    'delete' => 'Delete',
+    'confirm_title' => 'Are you sure?',
+    'confirm_text' => "You won't be able to revert this!",
+    'confirm_button' => 'Yes, delete it!',
+    'cancel_button' => 'Cancel',
+    'deleted_success' => 'Student has been deleted successfully!'
+],
+
+'deleteStudentSelect' => [
+    'no_selected' => 'No student selected!',
+    'delete_selected_confirm' => 'Are you sure you want to delete the selected student(s)?',
+    'yes_delete' => 'Yes, delete!',
+    'cancel' => 'Cancel',
+    'deleted_success' => 'Selected students have been deleted successfully!',
+    'error_delete' => 'Failed to delete students!',
+    'delete_count_text' => 'You are about to delete :count student(s)!'
 ],
 
 
@@ -340,7 +417,25 @@ return [
 
 //enrollment start
 
+'deleteEnrollmentSelect' => [
+    'no_selected' => 'No enrollment selected!',
+    'delete_selected_confirm' => 'Are you sure you want to delete the selected enrollment(s)?',
+    'yes_delete' => 'Yes, delete!',
+    'cancel' => 'Cancel',
+    'deleted_success' => 'Selected enrollments have been deleted successfully!',
+    'error_delete' => 'Failed to delete enrollments!',
+    'delete_count_text' => 'You are about to delete :count enrollment(s)!'
+],
+
+'deleteEnrollment' => [
+    'delete_confirm_title' => 'Are you sure?',
+    'yes_delete' => 'Yes, delete!',
+    'cancel' => 'Cancel',
+],
+
   'enrollmentList' => [
+        'deleted' => 'Enrollment deleted successfully.',
+        'updated' => 'Enrollment updated successfully.',
         'title' => 'Student Enrollments',
         'tab1' => 'Student Enrollment',
         'tab2' => 'Security',
@@ -400,6 +495,26 @@ return [
 
 //course start
 
+'deleteCourse' => [
+    'delete' => 'Delete',
+    'confirm_title' => 'Are you sure?',
+    'confirm_text' => "You won't be able to revert this!",
+    'confirm_button' => 'Yes, delete it!',
+    'cancel_button' => 'Cancel',
+    'deleted_success' => 'Course has been deleted successfully!'
+],
+
+'deleteCourseSelect' => [
+    'no_selected' => 'No course selected!',
+    'delete_selected_confirm' => 'Are you sure you want to delete the selected course(s)?',
+    'yes_delete' => 'Yes, delete!',
+    'cancel' => 'Cancel',
+    'deleted_success' => 'Selected courses have been deleted successfully!',
+    'error_delete' => 'Failed to delete courses!',
+    'delete_count_text' => 'You are about to delete :count course(s)!',
+    'delete_selected' => 'Delete Selected Courses',
+],
+
 'courseList' => [
     'tabs' => [
         'courses' => 'Courses',
@@ -437,6 +552,8 @@ return [
         'isActive' => 'Active',
         'submit' => 'Submit',
         'back' => 'Back',
+        'mainTitle' => 'Create New Course',
+        'editCourse' => 'Edit Course', 
     ],
 
 'editCourse' => [
@@ -473,6 +590,13 @@ return [
         'noImage' => 'No Image',
         'noDescription' => 'No description',
         'noTeacher' => 'No Teacher',
+    ],
+
+   'courseAlertMessage' => [
+        'create_success' => 'Course added successfully.',
+        'update_success' => 'Course updated successfully.',
+        'delete_success' => 'Course deleted successfully.',
+        'bulk_delete_success' => 'Selected courses deleted successfully.',
     ],
 
 //course end
@@ -719,6 +843,30 @@ return [
         'enrolledDate' => 'Enrolled Date',
     ],
 
+  'roomAlertMessage' => [
+        'create' => 'Room created successfully.',
+        'update' => 'Room updated successfully.',
+        'delete' => 'Room deleted successfully.',
+        'bulk_delete' => 'Rooms deleted successfully.',
+    ],
+
+    'deleteRoomSelect' => [
+        'no_selected' => 'Please select at least one room.',
+        'delete_selected_confirm' => 'Are you sure you want to delete the selected rooms?',
+        'delete_count_text' => 'You are about to delete :count room(s).',
+        'yes_delete' => 'Yes, delete!',
+        'cancel' => 'Cancel',
+        'deleted_success' => 'Selected rooms deleted successfully.',
+        'error_delete' => 'Failed to delete selected rooms.',
+    ],
+
+  'deleteRoom' => [
+        'title' => 'Are you sure?',
+        'confirm_message' => 'Do you really want to delete this room? This action cannot be undone!',
+        'confirm_button' => 'Yes, delete it!',
+        'cancel_button' => 'Cancel',
+    ],
+
 //room end 
 
 //study time start
@@ -823,6 +971,29 @@ return [
         'back' => 'Back',
     ],
 
+    'deleteStudyTimeSelect' => [
+        'no_selected' => 'Please select at least one study time.',
+        'delete_selected_confirm' => 'Are you sure you want to delete the selected study times?',
+        'delete_count_text' => 'You are about to delete :count study times.',
+        'yes_delete' => 'Yes, delete',
+        'cancel' => 'Cancel',
+        'deleted_success' => 'Selected study times deleted successfully!',
+        'error_delete' => 'An error occurred while deleting study times.',
+    ],
+
+    'deleteStudyTime' => [
+        'confirm_title' => 'Are you sure?',
+        'confirm_text' => 'This action will permanently delete this study time.',
+        'confirm_button' => 'Yes, delete it!',
+        'cancel_button' => 'Cancel',
+    ],
+
+    'studyTimeAlertMessage' => [
+            'created' => 'Study Time created successfully.',
+            'updated' => 'Study Time updated successfully.',
+            'deleted' => 'Study Time deleted successfully.',
+            'bulkDeleted' => 'Study Times deleted successfully.',
+        ],
 
 ];
 

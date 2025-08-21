@@ -49,7 +49,8 @@ class StudyTimeController extends Controller
 
         StudyTime::create($request->only('course_id', 'room_id', 'day_type', 'start_time', 'end_time'));
 
-        return redirect()->route('study-time.index')->with('success', 'Study Time created successfully');
+       return redirect()->route('study-time.index')
+        ->with('success', __('messages.studyTimeAlertMessage.created'));
     }
 
     // ✅ Show edit form
@@ -58,6 +59,7 @@ class StudyTimeController extends Controller
         $studyTime = StudyTime::findOrFail($id);
         $courses   = Course::all();
         $rooms     = Room::all();
+
         return view('messages.studytime.edit_studytime', compact('studyTime', 'courses', 'rooms'));
     }
 
@@ -80,7 +82,8 @@ class StudyTimeController extends Controller
 
         $studyTime->update($request->only('course_id', 'room_id', 'day_type', 'start_time', 'end_time'));
 
-        return redirect()->route('study-time.index')->with('success', 'Study Time updated successfully');
+        return redirect()->route('study-time.index')
+                ->with('success', __('messages.studyTimeAlertMessage.updated'));
     }
 
     // ✅ Delete study time
@@ -89,7 +92,9 @@ class StudyTimeController extends Controller
         $studyTime = StudyTime::findOrFail($id);
         $studyTime->delete();
 
-        return redirect()->route('study-time.index')->with('success', 'Study Time deleted successfully');
+        
+        return redirect()->route('study-time.index')
+            ->with('success', __('messages.studyTimeAlertMessage.deleted'));
     }
 
     // ✅ Delete multiple study times
@@ -98,7 +103,10 @@ class StudyTimeController extends Controller
         $ids = explode(',', $request->selected_id);
         StudyTime::whereIn('id', $ids)->delete();
 
-        return response()->json(['status' => 200, 'message' => 'Study Times deleted successfully']);
+        return response()->json([
+                'status' => 200,
+                'message' => __('messages.studyTimeAlertMessage.bulkDeleted')
+            ]);
     }
 
     // ✅ Show study time details by ID

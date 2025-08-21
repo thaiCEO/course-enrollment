@@ -1,10 +1,29 @@
 @extends('components.master')
 
 @section('content')
+
+
+    <!-- Page-header start -->
+    <div class="page-header card">
+        <div class="card-block">
+            <h5 class="m-b-10">{{ __('messages.teacherEdit.title') }}</h5>
+            <ul class="breadcrumb-title b-t-default p-t-10">
+                <li class="breadcrumb-item">
+                    <a href="index.html"> <i class="fa fa-home"></i> </a>
+                </li>
+               <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">{{ __('messages.teacherCreate.mainTitleDashboard') }}</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#!"></a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Page-header end -->
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h2>{{ __('messages.teacherEdit.title') }}</h2>
 
             <form action="{{ route('teacher.update', $teacher->id) }}" method="POST" enctype="multipart/form-data" id="updateTeacherForm">
                 @csrf

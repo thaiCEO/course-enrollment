@@ -22,11 +22,11 @@
                <ul class="nav nav-tabs md-tabs" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#home3" role="tab">
-                            <i class="fa fa-home"></i> {{ __('messages.studentList.tab_home') }}
+                            <i class="ti-id-badge"></i> {{ __('messages.studentList.tab_home') }}
                         </a>
                         <div class="slide"></div>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#profile3" role="tab">
                             <i class="fa fa-key"></i> {{ __('messages.studentList.tab_security') }}
                         </a>
@@ -43,7 +43,7 @@
                             <i class="fa fa-database"></i> {{ __('messages.studentList.tab_bigdata') }}
                         </a>
                         <div class="slide"></div>
-                    </li>
+                    </li> --}}
                 </ul>
 
 
@@ -80,7 +80,7 @@
                                     <td>{{$student->username}}</td>
                                     <td>{{$student->gender}}</td>
                                     <td>{{$student->date_of_birth}}</td>
-                                    <td><span class="label label-danger">{{$student->phone_number}}</span></td>
+                                    <td><span class="label label-primary">{{$student->phone_number}}</span></td>
                                     <td>{{$student->address}}</td>
                                     
                                     <td>
@@ -97,11 +97,13 @@
 
                                         @can('delete student')
   
-                                        <form action="{{ route('student.delete', $student->id) }}" method="POST" style="display:inline;">
+                                          <form action="{{ route('student.delete', $student->id) }}" method="POST" style="display:inline;">
                                                 @csrf
-                                                @method('DELETE') <!-- Laravel directive to send a DELETE request -->
-                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this student?')">{{ __('messages.studentList.delete') }}</button>
-                                        </form>
+                                                @method('DELETE')
+                                                <button type="button" class="btn btn-sm btn-danger delete-student-btn">
+                                                    {{ __('messages.studentList.delete') }}
+                                                </button>
+                                            </form>
 
                                         @endcan
                                     </td>
@@ -116,12 +118,12 @@
                                 {{$students->links()}}
                             </div>
                             <div class="seleteStudent">
-                                <button id="deleteSelected" onclick="deleteSelected()" class="btn btn-outline-danger btn-round btn-sm d-none"> {{ __('messages.studentList.delete') }}</button>
+                                <button id="deleteSelected" onclick="deleteSelected()" class="btn btn-outline-danger btn-sm d-none"> {{ __('messages.studentList.delete_selected') }}</button>
                             </div>
 
                         </div>
                     </div>
-                    <div class="tab-pane" id="profile3" role="tabpanel">
+                    {{-- <div class="tab-pane" id="profile3" role="tabpanel">
 
                         <div class="table-responsive">
                             <table class="table">
@@ -189,9 +191,9 @@
                             <button class="btn btn-outline-primary btn-round btn-sm">Load More</button>
                         </div>
                     </div>
-                    <div class="tab-pane" id="settings3" role="tabpanel">
+                    <div class="tab-pane" id="settings3" role="tabpanel"> --}}
 
-                        <div class="table-responsive">
+                        {{-- <div class="table-responsive">
                             <table class="table">
                                 <tr>
                                     <th>Image</th>
@@ -222,7 +224,7 @@
 
                         <div class="text-center">
                             <button class="btn btn-outline-primary btn-round btn-sm"></button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -237,45 +239,116 @@
 @section('script')
 <script>
     const handleSelect = () => {
-        let seletedStudent = [];
+        let selectedStudent = [];
 
         $('input[type="checkbox"]:checked').each(function () {
-            seletedStudent.push($(this).val());
+            selectedStudent.push($(this).val());
         });
 
+        let student_ids = selectedStudent.join(',');
 
-        let student_ids = seletedStudent.join(',');
-
-        if(seletedStudent.length >= 1){
+        if(selectedStudent.length >= 1){
             $('#deleteSelected').removeClass('d-none');
-            $("#deleteSelected").attr("student_ids",student_ids);
-        }else {
+            $("#deleteSelected").attr("student_ids", student_ids);
+        } else {
             $('#deleteSelected').addClass('d-none');
         }
     }
 
-    const deleteSelected = () => {
-        if(confirm('Are you sure you want to delete?')) {
-            let student_ids = $('#deleteSelected').attr('student_ids');
+const deleteSelected = () => {
+    const selectedIds = Array.from(document.querySelectorAll('input[name="student_id"]:checked'))
+                             .map(cb => cb.value);
 
+    if (selectedIds.length === 0) {
+        Swal.fire({
+            icon: 'info',
+            title: '{{ __("messages.deleteStudentSelect.no_selected") }}',
+            showConfirmButton: false,
+            timer: 1500
+        });
+        return;
+    }
+
+    const deleteBtn = document.getElementById('deleteSelected');
+    deleteBtn.disabled = true;
+
+    Swal.fire({
+        title: '{{ __("messages.deleteStudentSelect.delete_selected_confirm") }}',
+        text: '{{ __("messages.deleteStudentSelect.delete_count_text", ["count" => "__COUNT__"]) }}'.replace('__COUNT__', selectedIds.length),
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: '{{ __("messages.deleteStudentSelect.yes_delete") }}',
+        cancelButtonText: '{{ __("messages.deleteStudentSelect.cancel") }}'
+    }).then((result) => {
+        if(result.isConfirmed){
             $.ajax({
                 type: "POST",
                 url: "{{ route('student.deleteSeletedStudent') }}",
                 data: {
-                    selected_id: student_ids, // Corrected key to match controller
-                    _token: '{{ csrf_token() }}' // Add CSRF token
+                    selected_id: selectedIds.join(','),
+                    _token: '{{ csrf_token() }}'
                 },
                 dataType: "json",
-                success: function (response) {
-                    if(response.status == 200) {
-                        window.location.href="{{ route('student.list')}}";
+                success: function(response){
+                    if(response.status == 200){
+                        Swal.fire({
+                            icon: 'success',
+                            title: '{{ __("messages.deleteStudentSelect.deleted_success") }}',
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            window.location.href="{{ route('student.list') }}";
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '{{ __("messages.deleteStudentSelect.error_delete") }}'
+                        });
                     }
                 },
-                error: function(xhr, status, error) {
-                    console.error(error);
+                error: function(xhr){
+                    Swal.fire({
+                        icon: 'error',
+                        title: '{{ __("messages.deleteStudentSelect.error_delete") }}',
+                        text: xhr.responseText
+                    });
+                },
+                complete: function() {
+                    deleteBtn.disabled = false;
                 }
             });
+        } else {
+            deleteBtn.disabled = false;
         }
-    }
+    });
+}
+
+
+    //delete student
+    document.addEventListener('DOMContentLoaded', function () {
+    const deleteButtons = document.querySelectorAll('.delete-student-btn');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const form = this.closest('form');
+
+            Swal.fire({
+                title: '{{ __("messages.deleteStudent.confirm_title") }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: '{{ __("messages.deleteStudent.confirm_button") }}',
+                cancelButtonText: '{{ __("messages.deleteStudent.cancel_button") }}'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+});
 </script>
 @endsection

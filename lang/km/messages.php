@@ -9,6 +9,13 @@ return [
     'positive' => 'វិជ្ជមាន',
     'negative' => 'អវិជ្ជមាន',
 
+    //show chart bar and pic chart
+    'enrollment_statistics' => 'ស្ថិតិការចុះឈ្មោះ',
+    'daily' => 'ប្រចាំថ្ងៃ',
+    'monthly' => 'ប្រចាំខែ',
+    'yearly' => 'ប្រចាំឆ្នាំ',
+    'enrollments_per_course' => 'ចំនួនចុះឈ្មោះក្នុងវគ្គសិក្សា',
+
 
     'sidebar' => [
         'navigation' => 'ម៉ឺនុយ',
@@ -59,8 +66,32 @@ return [
     ],
 
      'studentList' => [
-        'addStudent' => 'បញ្ចូលសិស្ស'
+        'addStudent' => 'បញ្ចូលសិស្ស',
      ],
+
+     'StudentAlert' => [
+        'create_success' => 'សិស្សបានបង្កើតដោយជោគជ័យ',
+        'update_success' => 'បានធ្វើបច្ចុប្បន្នភាពដោយជោគជ័យ',
+        'delete_success' => 'បានលុបសិស្សដោយជោគជ័យ',
+        'delete_selected_success' => 'បានលុបសិស្សពីការជ្រើសរើសដោយជោគជ័យ',
+    ],
+
+  'createFormStudent' => [
+        'dashboard' => 'ផ្ទាំងគ្រប់គ្រង',
+        'mainTitle' => 'បំពេញព៌ត័មានសិស្ស',
+        'username' => 'គោត្តនាម / នាម',
+        'student_number' => 'លេខសម្គាល់សិស្ស',
+        'date_of_birth' => 'ថ្ងៃ/ខែ/ឆ្នាំ កំណើត',
+        'gender' => 'ភេទ',
+        'select_gender' => 'ជ្រើសរើស',
+        'male' => 'ប្រុស',
+        'female' => 'ស្រី',
+        'address' => 'អាស័យដ្ឋានបច្ចុប្បន្ន',
+        'phone_number' => 'លេខទូរស័ព្ទ',
+        'profile_student' => 'រូបថត',
+        'save' => 'រក្សាទុក',
+        'back' => 'ត្រលប់ក្រោយ',
+    ],
 
 
       'payment_created_success' => 'ការទូទាត់បានបង្កើតដោយជោគជ័យ',
@@ -81,8 +112,12 @@ return [
         'edit' => 'កែប្រែ',
         'delete' => 'លុប',
         'confirm_delete' => 'តើអ្នកពិតជាចង់លុបគ្រូបង្រៀនរូបនេះមែនទេ?',
-        'no_data' => 'គ្មានទិន្នន័យគ្រូបង្រៀន។',
+        'no_data' => 'គ្មានទិន្នន័យគ្រូបង្រៀន',
         'delete_selected' => 'លុបដែលបានជ្រើសរើស',
+        'create_success' => 'បង្កើតគ្រូបានដោយជោគជ័យ',
+        'update_success' => 'បានកែប្រែព័ត៌មានគ្រូដោយជោគជ័យ',
+        'delete_success' => 'បានលុបគ្រូដោយជោគជ័យ។',
+        'delete_selected_success' => 'បានលុបគ្រូដែលបានជ្រើសរើសដោយជោគជ័យ',
     ],
 
 'showTeacher' => [
@@ -129,8 +164,27 @@ return [
     'submit' => 'រក្សាទុក',
 ],
 
+
+'deleteTeacherSelect' => [
+    'no_selected' => 'មិនបានជ្រើសរើសគ្រូណាមួយ!',
+    'delete_selected_confirm' => 'តើអ្នកប្រាកដថាចង់លុបគ្រូដែលបានជ្រើសរើសទេ?',
+    'yes_delete' => 'បាទ/ចា, លុប!',
+    'cancel' => 'បោះបង់',
+    'deleted_success' => 'គ្រូដែលបានជ្រើសរើសត្រូវបានលុបដោយជោគជ័យ!',
+    'error_delete' => 'បរាជ័យក្នុងការលុបគ្រូ!',
+    'delete_count_text' => 'លុបគ្រូចំនួន :count នាក់!'
+],
+    'deleteTeacher' => [
+        'confirm_title' => 'តើអ្នកប្រាកដទេ?',
+        'confirm_button' => 'បាទ/ចា, លុប!',
+        'cancel_button' => 'បោះបង់',
+        'deleted_success' => 'គ្រូត្រូវបានលុបដោយជោគជ័យ!',
+    ],
+
+
+
 'studentList' => [
-    'tab_home' => 'ទំព័រដើម',
+    'tab_home' => 'សិស្ស',
     'tab_security' => 'សុវត្ថិភាព',
     'tab_entertainment' => 'ការកម្សាន្ដ',
     'tab_bigdata' => 'ទិន្នន័យធំ',
@@ -148,11 +202,31 @@ return [
     'edit' => 'កែប្រែ',
     'delete' => 'លុប',
     'confirm_delete' => 'តើអ្នកប្រាកដជាចង់លុបសិស្សនេះមែនទេ?',
-    'delete_selected' => 'លុបជាជម្រើស',
+    'delete_selected' => 'លុបដែលបានជ្រើសរើស',
 
     'addStudent' => 'បន្ថែមសិស្សថ្មី',
 
 ],
+
+'deleteStudent' => [
+    'delete' => 'លុប',
+    'confirm_title' => 'តើអ្នកប្រាកដទេ?',
+    'confirm_text' => 'អ្នកមិនអាចដកវិញបានទេ!',
+    'confirm_button' => 'បាទ/ចា, លុប!',
+    'cancel_button' => 'បោះបង់',
+    'deleted_success' => 'សិស្សត្រូវបានលុបដោយជោគជ័យ!'
+],
+
+'deleteStudentSelect' => [
+    'no_selected' => 'មិនបានជ្រើសរើសសិស្សណាមួយ!',
+    'delete_selected_confirm' => 'តើអ្នកប្រាកដថាចង់លុបសិស្សដែលបានជ្រើសរើសទេ?',
+    'yes_delete' => 'បាទ/ចា, លុប!',
+    'cancel' => 'បោះបង់',
+    'deleted_success' => 'សិស្សដែលបានជ្រើសរើសត្រូវបានលុបដោយជោគជ័យ!',
+    'error_delete' => 'បរាជ័យក្នុងការលុបសិស្ស!',
+    'delete_count_text' => 'លុបសិស្សចំនួន :count នាក់!'
+],
+
 
 
  'paymentmethod' => [
@@ -332,7 +406,25 @@ return [
 
 //enrollment start
 
+'deleteEnrollmentSelect' => [
+    'no_selected' => 'មិនបានជ្រើសរើសការចុះឈ្មោះណាមួយ!',
+    'delete_selected_confirm' => 'តើអ្នកប្រាកដថាចង់លុបការចុះឈ្មោះដែលបានជ្រើសរើសទេ?',
+    'yes_delete' => 'បាទ/ចា, លុប!',
+    'cancel' => 'បោះបង់',
+    'deleted_success' => 'ការចុះឈ្មោះដែលបានជ្រើសរើសត្រូវបានលុបដោយជោគជ័យ!',
+    'error_delete' => 'បរាជ័យក្នុងការលុបការចុះឈ្មោះ!',
+    'delete_count_text' => 'លុបការចុះឈ្មោះ :count នាក់!'
+],
+
+'deleteEnrollment' => [
+    'delete_confirm_title' => 'តើអ្នកប្រាកដទេ?',
+    'yes_delete' => 'បាទ/ចា, លុប!',
+    'cancel' => 'បោះបង់',
+],
+
 'enrollmentList' => [
+        'deleted' => 'ការចុះឈ្មោះត្រូវបានលុបដោយជោគជ័យ',
+        'updated' => 'ការចុះឈ្មោះត្រូវបានធ្វើបច្ចុប្បន្នភាពដោយជោគជ័យ',
         'title' => 'បញ្ជីចុះឈ្មោះសិស្ស',
         'tab1' => 'ចុះឈ្មោះសិស្ស',
         'tab2' => 'សុវត្ថិភាព',
@@ -353,7 +445,7 @@ return [
             'delete' => 'លុប',
             'confirmDelete' => 'តើអ្នកពិតជាចង់លុបការចុះឈ្មោះនេះមែនទេ?',
         ],
-        'empty' => 'មិនមានការចុះឈ្មោះសិស្សទេ។',
+        'empty' => 'មិនមានការចុះឈ្មោះសិស្សទេ',
         'deleteSelected' => 'លុបដែលបានជ្រើសរើស',
     ],
 
@@ -370,7 +462,7 @@ return [
     ],
 
  'editEnrollment' => [
-        'title' => 'កែប្រែព័ត៌មាន',
+        'title' => 'កែប្រែព័ត៌មានការចុះឈ្មោះ',
         'selectStudent' => 'ជ្រើសរើសសិស្ស',
         'selectStudentPlaceholder' => '-- ជ្រើសរើសសិស្ស --',
         'selectCourse' => 'ជ្រើសរើសវគ្គសិក្សា',
@@ -390,6 +482,26 @@ return [
 //enrollment end
 
 //course start 
+
+'deleteCourse' => [
+    'delete' => 'លុប',
+    'confirm_title' => 'តើអ្នកប្រាកដទេ?',
+    'confirm_text' => 'អ្នកមិនអាចដកវិញបានទេ!',
+    'confirm_button' => 'បាទ/ចា, លុប!',
+    'cancel_button' => 'បោះបង់',
+    'deleted_success' => 'វគ្គសិក្សាត្រូវបានលុបដោយជោគជ័យ!'
+],
+
+'deleteCourseSelect' => [
+    'no_selected' => 'មិនបានជ្រើសរើសវគ្គសិក្សាណាមួយ!',
+    'delete_selected_confirm' => 'តើអ្នកប្រាកដថាចង់លុបវគ្គសិក្សាដែលបានជ្រើសរើសទេ?',
+    'yes_delete' => 'បាទ/ចា, លុប!',
+    'cancel' => 'បោះបង់',
+    'deleted_success' => 'វគ្គសិក្សាដែលបានជ្រើសរើសត្រូវបានលុបដោយជោគជ័យ!',
+    'error_delete' => 'បរាជ័យក្នុងការលុបវគ្គសិក្សា!',
+    'delete_count_text' => 'លុបវគ្គសិក្សាចំនួន :count នាក់!',
+    'delete_selected' => 'លុបវគ្គសិក្សាដែលបានជ្រើសរើស',
+],
 
 'courseList' => [
     'tabs' => [
@@ -429,6 +541,8 @@ return [
         'isActive' => 'បើកដំណើរការ',
         'submit' => 'បញ្ចូល',
         'back' => 'ត្រឡប់ក្រោយ',
+        'mainTitle' => 'បង្កើតវគ្គសិក្សាថ្មី',
+        'editCourse' => 'កែប្រែវគ្គសិក្សា',
     ],
 
  'editCourse' => [
@@ -466,6 +580,15 @@ return [
         'noDescription' => 'មិនមានពិពណ៌នា',
         'noTeacher' => 'មិនមាន',
     ],
+
+ 'courseAlertMessage' => [
+        'create_success' => 'បញ្ចូលមុខវិជ្ជា​ដោយ​ជោគជ័យ',
+        'update_success' => 'កែប្រែមុខវិជ្ជា​ដោយ​ជោគជ័យ',
+        'delete_success' => 'លុបមុខវិជ្ជា​ដោយ​ជោគជ័យ',
+        'bulk_delete_success' => 'លុបមុខវិជ្ជា​ដែលបានជ្រើសដោយ​ជោគជ័យ',
+    ],
+
+
 // course end
 
 
@@ -709,6 +832,30 @@ return [
         'enrolledDate' => 'ថ្ងៃចុះឈ្មោះ',
     ],
 
+     'roomAlertMessage' => [
+        'create' => 'បន្ទប់បានបង្កើតដោយជោគជ័យ',
+        'update' => 'បន្ទប់បានកែប្រែដោយជោគជ័យ',
+        'delete' => 'បន្ទប់បានលុបដោយជោគជ័យ',
+        'bulk_delete' => 'បន្ទប់ដែលបានជ្រើសបានលុបដោយជោគជ័យ',
+    ],
+
+    'deleteRoomSelect' => [
+        'no_selected' => 'សូមជ្រើសរើសបន្ទប់យ៉ាងហោចណាស់មួយ',
+        'delete_selected_confirm' => 'តើអ្នកចង់លុបបន្ទប់ដែលបានជ្រើសឬ?',
+        'delete_count_text' => 'លុបបន្ទប់ចំនួន :count',
+        'yes_delete' => 'បាទ/ចាស លុប!',
+        'cancel' => 'បោះបង់',
+        'deleted_success' => 'លុបបន្ទប់ដែលបានជ្រើសដោយជោគជ័យ',
+        'error_delete' => 'លុបបន្ទប់ដែលបានជ្រើសបរាជ័យ។',
+    ],
+
+ 'deleteRoom' => [
+        'title' => 'តើអ្នកប្រាកដទេ?',
+        'confirm_message' => 'តើអ្នកចង់លុបបន្ទប់នេះមែនទេ? អ្នកនឹងមិនអាចយកវាមកវិញបានទេ!',
+        'confirm_button' => 'បាទ/ចាស លុប',
+        'cancel_button' => 'បោះបង់',
+    ],
+
 //room end 
 
 //study time start 
@@ -740,8 +887,8 @@ return [
         'course_placeholder' => 'ជ្រើសរើសវគ្គសិក្សា',
         'day_type' => 'វេនសិក្សា',
         'day_type_placeholder' => 'ជ្រើសរើសវេនសិក្សា',
-        'weekday' => 'ថ្ងៃធ្វើការ (ច័ន្ទ - សុក្រ)',
-        'weekend' => 'ថ្ងៃសៅរ៍ - អាទិត្យ',
+        'weekday' => 'ច័ន្ទ - សុក្រ',
+        'weekend' => 'សៅរ៍ - អាទិត្យ',
         'start_time' => 'ម៉ោងចាប់ផ្តើម',
         'end_time' => 'ម៉ោងបញ្ចប់',
         'submit' => 'រក្សាទុក',
@@ -758,8 +905,8 @@ return [
     'course_placeholder' => 'ជ្រើសរើសវគ្គសិក្សា',
     'day_type' => 'វេនសិក្សា',
     'day_type_placeholder' => 'ជ្រើសរើសប្រភេទថ្ងៃ',
-    'weekday' => 'ថ្ងៃធ្វើការ (ច័ន្ទ - សុក្រ)',
-    'weekend' => 'ថ្ងៃសៅរ៍ - អាទិត្យ',
+    'weekday' => 'ច័ន្ទ - សុក្រ',
+    'weekend' => 'សៅរ៍ - អាទិត្យ',
     'start_time' => 'ម៉ោងចាប់ផ្តើម',
     'end_time' => 'ម៉ោងបញ្ចប់',
     'update' => 'កែប្រែ',
@@ -812,6 +959,29 @@ return [
         'back' => 'ត្រឡប់ក្រោយ',
     ],
 
+    'deleteStudyTimeSelect' => [
+        'no_selected' => 'សូមជ្រើសរើសម៉ោងសិក្សា​យ៉ាងហោចណាស់​មួយ',
+        'delete_selected_confirm' => 'តើអ្នកពិតជាចង់លុបម៉ោងសិក្សាដែលបានជ្រើសឬ?',
+        'delete_count_text' => 'លុបម៉ោងសិក្សាចំនួន :count ',
+        'yes_delete' => 'បាទ/ចាស លុប',
+        'cancel' => 'បោះបង់',
+        'deleted_success' => 'លុបម៉ោងសិក្សាដែលបានជ្រើសដោយជោគជ័យ!',
+        'error_delete' => 'មានបញ្ហាក្នុងការលុបម៉ោងសិក្សា',
+    ],
+
+    'deleteStudyTime' => [
+        'confirm_title' => 'តើអ្នកប្រាកដទេ?',
+        'confirm_text' => 'ការកែសម្រួលនេះនឹងលុបម៉ោងសិក្សានេះចោលអចិន្ត្រៃយ៍',
+        'confirm_button' => 'បាទ/ចាស លុប!',
+        'cancel_button' => 'បោះបង់',
+    ],
+
+    'studyTimeAlertMessage' => [
+        'created' => 'ម៉ោងសិក្សាត្រូវបានបង្កើតដោយជោគជ័យ',
+        'updated' => 'ម៉ោងសិក្សាត្រូវបានកែប្រែដោយជោគជ័យ',
+        'deleted' => 'ម៉ោងសិក្សាត្រូវបានលុបដោយជោគជ័យ',
+        'bulkDeleted' => 'ម៉ោងសិក្សាទាំងអស់ត្រូវបានលុបដោយជោគជ័យ',
+    ],
 
 ];
 

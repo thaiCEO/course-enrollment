@@ -33,8 +33,8 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.2.1/html5-qrcode.min.js"></script>
-
-
+<!-- link chart -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 

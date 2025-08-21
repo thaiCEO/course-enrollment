@@ -51,7 +51,9 @@ class CourseController extends Controller
             'is_active' => $request->has('is_active') && $request->is_active == '1' ? 1 : 0,
         ]);
 
-       return redirect()->route('courses.List')->with('success', 'បញ្ចូលមុខវិជ្ជា​ដោយ​ជោគជ័យ'); 
+       return redirect()
+        ->route('courses.List')
+        ->with('success', __('messages.courseAlertMessage.create_success'));
     }
 
     // Show single course
@@ -107,7 +109,9 @@ class CourseController extends Controller
             'course_image' => $course->course_image,
         ]);
 
-        return redirect()->route('courses.List')->with('success', 'កែប្រែមុខវិជ្ជា​ដោយ​ជោគជ័យ');
+         return redirect()
+        ->route('courses.List')
+        ->with('success', __('messages.courseAlertMessage.update_success'));
     }
 
     // Delete one course
@@ -118,7 +122,10 @@ class CourseController extends Controller
         }
 
         $course->delete();
-        return redirect()->route('courses.List')->with('success', 'លុបមុខវិជ្ជា​ដោយ​ជោគជ័យ');
+
+         return redirect()
+        ->route('courses.List')
+        ->with('success', __('messages.courseAlertMessage.delete_success'));
     }
 
     // Bulk delete selected courses (optional)
@@ -137,9 +144,9 @@ class CourseController extends Controller
             }
         }
 
-        return response()->json([
+       return response()->json([
             'status' => 200,
-            'message' => "លុបមុខវិជ្ជា​ដែលបានជ្រើសដោយ​ជោគជ័យ"
+            'message' => __('messages.courseAlertMessage.bulk_delete_success')
         ]);
     }
 }

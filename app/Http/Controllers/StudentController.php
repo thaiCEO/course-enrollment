@@ -99,8 +99,7 @@ class StudentController extends Controller
         $user->save();
 
         // Set a success message in the session
-       session()->flash("success", "សិស្សបានបង្កើតដោយជោគជ័យ"); 
-
+   session()->flash("success", __('messages.StudentAlert.create_success'));
 
 
             return response()->json([
@@ -199,7 +198,8 @@ public function showStudent($id) {
         // Save the updated student information
         $student->save();
 
-       return redirect()->route('student.list')->with('success', 'បានធ្វើបច្ចុប្បន្នភាពដោយជោគជ័យ។'); 
+       return redirect()->route('student.list')
+                 ->with('success', __('messages.StudentAlert.update_success'));
     }
 
     /**
@@ -220,7 +220,8 @@ public function showStudent($id) {
         $student->delete();
 
         // Redirect back to the list of students with a success message
-       return redirect()->route('student.list')->with('success', 'បានលុបសិស្សដោយជោគជ័យ'); 
+      return redirect()->route('student.list')
+                 ->with('success', __('messages.StudentAlert.delete_success'));
     }
 
     public function deleteWithSelect (Request $request) {
@@ -243,9 +244,9 @@ public function showStudent($id) {
         }
 
 
-        return response([
+     return response()->json([
             'status' => 200,
-            'message' => "បានលុបសិស្សពីការជ្រើសរើសដោយជោគជ័យ"
+            'message' => __('messages.StudentAlert.delete_selected_success')
         ]);
     }
 

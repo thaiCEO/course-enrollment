@@ -10,11 +10,9 @@
                 <a href="{{ route('study-time.index') }}"> <i class="fa fa-home"></i> </a>
             </li>
             <li class="breadcrumb-item">
-                <a href="#!">{{ __('messages.studytimeCreate.mainTitleDashboard') }}</a>
+                <a href="{{ route('dashboard.index') }}">{{ __('messages.studytimeCreate.mainTitleDashboard') }}</a>
             </li>
-            <li class="breadcrumb-item">
-                <a href="#!">{{ __('messages.studytimeCreate.create') }}</a>
-            </li>
+         
         </ul>
     </div>
 </div>

@@ -23,7 +23,7 @@
             <ul class="nav nav-tabs md-tabs" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" data-toggle="tab" href="#rooms-tab" role="tab">
-                        <i class="fa fa-door-open"></i> {{ __('messages.roomList.title') }}
+                        <i class="ti-home"></i> {{ __('messages.roomList.title') }}
                     </a>
                     <div class="slide"></div>
                 </li>
@@ -63,14 +63,16 @@
                                             {{ __('messages.roomList.edit') }}
                                         </a>
 
-                                        <form action="{{ route('room.destroy', $room->id) }}" method="POST" class="d-inline">
+                                       <form action="{{ route('room.destroy', $room->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('{{ __('messages.roomList.delete_confirm') }}')">
+                                            <button type="button"
+                                                class="btn btn-sm btn-danger delete-room-btn"
+                                                data-message="{{ __('messages.deleteRoom.confirm_message') }}">
                                                 {{ __('messages.roomList.delete') }}
                                             </button>
                                         </form>
+
                                     </td>
                                 </tr>
                                 @empty
@@ -84,11 +86,13 @@
 
                     <div class="btn-wrapper d-flex justify-content-between align-items-center mt-3">
                         <div>{{ $rooms->links() }}</div>
-                        <div class="selectRoom">
-                            <button id="deleteSelected" onclick="deleteSelected()" class="btn btn-outline-danger btn-sm d-none">
-                                {{ __('messages.roomList.delete_selected') }}
-                            </button>
-                        </div>
+
+                           <div class="selectRoom">
+                                <button id="deleteSelected" onclick="deleteSelected()" class="btn btn-outline-danger btn-sm d-none">
+                                    {{ __('messages.roomList.delete_selected') }}
+                                </button>
+                            </div>
+
                     </div>
 
                 </div>
@@ -102,45 +106,119 @@
 
 @section('script')
 <script>
-    const handleSelect = () => {
-        let selected = [];
+  const handleSelect = () => {
+    let selectedRooms = [];
 
-        $('input[name="room_id"]:checked').each(function () {
-            selected.push($(this).val());
+    $('input[name="room_id"]:checked').each(function () {
+        selectedRooms.push($(this).val());
+    });
+
+    let room_ids = selectedRooms.join(',');
+
+    if (selectedRooms.length >= 1) {
+        $('#deleteSelected').removeClass('d-none');
+        $("#deleteSelected").attr("room_ids", room_ids);
+    } else {
+        $('#deleteSelected').addClass('d-none');
+    }
+};
+
+const deleteSelected = () => {
+    const selectedIds = Array.from(document.querySelectorAll('input[name="room_id"]:checked'))
+                             .map(cb => cb.value);
+
+    if (selectedIds.length === 0) {
+        Swal.fire({
+            icon: 'info',
+            title: '{{ __("messages.deleteRoomSelect.no_selected") }}',
+            showConfirmButton: false,
+            timer: 1500
         });
-
-        let room_ids = selected.join(',');
-
-        if (selected.length > 0) {
-            $('#deleteSelected').removeClass('d-none');
-            $('#deleteSelected').attr('room_ids', room_ids);
-        } else {
-            $('#deleteSelected').addClass('d-none');
-        }
+        return;
     }
 
-    const deleteSelected = () => {
-        if (confirm('{{ __("messages.roomList.delete_selected_confirm") }}')) {
-            let room_ids = $('#deleteSelected').attr('room_ids');
+    const deleteBtn = document.getElementById('deleteSelected');
+    deleteBtn.disabled = true;
 
+    Swal.fire({
+        title: '{{ __("messages.deleteRoomSelect.delete_selected_confirm") }}',
+        text: '{{ __("messages.deleteRoomSelect.delete_count_text", ["count" => "__COUNT__"]) }}'.replace('__COUNT__', selectedIds.length),
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: '{{ __("messages.deleteRoomSelect.yes_delete") }}',
+        cancelButtonText: '{{ __("messages.deleteRoomSelect.cancel") }}'
+    }).then((result) => {
+        if (result.isConfirmed) {
             $.ajax({
                 type: "POST",
                 url: "{{ route('room.deleteSelected') }}",
                 data: {
-                    selected_id: room_ids,
+                    selected_id: selectedIds.join(','),
                     _token: '{{ csrf_token() }}'
                 },
                 dataType: "json",
                 success: function (response) {
                     if (response.status == 200) {
-                        window.location.href = "{{ route('room.index') }}";
+                        Swal.fire({
+                            icon: 'success',
+                            title: '{{ __("messages.deleteRoomSelect.deleted_success") }}',
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            window.location.href = "{{ route('room.index') }}";
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '{{ __("messages.deleteRoomSelect.error_delete") }}'
+                        });
                     }
                 },
                 error: function (xhr) {
-                    console.error(xhr.responseText);
+                    Swal.fire({
+                        icon: 'error',
+                        title: '{{ __("messages.deleteRoomSelect.error_delete") }}',
+                        text: xhr.responseText
+                    });
+                },
+                complete: function () {
+                    deleteBtn.disabled = false;
                 }
             });
+        } else {
+            deleteBtn.disabled = false;
         }
-    }
+    });
+};
+
+
+
+//delete room 
+   document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.delete-room-btn');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const form = this.closest('form'); // Get parent form
+                const message = this.dataset.message;
+
+                Swal.fire({
+                    title: '{{ __("messages.deleteRoom.title") }}',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: '{{ __("messages.deleteRoom.confirm_button") }}',
+                    cancelButtonText: '{{ __("messages.deleteRoom.cancel_button") }}'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit(); // Submit form if confirmed
+                    }
+                });
+            });
+        });
+    });
 </script>
 @endsection

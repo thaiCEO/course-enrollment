@@ -23,11 +23,11 @@
             <ul class="nav nav-tabs md-tabs" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" data-toggle="tab" href="#home3" role="tab">
-                        <i class="fa fa-home"></i> {{ __('messages.enrollmentList.tab1') }}
+                        <i class="ti-agenda"></i> {{ __('messages.enrollmentList.tab1') }}
                     </a>
                     <div class="slide"></div>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#profile3" role="tab">
                         <i class="fa fa-key"></i> {{ __('messages.enrollmentList.tab2') }}
                     </a>
@@ -44,7 +44,7 @@
                         <i class="fa fa-database"></i> {{ __('messages.enrollmentList.tab4') }}
                     </a>
                     <div class="slide"></div>
-                </li>
+                </li> --}}
             </ul>
 
             <!-- Tab panes -->
@@ -73,7 +73,12 @@
                             <tbody>
                                 @forelse ($enrollments as $enrollment)
                                     <tr>
-                                        <td>{{ $enrollment->id }}</td>
+                                        <td>
+
+                                            E{{ $loop->iteration }}
+                                        
+                                            <input onchange="handleSelect()" enrollment_ids="" type="checkbox" name="enrollment_id" value="{{$enrollment->id}}">
+                                        </td>
                                         <td>{{ $enrollment->student->username ?? $enrollment->student->name }}</td>
                                         <td>{{ $enrollment->course->title }}</td>
                                           {{-- ✅ Display Room Name --}}
@@ -105,16 +110,19 @@
 
                                             {{-- Delete Enrollment --}}
                                             @can('delete enrollment')
-                                                <form action="{{ route('enrollments.destroy', $enrollment->id) }}" 
+
+                                             <form action="{{ route('enrollments.destroy', $enrollment->id) }}" 
                                                     method="POST" 
                                                     style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn btn-sm btn-danger" 
-                                                            onclick="return confirm('{{ __('messages.enrollmentList.action.confirmDelete') }}')">
+                                                    <button type="button" 
+                                                            class="btn btn-sm btn-danger delete-enrollment-btn"
+                                                            data-message="{{ __('messages.enrollmentList.action.confirmDelete') }}">
                                                         {{ __('messages.enrollmentList.action.delete') }}
                                                     </button>
                                                 </form>
+
                                             @endcan
                                         </td>
 
@@ -133,7 +141,7 @@
                             {{ $enrollments->links() }}
                         </div>
                         <div class="seleteStudent">
-                            <button id="deleteSelected" onclick="deleteSelected()" class="btn btn-outline-danger btn-round btn-sm d-none">
+                            <button id="deleteSelected" onclick="deleteSelected()" class="btn btn-outline-danger btn-sm d-none">
                                 {{ __('messages.enrollmentList.deleteSelected') }}
                             </button>
                         </div>
@@ -151,46 +159,121 @@
 
 @section('script')
 <script>
-    const handleSelect = () => {
-        let seletedStudent = [];
+  const handleSelect = () => {
+    let selectedEnrollments = [];
 
-        $('input[type="checkbox"]:checked').each(function () {
-            seletedStudent.push($(this).val());
+    $('input[name="enrollment_id"]:checked').each(function () {
+        selectedEnrollments.push($(this).val());
+    });
+
+    let enrollment_ids = selectedEnrollments.join(',');
+
+    if(selectedEnrollments.length >= 1){
+        $('#deleteSelected').removeClass('d-none');
+        $("#deleteSelected").attr("enrollment_ids", enrollment_ids);
+    } else {
+        $('#deleteSelected').addClass('d-none');
+    }
+}
+
+const deleteSelected = () => {
+    const selectedIds = Array.from(document.querySelectorAll('input[name="enrollment_id"]:checked'))
+                             .map(cb => cb.value);
+
+    if(selectedIds.length === 0){
+        Swal.fire({
+            icon: 'info',
+            title: '{{ __("messages.deleteEnrollmentSelect.no_selected") }}',
+            showConfirmButton: false,
+            timer: 1500
         });
-
-
-        let student_ids = seletedStudent.join(',');
-
-        if(seletedStudent.length >= 1){
-            $('#deleteSelected').removeClass('d-none');
-            $("#deleteSelected").attr("student_ids",student_ids);
-        }else {
-            $('#deleteSelected').addClass('d-none');
-        }
+        return;
     }
 
-    const deleteSelected = () => {
-        if(confirm('Are you sure you want to delete?')) {
-            let student_ids = $('#deleteSelected').attr('student_ids');
+    const deleteBtn = document.getElementById('deleteSelected');
+    deleteBtn.disabled = true;
 
+    Swal.fire({
+        title: '{{ __("messages.deleteEnrollmentSelect.delete_selected_confirm") }}',
+        text: '{{ __("messages.deleteEnrollmentSelect.delete_count_text", ["count" => "__COUNT__"]) }}'.replace('__COUNT__', selectedIds.length),
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: '{{ __("messages.deleteEnrollmentSelect.yes_delete") }}',
+        cancelButtonText: '{{ __("messages.deleteEnrollmentSelect.cancel") }}'
+    }).then((result) => {
+        if(result.isConfirmed){
             $.ajax({
                 type: "POST",
-                url: "{{ route('student.deleteSeletedStudent') }}",
+                url: "{{ route('enrollments.deleteSelectedEnrollment') }}",
                 data: {
-                    selected_id: student_ids, // Corrected key to match controller
-                    _token: '{{ csrf_token() }}' // Add CSRF token
+                    selected_id: selectedIds.join(','),
+                    _token: '{{ csrf_token() }}'
                 },
                 dataType: "json",
-                success: function (response) {
-                    if(response.status == 200) {
-                        window.location.href="{{ route('student.list')}}";
+                success: function(response){
+                    if(response.status == 200){
+                        Swal.fire({
+                            icon: 'success',
+                            title: '{{ __("messages.deleteEnrollmentSelect.deleted_success") }}',
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            window.location.href="{{ route('enrollments.List') }}";
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '{{ __("messages.deleteEnrollmentSelect.error_delete") }}'
+                        });
                     }
                 },
-                error: function(xhr, status, error) {
-                    console.error(error);
+                error: function(xhr){
+                    Swal.fire({
+                        icon: 'error',
+                        title: '{{ __("messages.deleteEnrollmentSelect.error_delete") }}',
+                        text: xhr.responseText
+                    });
+                },
+                complete: function(){
+                    deleteBtn.disabled = false;
                 }
             });
+        } else {
+            deleteBtn.disabled = false;
         }
-    }
+    });
+}
+
+
+//delete enrollment confirmation
+document.addEventListener('DOMContentLoaded', function () {
+    const deleteButtons = document.querySelectorAll('.delete-enrollment-btn');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const form = this.closest('form'); // parent form
+            const message = this.dataset.message;
+
+            Swal.fire({
+                title: '{{ __("messages.deleteEnrollment.delete_confirm_title") }}',
+                text: message,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: '{{ __("messages.deleteEnrollment.yes_delete") }}',
+                cancelButtonText: '{{ __("messages.deleteEnrollment.cancel") }}'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit(); // submit if confirmed
+                }
+            });
+        });
+    });
+});
+
+
 </script>
 @endsection

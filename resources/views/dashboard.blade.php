@@ -79,50 +79,20 @@
 <!-- Order Cards End -->
 
 
-          <!-- statustic and process start -->
-          <div class="col-lg-8 col-md-12">
-              <div class="card">
-                  <div class="card-header">
-                      <h5>{{ __('messages.statistics') }}</h5>
-                      <div class="card-header-right">
-                          <ul class="list-unstyled card-option">
-                              <li><i class="fa fa-chevron-left"></i></li>
-                              <li><i class="fa fa-window-maximize full-card"></i></li>
-                              <li><i class="fa fa-minus minimize-card"></i></li>
-                              <li><i class="fa fa-refresh reload-card"></i></li>
-                              <li><i class="fa fa-times close-card"></i></li>
-                          </ul>
-                      </div>
-                  </div>
-                  <div class="card-block">
-                      <canvas id="Statistics-chart" height="450"></canvas>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-12">
-              <div class="card">
-                  <div class="card-header">
-                      <h5>{{ __('messages.feedback') }}</h5>
-                  </div>
-                  <div class="card-block">
-                      <span class="d-block text-c-blue f-24 f-w-600 text-center">2000</span>
-                      <canvas id="feedback-chart" height="247"></canvas>
-                      <div class="row justify-content-center m-t-15">
-                          <div class="col-auto b-r-default m-t-5 m-b-5">
-                              <h4>83%</h4>
-                              <p class="text-success m-b-0"><i class="ti-hand-point-up m-r-5"></i>{{ __('messages.positive') }}</p>
-                          </div>
-                          <div class="col-auto m-t-5 m-b-5">
-                              <h4>17%</h4>
-                              <p class="text-danger m-b-0"><i class="ti-hand-point-down m-r-5"></i>{{ __('messages.negative') }}</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- statustic and process end -->
+  <!-- Bar Chart -->
+    <div class="col-9">
+        <div class="card-body">
+            <canvas id="enrollmentChart"></canvas>
+        </div>
+    </div>
 
-     
+    <!-- Pie Chart -->
+    <div class="col-3">
+        <div class="card-body">
+            <canvas id="courseChart"></canvas>
+        </div>
+    </div>
+ <!-- statustic and process end -->
 
       </div>
   </div>
@@ -132,4 +102,113 @@
   </div>
 @endsection
 
+
+@section('script')
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const currentLocale = @json($locale);
+
+    // Set font family based on language
+    const fontFamily = currentLocale === 'km' ? 'Battambang' : 'system-ui';
+
+    // BAR CHART
+    const ctx = document.getElementById('enrollmentChart').getContext('2d');
+    const enrollmentChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {!! json_encode($dailyLabels) !!},
+            datasets: [
+                {
+                    label: "{{ __('messages.daily') }}",
+                    backgroundColor: '#3b82f6',
+                    data: {!! json_encode($dailyData) !!}
+                },
+                {
+                    label: "{{ __('messages.monthly') }}",
+                    backgroundColor: '#10b981',
+                    data: {!! json_encode($monthlyData) !!}
+                },
+                {
+                    label: "{{ __('messages.yearly') }}",
+                    backgroundColor: '#f59e0b',
+                    data: {!! json_encode($yearlyData) !!}
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            family: fontFamily,
+                            size: 14
+                        }
+                    }
+                },
+                title: {
+                    display: true,
+                    text: "{{ __('messages.enrollment_statistics') }}",
+                    font: {
+                        family: fontFamily,
+                        size: 18
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        font: { family: fontFamily }
+                    }
+                },
+                y: {
+                    ticks: {
+                        font: { family: fontFamily }
+                    }
+                }
+            }
+        }
+    });
+
+    // PIE CHART
+    const ctx2 = document.getElementById('courseChart').getContext('2d');
+    const courseChart = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: {!! json_encode($courseLabels) !!},
+            datasets: [{
+                data: {!! json_encode($courseData) !!},
+                backgroundColor: [
+                    '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            family: fontFamily,
+                            size: 14
+                        }
+                    }
+                },
+                title: {
+                    display: true,
+                    text: "{{ __('messages.enrollments_per_course') }}",
+                    font: {
+                        family: fontFamily,
+                        size: 18
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+@endsection
 

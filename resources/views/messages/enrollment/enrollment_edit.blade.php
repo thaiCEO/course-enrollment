@@ -1,10 +1,28 @@
 @extends('components.master')
 
 @section('content')
+
+<!-- Page-header start -->
+<div class="page-header card">
+    <div class="card-block">
+        <h5 class="m-b-10">{{ __('messages.editEnrollment.title') }}</h5>
+        <ul class="breadcrumb-title b-t-default p-t-10">
+            <li class="breadcrumb-item">
+                <a href="{{ url('/') }}"> <i class="fa fa-home"></i> </a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#!">{{ __('messages.createEnrollment.dashboard') }}</a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<!-- Page-header end -->
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h2>{{ __('messages.editEnrollment.title') }}</h2>
 
             <form action="{{ route('enrollments.update', $enrollment->id) }}" method="POST">
                 @csrf
@@ -68,6 +86,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">{{ __('messages.editEnrollment.updateButton') }}</button>
+                <a href="{{ route('enrollments.List') }}" class="btn btn-secondary">{{ __('messages.createCourse.back') }}</a>
             </form>
 
         </div>

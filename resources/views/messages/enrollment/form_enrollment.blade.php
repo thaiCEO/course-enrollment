@@ -12,9 +12,7 @@
             <li class="breadcrumb-item">
                 <a href="#!">{{ __('messages.createEnrollment.dashboard') }}</a>
             </li>
-            <li class="breadcrumb-item">
-                <a href="#!">{{ __('messages.createEnrollment.breadcrumb') }}</a>
-            </li>
+
         </ul>
     </div>
 </div>
@@ -78,6 +76,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">{{ __('messages.createEnrollment.submitButton') }}</button>
+                <a href="{{ route('enrollments.List') }}" class="btn btn-secondary">{{ __('messages.createCourse.back') }}</a>
             </form>
 
         </div>

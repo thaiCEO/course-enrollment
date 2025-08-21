@@ -45,5 +45,10 @@ class course extends Model
             : null;
     }
 
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class, 'course_id');
+    }
+
 
 }

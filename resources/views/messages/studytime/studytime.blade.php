@@ -53,12 +53,20 @@
                                 @forelse ($studyTimes as $studyTime)
                                 <tr>
                                     <td>
-                                        ST{{ $loop->iteration }}
+                                        T{{ $loop->iteration }}
                                         <input onchange="handleSelect()" type="checkbox" name="studytime_id" value="{{ $studyTime->id }}">
                                     </td>
                                     <td>{{ $studyTime->course->title ?? '-' }}</td>
                                     <td>{{ $studyTime->room->name ?? '-' }}</td>
-                                    <td>{{ ucfirst($studyTime->day_type) }}</td>
+                                    <td>
+                                        @if($studyTime->day_type === 'weekday')
+                                            {{ __('messages.studytimeCreate.weekday') }}
+                                        @elseif($studyTime->day_type === 'weekend')
+                                            {{ __('messages.studytimeCreate.weekend') }}
+                                        @else
+                                            {{ ucfirst($studyTime->day_type) }}
+                                        @endif
+                                    </td>
                                     <td>{{ \Carbon\Carbon::parse($studyTime->start_time)->format('H:i') }}</td>
                                     <td>{{ \Carbon\Carbon::parse($studyTime->end_time)->format('H:i') }}</td>
                                     <td>
@@ -69,14 +77,14 @@
                                             {{ __('messages.studytimeData.edit') }}
                                         </a>
 
-                                        <form action="{{ route('study-time.destroy', $studyTime->id) }}" method="POST" class="d-inline">
+                                       <form action="{{ route('study-time.destroy', $studyTime->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('{{ __('messages.studytimeData.delete_confirm') }}')">
+                                            <button type="button" class="btn btn-sm btn-danger delete-studytime-btn">
                                                 {{ __('messages.studytimeData.delete') }}
                                             </button>
                                         </form>
+
                                     </td>
                                 </tr>
                                 @empty
@@ -108,45 +116,118 @@
 
 @section('script')
 <script>
-    const handleSelect = () => {
-        let selected = [];
+  const handleSelect = () => {
+    let selectedStudyTimes = [];
 
-        $('input[name="studytime_id"]:checked').each(function () {
-            selected.push($(this).val());
+    $('input[name="studytime_id"]:checked').each(function () {
+        selectedStudyTimes.push($(this).val());
+    });
+
+    let studytime_ids = selectedStudyTimes.join(',');
+
+    if (selectedStudyTimes.length >= 1) {
+        $('#deleteSelected').removeClass('d-none');
+        $("#deleteSelected").attr("studytime_ids", studytime_ids);
+    } else {
+        $('#deleteSelected').addClass('d-none');
+    }
+}
+
+const deleteSelected = () => {
+    const selectedIds = Array.from(document.querySelectorAll('input[name="studytime_id"]:checked'))
+                             .map(cb => cb.value);
+
+    if (selectedIds.length === 0) {
+        Swal.fire({
+            icon: 'info',
+            title: '{{ __("messages.deleteStudyTimeSelect.no_selected") }}',
+            showConfirmButton: false,
+            timer: 1500
         });
-
-        let studytime_ids = selected.join(',');
-
-        if (selected.length > 0) {
-            $('#deleteSelected').removeClass('d-none');
-            $('#deleteSelected').attr('studytime_ids', studytime_ids);
-        } else {
-            $('#deleteSelected').addClass('d-none');
-        }
+        return;
     }
 
-    const deleteSelected = () => {
-        if (confirm('{{ __("messages.studytimeData.delete_selected_confirm") }}')) {
-            let studytime_ids = $('#deleteSelected').attr('studytime_ids');
+    const deleteBtn = document.getElementById('deleteSelected');
+    deleteBtn.disabled = true;
 
+    Swal.fire({
+        title: '{{ __("messages.deleteStudyTimeSelect.delete_selected_confirm") }}',
+        text: '{{ __("messages.deleteStudyTimeSelect.delete_count_text", ["count" => "__COUNT__"]) }}'
+                .replace('__COUNT__', selectedIds.length),
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: '{{ __("messages.deleteStudyTimeSelect.yes_delete") }}',
+        cancelButtonText: '{{ __("messages.deleteStudyTimeSelect.cancel") }}'
+    }).then((result) => {
+        if (result.isConfirmed) {
             $.ajax({
                 type: "POST",
                 url: "{{ route('study-time.deleteSelected') }}",
                 data: {
-                    selected_id: studytime_ids,
+                    selected_id: selectedIds.join(','),
                     _token: '{{ csrf_token() }}'
                 },
                 dataType: "json",
                 success: function (response) {
-                    if (response.status == 200) {
-                        window.location.href = "{{ route('study-time.index') }}";
+                    if (response.status === 200) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '{{ __("messages.deleteStudyTimeSelect.deleted_success") }}',
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            window.location.href = "{{ route('study-time.index') }}";
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '{{ __("messages.deleteStudyTimeSelect.error_delete") }}'
+                        });
                     }
                 },
                 error: function (xhr) {
-                    console.error(xhr.responseText);
+                    Swal.fire({
+                        icon: 'error',
+                        title: '{{ __("messages.deleteStudyTimeSelect.error_delete") }}',
+                        text: xhr.responseText
+                    });
+                },
+                complete: function () {
+                    deleteBtn.disabled = false;
                 }
             });
+        } else {
+            deleteBtn.disabled = false;
         }
-    }
+    });
+}
+
+//delete study time 
+   document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.delete-studytime-btn');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const form = this.closest('form');
+
+                Swal.fire({
+                    title: '{{ __("messages.deleteStudyTime.confirm_title") }}',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: '{{ __("messages.deleteStudyTime.confirm_button") }}',
+                    cancelButtonText: '{{ __("messages.deleteStudyTime.cancel_button") }}'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    });
+
 </script>
 @endsection

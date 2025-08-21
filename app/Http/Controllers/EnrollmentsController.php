@@ -96,8 +96,8 @@ class EnrollmentsController extends Controller
             'enrolled_date'
         ]));
 
-        return redirect()->route('enrollments.List')
-                         ->with('success', 'Enrollment updated successfully.');
+       return redirect()->route('enrollments.List')
+                 ->with('success', __('messages.enrollmentList.updated'));
     }
 
     public function destroy($id)
@@ -105,6 +105,29 @@ class EnrollmentsController extends Controller
         $enrollment = Enrollment::findOrFail($id);
         $enrollment->delete();
 
-        return redirect()->route('enrollments.List')->with('success', 'Enrollment deleted.');
+       return redirect()->route('enrollments.List')
+                 ->with('success', __('messages.enrollmentList.deleted'));
     }
+
+
+    
+    public function deleteWithSelect(Request $request)
+    {
+        $ids = $request->selected_id;
+        $selected_id = explode(",", $ids);
+
+        foreach ($selected_id as $id) {
+            $enrollment = Enrollment::find($id);
+
+            if ($enrollment) {
+                $enrollment->delete();
+            }
+        }
+
+        return response()->json([
+            'status' => 200,
+            'message' => __("messages.deleteEnrollmentSelect.deleted_success") // localized message
+        ]);
+    }
+
 }

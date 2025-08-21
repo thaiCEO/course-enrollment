@@ -30,6 +30,7 @@ class Payment extends Model
     }
 
 
+
     public function updatedByAdmin()
     {
         return $this->belongsTo(Admin::class, 'updated_by_admin_id');
