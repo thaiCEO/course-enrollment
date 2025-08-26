@@ -10,11 +10,26 @@ use Illuminate\Support\Facades\Validator;
 
 class AddressController extends Controller
 {
-    public function index()
-    {
-        $addresses = Address::with('addressable')->latest()->paginate(10);
-        return view('messages/addresses/index', compact('addresses'));
-    }
+
+    
+        public function index(Request $request)
+        {
+            $filters = $request->only(['search', 'filter']);
+
+            $addresses = Address::with('addressable')
+                ->filter($filters)
+                ->latest()
+                ->paginate(10);
+
+            if ($request->ajax()) {
+                return view('messages.addresses.address_table', compact('addresses'))->render();
+            }
+
+            return view('messages.addresses.index', compact('addresses'));
+        }
+
+
+
 
     public function create()
     {
@@ -79,7 +94,8 @@ class AddressController extends Controller
             'is_main'          => $request->is_main,
         ]);
 
-       return redirect()->route('addresses.index')->with('success', 'បង្កើតអាសយដ្ឋានបានជោគជ័យ'); 
+        return redirect()->route('addresses.index')
+               ->with('success', __('messages.addressesAlertMessage.created'));
     }
 
     public function show($id)
@@ -142,13 +158,35 @@ class AddressController extends Controller
             'is_main'          => $request->is_main,
         ]);
 
-        return redirect()->route('addresses.index')->with('success', 'កែប្រែអាសយដ្ឋានបានជោគជ័យ'); 
+         return redirect()->route('addresses.index')
+               ->with('success', __('messages.addressesAlertMessage.updated'));
     }
 
     public function destroy($id)
     {
         $address = Address::findOrFail($id);
         $address->delete();
-        return redirect()->route('addresses.index')->with('success', 'លុបអាសយដ្ឋានបានជោគជ័យ'); 
+        return redirect()->route('addresses.index')
+              ->with('success', __('messages.addressesAlertMessage.deleted'));
     }
+
+    public function deleteSelected(Request $request)
+    {
+        $ids = explode(',', $request->selected_id);
+
+        try {
+            Address::whereIn('id', $ids)->delete();
+
+            return response()->json([
+                'status' => 200,
+                'message' => __('messages.deleteAddressSelect.deleted_success')
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 500,
+                'message' => __('messages.deleteAddressSelect.error_delete')
+            ]);
+        }
+    }
+
 }

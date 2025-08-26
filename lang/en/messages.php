@@ -247,7 +247,7 @@ return [
 
 // address start
 'showaddresses' => [
-        'title'          => 'Student Addresses',
+        'title'          => 'Addresses',
         'add'            => 'Add Address',
         'id'             => 'ID',
         'owner'          => 'Owner',
@@ -266,6 +266,9 @@ return [
         'ok'             => 'OK',
         'confirm_delete' => 'Are you sure you want to delete this address?',
         'no_data'        => 'No addresses found',
+        'search' => 'Search...',
+        'add' => 'Add Address',
+        'all' => 'All',
     ],
 
   'createaddresses' => [
@@ -284,8 +287,8 @@ return [
         'back'            => 'Back',
     ],
  'viewaddresses' => [
-        'title'         => 'Student/Teacher Address Details',
-        'student'       => 'Student/Teacher',
+        'title'         => 'Address Details',
+        'name'       => 'Name',
         'address_line'  => 'Address',
         'city'          => 'City',
         'phone'         => 'Phone',
@@ -310,6 +313,30 @@ return [
         'update'          => 'Update',
         'back'            => 'Back',
     ],
+
+ 'addressesAlertMessage' => [
+        'created' => 'Address has been created successfully',
+        'updated' => 'Address has been updated successfully',
+        'deleted' => 'Address has been deleted successfully',
+    ],
+
+    'deleteAddressSelect' => [
+        'no_selected' => 'No addresses selected!',
+        'delete_selected_confirm' => 'Are you sure you want to delete the selected addresses?',
+        'delete_count_text' => 'You are about to delete :count address(es).',
+        'yes_delete' => 'Yes, delete!',
+        'cancel' => 'Cancel',
+        'deleted_success' => 'Selected addresses have been deleted successfully!',
+        'error_delete' => 'Failed to delete selected addresses.',
+        'deleteSelected' => 'Delete Selected'
+    ],
+
+    'deleteAddress' => [
+        'confirm_title' => 'Are you sure you want to delete this address?',
+        'confirm_button' => 'Yes, delete!',
+        'cancel_button' => 'Cancel'
+    ],
+
 // address end
 
   // Payment Method List
@@ -348,6 +375,12 @@ return [
         'name' => 'Payment Method Name',
         'update' => 'Update',
         'back' => 'Back',
+    ],
+
+'paymentMethodsAlert' => [
+        'created' => 'Payment method has been added successfully',
+        'updated' => 'Payment method has been updated successfully',
+        'deleted' => 'Payment method has been deleted successfully',
     ],
 
 // payment-method end
@@ -412,6 +445,23 @@ return [
         'updateButton' => 'Update',
         'back' => 'Back',
     ],
+
+    'deletePaymentMethodSelect' => [
+        'delete_selected' => 'Delete Selected',
+        'no_selected' => 'No payment method selected!',
+        'delete_selected_confirm' => 'Are you sure you want to delete the selected payment methods?',
+        'delete_count_text' => 'You are about to delete :count payment methods.',
+        'yes_delete' => 'Yes, delete!',
+        'cancel' => 'Cancel',
+        'deleted_success' => 'Selected payment methods deleted successfully!',
+        'error_delete' => 'An error occurred while deleting!',
+    ],
+    'deletePaymentMethod' => [
+        'confirm_title' => 'Are you sure you want to delete this payment method?',
+        'confirm_button' => 'Yes, delete!',
+        'cancel_button' => 'Cancel',
+    ],
+
 
 //payment end 
 

@@ -1,36 +1,60 @@
 @extends('components.master')
 
 @section('content')
-<div class="container mx-auto mt-10 max-w-lg bg-white shadow-md rounded p-6">
-    <h1 class="text-2xl font-bold mb-6 text-center">{{ __('messages.viewaddresses.title') }}</h1>
+<div class="container mt-5">
+    <div class="card shadow border-0">
+        <!-- Card Header -->
+        <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0">{{ __('messages.viewaddresses.title') }}</h4>
+        </div>
 
-    <div class="mb-4">
-        <label class="font-semibold">{{ __('messages.viewaddresses.student') }}:</label>
-        <p>{{ $address->addressable->username ?? $address->addressable->name ?? __('messages.viewaddresses.na') }}</p>
-    </div>
+        <!-- Card Body -->
+        <div class="card-body">
+            <!-- Student Name -->
+            <div class="row mb-3">
+                <label class="col-sm-4 fw-semibold">{{ __('messages.viewaddresses.name') }}:</label>
+                <div class="col-sm-8">
+                    {{ $address->addressable->username ?? $address->addressable->name ?? __('messages.viewaddresses.na') }}
+                </div>
+            </div>
 
-    <div class="mb-4">
-        <label class="font-semibold">{{ __('messages.viewaddresses.address_line') }}:</label>
-        <p>{{ $address->address_line }}</p>
-    </div>
+            <!-- Address Line -->
+            <div class="row mb-3">
+                <label class="col-sm-4 fw-semibold">{{ __('messages.viewaddresses.address_line') }}:</label>
+                <div class="col-sm-8">{{ $address->address_line }}</div>
+            </div>
 
-    <div class="mb-4">
-        <label class="font-semibold">{{ __('messages.viewaddresses.city') }}:</label>
-        <p>{{ $address->city }}</p>
-    </div>
+            <!-- City -->
+            <div class="row mb-3">
+                <label class="col-sm-4 fw-semibold">{{ __('messages.viewaddresses.city') }}:</label>
+                <div class="col-sm-8">{{ $address->city }}</div>
+            </div>
 
-    <div class="mb-4">
-        <label class="font-semibold">{{ __('messages.viewaddresses.phone') }}:</label>
-        <p>{{ $address->phone }}</p>
-    </div>
+            <!-- Phone -->
+            <div class="row mb-3">
+                <label class="col-sm-4 fw-semibold">{{ __('messages.viewaddresses.phone') }}:</label>
+                <div class="col-sm-8">{{ $address->phone }}</div>
+            </div>
 
-    <div class="mb-4">
-        <label class="font-semibold">{{ __('messages.viewaddresses.address_type') }}:</label>
-        <p>{{ $address->is_main ? __('messages.viewaddresses.main') : __('messages.viewaddresses.secondary') }}</p>
-    </div>
+            <!-- Address Type -->
+            <div class="row mb-3">
+                <label class="col-sm-4 fw-semibold">{{ __('messages.viewaddresses.address_type') }}:</label>
+                <div class="col-sm-8">
+                    @if($address->is_main)
+                        <span class="badge bg-success">{{ __('messages.viewaddresses.main') }}</span>
+                    @else
+                        <span class="badge bg-secondary">{{ __('messages.viewaddresses.secondary') }}</span>
+                    @endif
+                </div>
+            </div>
+        </div>
 
-    <div class="text-center mt-6">
-        <a href="{{ route('addresses.index') }}" class="btn btn-primary">{{ __('messages.viewaddresses.back') }}</a>
+        <!-- Card Footer -->
+        <div class="card-footer text-center">
+            <a href="{{ route('addresses.index') }}" class="btn btn-secondary">
+                {{ __('messages.viewaddresses.back') }}
+            </a>
+        </div>
     </div>
 </div>
 @endsection

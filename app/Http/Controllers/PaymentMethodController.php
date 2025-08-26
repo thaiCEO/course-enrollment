@@ -37,7 +37,8 @@ class PaymentMethodController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect()->route('payment-method.index')->with('success', 'វិធីសាស្ត្រទូទាត់ត្រូវបានបន្ថែមដោយជោគជ័យ');
+          return redirect()->route('payment-method.index')
+                ->with('success', __('messages.paymentMethodsAlert.created'));
     }
 
     /**
@@ -73,7 +74,8 @@ class PaymentMethodController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect()->route('payment-method.index')->with('success', 'វិធីសាស្ត្រទូទាត់ត្រូវបានកែប្រែដោយជោគជ័យ');
+         return redirect()->route('payment-method.index')
+                ->with('success', __('messages.paymentMethodsAlert.updated'));
     }
 
 
@@ -87,8 +89,37 @@ class PaymentMethodController extends Controller
 
         $paymentMethod->delete();
 
-        return redirect()->route('payment-method.index')->with('success', 'វិធីសាស្ត្រទូទាត់ត្រូវបានលុបដោយជោគជ័យ');
+        return redirect()->route('payment-method.index')
+               ->with('success', __('messages.paymentMethodsAlert.deleted'));
     }
+
+
+    public function deleteSelected(Request $request)
+    {
+        try {
+            $ids = explode(',', $request->selected_id);
+
+            if (count($ids) === 0) {
+                return response()->json([
+                    'status' => 400,
+                    'message' => __('messages.deletePaymentMethodSelect.no_selected')
+                ]);
+            }
+
+            \App\Models\PaymentMethod::whereIn('id', $ids)->delete();
+
+            return response()->json([
+                'status' => 200,
+                'message' => __('messages.deletePaymentMethodSelect.deleted_success')
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 500,
+                'message' => __('messages.deletePaymentMethodSelect.error_delete')
+            ]);
+        }
+    }
+
 
     
 }

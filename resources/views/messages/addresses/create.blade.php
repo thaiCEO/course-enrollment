@@ -1,8 +1,26 @@
 @extends('components.master')
 
 @section('content')
+
+
+<!-- Page-header start -->
+<div class="page-header card">
+    <div class="card-block">
+        <h5 class="m-b-10">{{ __('messages.createaddresses.title') }}</h5>
+        <ul class="breadcrumb-title b-t-default p-t-10">
+            <li class="breadcrumb-item">
+                <a href="index.html"><i class="fa fa-home"></i></a>
+            </li>
+            <li class="breadcrumb-item">
+               <a href="{{ route('dashboard.index') }}">{{ __('messages.createFormStudent.dashboard') }}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- Page-header end -->
+
+
 <div class="container">
-    <h2>{{ __('messages.createaddresses.title') }}</h2>
 
     @if($errors->any())
     <div class="alert alert-danger">

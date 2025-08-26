@@ -95,6 +95,7 @@ Route::prefix('admin')->middleware(['auth:admin' , 'Is_Admin'])->group(function(
         Route::get('/address/{id}/edit', [AddressController::class, 'edit'])->name('addresses.edit');
         Route::post('/address/{id}/update', [AddressController::class, 'update'])->name('addresses.update');
         Route::delete('/address/{id}', [AddressController::class, 'destroy'])->name('addresses.destroy');
+        Route::post('/address/delete-selected', [AddressController::class, 'deleteSelected'])->name('addresses.deleteSelected');
         });
 
         // route for payments
@@ -118,6 +119,7 @@ Route::prefix('admin')->middleware(['auth:admin' , 'Is_Admin'])->group(function(
         Route::get('/payment-method/{id}/edit', [PaymentMethodController::class, 'edit'])->name('payment-method.edit');
         Route::post('/payment-method/{id}/update', [PaymentMethodController::class, 'update'])->name('payment-method.update');
         Route::delete('/payment-method/{id}', [PaymentMethodController::class, 'destroy'])->name('payment-method.destroy');
+        Route::post('/payment-method/delete-selected', [PaymentMethodController::class, 'deleteSelected'])->name('payment-method.deleteSelected');
         });
 
         

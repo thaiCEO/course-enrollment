@@ -24,99 +24,244 @@
                     <a class="nav-link active" href="#addresses-tab" role="tab">
                         <i class="fa fa-map-marker"></i> {{ __('messages.showaddresses.title') }}
                     </a>
+                    <div class="slide"></div>
                 </li>
             </ul>
 
             <div class="tab-content card-block">
                 <div class="tab-pane active" id="addresses-tab" role="tabpanel">
                     
+                    <!-- Search & Add Address Row -->
+                    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                        
+                       {{-- SEARCH --}}
+                      <form id="searchForm" method="GET" action="{{ route('addresses.index') }}" class="d-flex align-items-center mb-2 mb-md-0">
+                            <input type="text"
+                                name="search"
+                                id="searchInput"
+                                value="{{ request('search') }}"
+                                class="form-control me-2"
+                                placeholder="{{ __('messages.showaddresses.search') }}">
+                            <button type="submit" id="searchBtn" class="btn btn-sm btn-outline-primary ms-2">
+                                <i class="fa fa-search"></i> {{ __('messages.showaddresses.search') }}
+                            </button>
+                        </form>
+
+
+
+                <div class="d-flex align-items-center gap-2">
+                    {{-- ADD ADDRESS --}}
                     @can('create address')
-                        <a href="{{ route('addresses.create') }}" class="btn btn-primary mb-3">
-                            + {{ __('messages.showaddresses.add') }}
+                        <a href="{{ route('addresses.create') }}" class="btn btn-primary">
+                            <i class="fa fa-plus"></i> {{ __('messages.showaddresses.add') }}
                         </a>
                     @endcan
 
-                    <div class="table-responsive">
-                       <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>{{ __('messages.showaddresses.id') }}</th>
-                                    <th>{{ __('messages.showaddresses.owner') }}</th>
-                                    <th>{{ __('messages.showaddresses.address_line') }}</th>
-                                    <th>{{ __('messages.showaddresses.city') }}</th>
-                                    <th>{{ __('messages.showaddresses.phone') }}</th>
-                                    {{-- <th>{{ __('messages.showaddresses.type') }}</th> --}}
-                                    <th>{{ __('messages.showaddresses.action') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($addresses as $address)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>
-                                            @php $owner = $address->addressable; @endphp
-                                            @if ($owner instanceof \App\Models\Student)
-                                                {{ __('messages.showaddresses.student') }}: {{ $owner->username ?? 'N/A' }}
-                                            @elseif ($owner instanceof \App\Models\Teacher)
-                                                {{ __('messages.showaddresses.teacher') }}: {{ $owner->name ?? 'N/A' }}
-                                            @else
-                                                N/A
-                                            @endif
-                                        </td>
-                                        <td>{{ $address->address_line }}</td>
-                                        <td>{{ $address->city }}</td>
-                                        <td>{{ $address->phone }}</td>
-                                        {{-- <td>{{ $address->is_main ? __('messages.showaddresses.main') : __('messages.showaddresses.secondary') }}</td> --}}
-                                      <td>
-                                        {{-- View Address --}}
-                                        @can('read address')
-                                            <a href="{{ route('addresses.show', $address->id) }}" 
-                                            class="btn btn-sm btn-warning">
-                                                {{ __('messages.showaddresses.view') }}
-                                            </a>
-                                        @endcan
-
-                                        {{-- Edit Address --}}
-                                        @can('update address')
-                                            <a href="{{ route('addresses.edit', $address->id) }}" 
-                                            class="btn btn-sm btn-primary">
-                                                {{ __('messages.showaddresses.edit') }}
-                                            </a>
-                                        @endcan
-
-                                        {{-- Delete Address --}}
-                                        @can('delete address')
-                                            <form action="{{ route('addresses.destroy', $address->id) }}" 
-                                                method="POST" 
-                                                class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" 
-                                                        class="btn btn-sm btn-danger"
-                                                        onclick="return confirm('{{ __('messages.showaddresses.confirm_delete') }}')">
-                                                    {{ __('messages.showaddresses.delete') }}
-                                                </button>
-                                            </form>
-                                        @endcan
-                                    </td>
-
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="7" class="text-center">{{ __('messages.showaddresses.no_data') }}</td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
+                    {{-- FILTER DROPDOWN (Bootstrap) --}}
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle"
+                                type="button"
+                                id="filterDropdownBtn"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            {{-- Show current filter label --}}
+                            {{ request('filter') === 'student'
+                                ? __('messages.showaddresses.student')
+                                : (request('filter') === 'teacher'
+                                    ? __('messages.showaddresses.teacher')
+                                    : __('messages.showaddresses.all')) }}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="filterDropdownBtn">
+                            <li><a class="dropdown-item filter-item" href="#" data-filter="">{{ __('messages.showaddresses.all') }}</a></li>
+                            <li><a class="dropdown-item filter-item" href="#" data-filter="student">{{ __('messages.showaddresses.student') }}</a></li>
+                            <li><a class="dropdown-item filter-item" href="#" data-filter="teacher">{{ __('messages.showaddresses.teacher') }}</a></li>
+                        </ul>
                     </div>
-
-                    <div>{{ $addresses->links() }}</div>
-
                 </div>
             </div>
 
-        </div>
-    </div>
-</div>
 
+            {{-- TABLE CONTAINER (AJAX will replace this div) --}}
+            <div id="addressTable">
+                @include('messages.addresses.address_table', ['addresses' => $addresses])
+            </div>
+
+                            
+
+@endsection
+
+
+@section('script')
+<script>
+    // Handle address checkbox selection
+    const handleSelect = () => {
+        let selectedAddresses = [];
+
+        $('input[name="address_id"]:checked').each(function () {
+            selectedAddresses.push($(this).val());
+        });
+
+        let address_ids = selectedAddresses.join(',');
+
+        if(selectedAddresses.length >= 1){
+            $('#deleteSelected').removeClass('d-none');
+            $("#deleteSelected").attr("address_ids", address_ids);
+        } else {
+            $('#deleteSelected').addClass('d-none');
+        }
+    }
+
+    // Bulk delete addresses
+    const deleteSelected = () => {
+        const selectedIds = Array.from(document.querySelectorAll('input[name="address_id"]:checked'))
+                                 .map(cb => cb.value);
+
+        if(selectedIds.length === 0){
+            Swal.fire({
+                icon: 'info',
+                title: '{{ __("messages.deleteAddressSelect.no_selected") }}',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            return;
+        }
+
+        const deleteBtn = document.getElementById('deleteSelected');
+        deleteBtn.disabled = true;
+
+        Swal.fire({
+            title: '{{ __("messages.deleteAddressSelect.delete_selected_confirm") }}',
+            text: '{{ __("messages.deleteAddressSelect.delete_count_text", ["count" => "__COUNT__"]) }}'.replace('__COUNT__', selectedIds.length),
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: '{{ __("messages.deleteAddressSelect.yes_delete") }}',
+            cancelButtonText: '{{ __("messages.deleteAddressSelect.cancel") }}'
+        }).then((result) => {
+            if(result.isConfirmed){
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('addresses.deleteSelected') }}", // <-- ADD ROUTE
+                    data: {
+                        selected_id: selectedIds.join(','),
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: "json",
+                    success: function(response){
+                        if(response.status == 200){
+                            Swal.fire({
+                                icon: 'success',
+                                title: '{{ __("messages.deleteAddressSelect.deleted_success") }}',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location.href="{{ route('addresses.index') }}";
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: '{{ __("messages.deleteAddressSelect.error_delete") }}'
+                            });
+                        }
+                    },
+                    error: function(xhr){
+                        Swal.fire({
+                            icon: 'error',
+                            title: '{{ __("messages.deleteAddressSelect.error_delete") }}',
+                            text: xhr.responseText
+                        });
+                    },
+                    complete: function(){
+                        deleteBtn.disabled = false;
+                    }
+                });
+            } else {
+                deleteBtn.disabled = false;
+            }
+        });
+    }
+
+    // Single delete confirmation for addresses
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.delete-address-btn');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const form = this.closest('form');
+
+                Swal.fire({
+                    title: '{{ __("messages.deleteAddress.confirm_title") }}',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: '{{ __("messages.deleteAddress.confirm_button") }}',
+                    cancelButtonText: '{{ __("messages.deleteAddress.cancel_button") }}'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    });
+
+
+//filter 
+$(document).ready(function () {
+    let currentFilter = "{{ request('filter', '') }}";
+
+    function fetchAddresses(url = "{{ route('addresses.index') }}") {
+        const search = $('#searchInput').val().trim();
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: {
+                search: search,
+                filter: currentFilter
+            },
+            success: function (html) {
+                $('#addressTable').html(html);
+            },
+            error: function (xhr) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
+
+    // Search form submit handler
+    $('#searchForm').on('submit', function (e) {
+        e.preventDefault();
+        fetchAddresses();
+    });
+
+    // Enter key also triggers search
+    $('#searchInput').on('keyup', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            $('#searchForm').submit();
+        }
+    });
+
+    // Filter dropdown handler
+    $(document).on('click', '.filter-item', function (e) {
+        e.preventDefault();
+        currentFilter = $(this).data('filter') || '';
+        $('#filterDropdownBtn').text($(this).text());
+        fetchAddresses();
+    });
+
+    // Pagination handler
+    $(document).on('click', '#addressTable .pagination a', function (e) {
+        e.preventDefault();
+        const url = $(this).attr('href');
+        fetchAddresses(url);
+    });
+});
+
+
+</script>
 @endsection

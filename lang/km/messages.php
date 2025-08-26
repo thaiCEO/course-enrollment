@@ -238,10 +238,10 @@ return [
 
 // address start
 'showaddresses' => [
-        'title'          => 'អាសយដ្ឋានសិស្ស',
+        'title'          => 'ព៌ត័មានអាសយដ្ឋាន',
         'add'            => 'បន្ថែមអាសយដ្ឋាន',
-        'id'             => 'ID',
-        'owner'          => 'អ្នកកាន់',
+        'id'             => 'ល.រ',
+        'owner'          => 'ឈ្មោះ',
         'address_line'   => 'អាសយដ្ឋាន',
         'city'           => 'ទីក្រុង',
         'phone'          => 'លេខទូរស័ព្ទ',
@@ -257,6 +257,9 @@ return [
         'ok'             => 'យល់ព្រម',
         'confirm_delete' => 'តើអ្នកពិតជាចង់លុបអាសយដ្ឋាននេះ?',
         'no_data'        => 'គ្មានទិន្នន័យអាសយដ្ឋាន',
+        'search' => 'ស្វែងរក...',
+        'add' => 'បន្ថែមអាសយដ្ឋាន',
+        'all' => 'ទាំងអស់',
     ],
 
 'createaddresses' => [
@@ -270,19 +273,19 @@ return [
         'address_line'    => 'អាសយដ្ឋាន',
         'city'            => 'ខេត្ត/ក្រុង',
         'phone'           => 'លេខទូរស័ព្ទ',
-        'main_address'    => 'អាសយដ្ឋានចម្បង',
+        'main_address'    => 'បានកំណត់',
         'save'            => 'រក្សាទុក',
         'back'            => 'ត្រឡប់ក្រោយ',
     ],
 
  'viewaddresses' => [
-        'title'         => 'ព័ត៌មានអាសយដ្ឋានសិស្ស/គ្រូ',
-        'student'       => 'សិស្ស/គ្រូ',
+        'title'         => 'ព័ត៌មានអាសយដ្ឋាន',
+        'name'       => 'ឈ្មោះ',
         'address_line'  => 'អាសយដ្ឋាន',
         'city'          => 'ខេត្ត/ទីក្រុង',
         'phone'         => 'លេខទូរស័ព្ទ',
         'address_type'  => 'ប្រភេទអាសយដ្ឋាន',
-        'main'          => 'អាសយដ្ឋានចម្បង',
+        'main'          => 'បានកំណត់',
         'secondary'     => 'អាសយដ្ឋានរង',
         'back'          => 'ត្រឡប់ក្រោយ',
         'na'            => 'គ្មានទិន្នន័យ',
@@ -298,18 +301,43 @@ return [
         'address'         => 'អាសយដ្ឋាន',
         'city'            => 'ខេត្ត/ទីក្រុង',
         'phone'           => 'លេខទូរស័ព្ទ',
-        'main_address'    => 'អាសយដ្ឋានចម្បង',
+        'main_address'    => 'បានកំណត់',
         'update'          => 'កែប្រែ',
         'back'            => 'ត្រឡប់ក្រោយ',
     ],
+
+ 'addressesAlertMessage' => [
+        'created' => 'បង្កើតអាសយដ្ឋានបានជោគជ័យ',
+        'updated' => 'កែប្រែអាសយដ្ឋានបានជោគជ័យ',
+        'deleted' => 'លុបអាសយដ្ឋានបានជោគជ័យ',
+    ],
+
+    'deleteAddressSelect' => [
+        'no_selected' => 'មិនមានអាសយដ្ឋានដែលបានជ្រើសរើសទេ!',
+        'delete_selected_confirm' => 'តើអ្នកប្រាកដថាចង់លុបអាសយដ្ឋានដែលបានជ្រើសរើសមែនទេ?',
+        'delete_count_text' => 'លុបអាសយដ្ឋានចំនួន :count ',
+        'yes_delete' => 'បាទ/ចាស, លុប!',
+        'cancel' => 'បោះបង់',
+        'deleted_success' => 'អាសយដ្ឋានដែលបានជ្រើសរើសត្រូវបានលុបដោយជោគជ័យ!',
+        'error_delete' => 'បរាជ័យក្នុងការលុបអាសយដ្ឋាន!',
+        'deleteSelected' => 'លុបដែលបានជ្រើសរើស',
+    ],
+
+    'deleteAddress' => [
+        'confirm_title' => 'តើអ្នកប្រាកដថាចង់លុបអាសយដ្ឋាននេះមែនទេ?',
+        'confirm_button' => 'បាទ/ចាស, លុប!',
+        'cancel_button' => 'បោះបង់'
+    ],
+
+
 // address end
 
  // Payment Method List
     'paymentmethodList' => [
         'title' => 'វិធីសាស្ត្រទូទាត់',
-        'add' => '+ បន្ថែមវិធីសាស្ត្រទូទាត់',
+        'add' => '+ បន្ថែមធនាគារ',
         'table' => [
-            'no' => '#',
+            'no' => 'ល.រ',
             'name' => 'ឈ្មោះ​ធនាគារ',
             'actions' => 'សកម្មភាព',
             'view' => 'មើល',
@@ -323,24 +351,42 @@ return [
         'success_delete' => 'លុបវិធីសាស្ត្រទូទាត់បានជោគជ័យ។',
     ],
 'createPaymentMethod' => [
-        'title' => 'បន្ថែមវិធីសាស្ត្រទូទាត់',
-        'name_label' => 'ឈ្មោះវិធីសាស្ត្រទូទាត់',
+        'title' => 'បន្ថែមធនាគារ',
+        'name_label' => 'ឈ្មោះធនាគារ',
         'name_placeholder' => 'ឧទាហរណ៍: Cash, Bank Transfer, Bakong',
         'save' => 'រក្សាទុក',
         'back' => 'ត្រឡប់ក្រោយ',
     ],
 'viewPaymentMethod' => [
-        'title' => 'ព័ត៌មានវិធីសាស្ត្រទូទាត់',
+        'title' => 'ព័ត៌មានធនាគារ',
         'id' => 'លេខសម្គាល់',
-        'name' => 'ឈ្មោះវិធីសាស្ត្រ',
+        'name' => 'ឈ្មោះធនាគារ',
         'back' => 'ត្រឡប់ក្រោយ',
     ],
 'editPaymentMethod' => [
-        'title' => 'កែប្រែវិធីសាស្ត្រទូទាត់',
-        'name' => 'ឈ្មោះវិធីសាស្ត្រទូទាត់',
+        'title' => 'កែប្រែធនាគារ',
+        'name' => 'ឈ្មោះធនាគារ',
         'update' => 'កែប្រែ',
         'back' => 'ត្រឡប់ក្រោយ',
     ],
+
+'deletePaymentMethodSelect' => [
+    'delete_selected' => 'លុបដែលបានជ្រើសរើស',
+    'no_selected' => 'សូមជ្រើសរើសធនាគារ!',
+    'delete_selected_confirm' => 'តើអ្នកពិតជាចង់លុបធនាគារទាំងនេះឬ?',
+    'delete_count_text' => 'លុបធនាគារចំនួន :count',
+    'yes_delete' => 'បាទ/ចាស លុប!',
+    'cancel' => 'បោះបង់',
+    'deleted_success' => 'លុបធនាគារបានជោគជ័យ!',
+    'error_delete' => 'មានបញ្ហាក្នុងការលុប!',
+],
+'deletePaymentMethod' => [
+    'confirm_title' => 'តើអ្នកពិតជាចង់លុបធនាគារនេះឬ?',
+    'confirm_button' => 'បាទ/ចាស លុប!',
+    'cancel_button' => 'បោះបង់',
+],
+
+
 //payment method end 
 
 // payment start
@@ -402,6 +448,13 @@ return [
         'updateButton' => 'កែប្រែ',
         'back' => 'ត្រឡប់ក្រោយ',
     ],
+
+  'paymentMethodsAlert' => [
+        'created' => 'ធនាគារត្រូវបានបន្ថែមដោយជោគជ័យ',
+        'updated' => 'ធនាគារត្រូវបានកែប្រែដោយជោគជ័យ',
+        'deleted' => 'ធនាគារត្រូវបានលុបដោយជោគជ័យ',
+    ],
+
 //payment end 
 
 //enrollment start
